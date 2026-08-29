@@ -1,0 +1,637 @@
+{
+  "$schema": "./projects.schema.json",
+  "_note": "Campos en TODO requieren input de Luciano. Los 6 cases de Dmeter fueron extraidos y verificados desde https://dmeter.com.ar/#cases el 2026-08-28.",
+  "projects": [
+    {
+      "id": "ibera",
+      "order": 1,
+      "name": "Instituto Universitario Iberá",
+      "kicker": {
+        "en": "Higher education",
+        "es": "Educación superior"
+      },
+      "org": "dmeter",
+      "role": "TODO",
+      "year": "TODO",
+      "size": "large",
+      "tagline": {
+        "en": "A private university's institutional site, with its own content manager and student capture wired straight into the CRM.",
+        "es": "Sitio institucional de una universidad privada, con su propio gestor de contenido y captación de alumnos conectada directo al CRM."
+      },
+      "url": "https://unibera.edu.ar/",
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind 4",
+        "Zod",
+        "Cloudflare",
+        "Zoho CRM"
+      ],
+      "highlights": {
+        "en": [
+          "Public site of 13 sections, every programme with its own page and its own form",
+          "Custom CMS with private preview links, version history and an audit trail",
+          "Per-article technical SEO, with a sitemap that regenerates on publish",
+          "Student capture wired into Zoho CRM"
+        ],
+        "es": [
+          "Sitio público de 13 secciones, cada carrera con su página y su formulario",
+          "CMS a medida con preview privado, historial de versiones y audit trail",
+          "SEO técnico por artículo con sitemap que se regenera al publicar",
+          "Captación de alumnos integrada a Zoho CRM"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "The first business-sciences university in the NEA needed a site of its own: 11 sections, every degree and every course with its own page, and enquiries reaching the CRM without passing through a spreadsheet.",
+          "es": "La primera institución universitaria de ciencias empresariales del NEA necesitaba presencia propia: 11 secciones, cada carrera y cada curso con su página, y que las consultas de aspirantes llegaran al CRM sin pasar por una planilla."
+        },
+        "constraints": {
+          "en": [
+            "Authorised by national decree 788/2025: the legal notice is mandatory in the footer",
+            "The chancellor approves before publishing, so private previews are required",
+            "Content editable without touching code"
+          ],
+          "es": [
+            "Autorizada por Decreto PEN 788/2025: el aviso legal es obligatorio en el footer",
+            "El rector aprueba antes de publicar: hace falta preview privado",
+            "Contenido editable sin tocar código"
+          ]
+        },
+        "outcome": {
+          "en": "Live at unibera.edu.ar with its own CMS, version history, a recoverable trash and an audit trail.",
+          "es": "Sitio en producción en unibera.edu.ar con CMS propio, historial de versiones, papelera recuperable y audit trail."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/ibera.webp",
+      "logo": "/images/logos/ibera.svg"
+    },
+    {
+      "id": "portal-de-pericias",
+      "order": 2,
+      "name": "Portal de Pericias",
+      "kicker": {
+        "en": "Legal · SaaS",
+        "es": "Legal · SaaS"
+      },
+      "org": "dmeter",
+      "role": "TODO",
+      "year": "TODO",
+      "size": "medium",
+      "tagline": {
+        "en": "A multi-tenant platform where a court-appointed expert runs the whole practice: cases, expert reports, evidence, fees and deadlines.",
+        "es": "Plataforma multi-tenant donde un perito judicial maneja toda su práctica: causas, informes, prueba con validez judicial, honorarios y plazos."
+      },
+      "url": "https://portaldepericias.com/login",
+      "stack": [
+        "Laravel 13",
+        "PHP 8.5",
+        "Vue 3",
+        "Inertia.js",
+        "Tailwind 4",
+        "MySQL 8.4",
+        "Pest PHP 4"
+      ],
+      "highlights": {
+        "en": [
+          "Cases and reports with an enforced state machine",
+          "Digital evidence fingerprinted from three separate hashes",
+          "Fees: court-awarded amounts, partial payments and expense advances",
+          "The whole Argentine court structure, cascading",
+          "Permissions guaranteed at the database level"
+        ],
+        "es": [
+          "Causas e informes con máquina de estados",
+          "Prueba digital con fingerprint desde tres fuentes independientes",
+          "Honorarios: montos regulados, pagos parciales y anticipos de gastos",
+          "Toda la estructura judicial argentina en cascada",
+          "Permisos garantizados a nivel base de datos"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "A court expert handles cases, reports, evidence, fees and deadlines spread across folders and spreadsheets. None of it holds up if it is challenged in court tomorrow.",
+          "es": "Un perito judicial maneja causas, pericias, prueba, honorarios y plazos repartidos entre carpetas y planillas. Nada de eso tiene trazabilidad si mañana lo discuten en un juzgado."
+        },
+        "constraints": {
+          "en": [
+            "Multi-tenant: each expert sees only their own account, assistants share the expert’s",
+            "Digital evidence has to survive a challenge",
+            "Three roles with distinct permissions: administrator, expert, assistant"
+          ],
+          "es": [
+            "Multi-tenant: cada perito ve sólo su cuenta, los asistentes comparten la del perito",
+            "La prueba digital tiene que resistir una impugnación",
+            "Tres roles con permisos distintos: administrador, perito, asistente"
+          ]
+        },
+        "outcome": {
+          "en": "Eight entities on a full SOLID stack (Controller → Service → Repository → Model), MD5/SHA1/SHA256 hashes on upload, documents in private storage and an observer logging every change.",
+          "es": "8 entidades con stack SOLID completo (Controller → Service → Repository → Model), evidencia con hashes MD5/SHA1/SHA256 al subir, documentos en storage privado y AuditoriaObserver registrando todo cambio."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": null,
+      "logo": "/images/logos/portal-de-pericias.webp"
+    },
+    {
+      "id": "hornero",
+      "order": 3,
+      "name": "Hornero",
+      "kicker": {
+        "en": "Retail · SMB",
+        "es": "Retail · Pymes"
+      },
+      "org": "dmeter",
+      "role": "TODO",
+      "year": "2026",
+      "size": "medium",
+      "tagline": {
+        "en": "A management system that works the same for a clothing shop, a hardware store or a gym. One engine: what changes between trades is data, not code.",
+        "es": "Sistema de gestión que funciona igual para una tienda de ropa, una ferretería o un gimnasio. Un solo motor: lo que cambia entre rubros es la data, no el programa."
+      },
+      "url": "https://hornero.dmeter.com.ar/",
+      "stack": [
+        "Hono",
+        "Drizzle",
+        "Cloudflare Workers",
+        "Postgres 16",
+        "Next 16",
+        "React 19",
+        "Tailwind 4"
+      ],
+      "highlights": {
+        "en": [
+          "Adapts to the trade without being rewritten: each business declares what a product is",
+          "Stock with full traceability: warehouses, movements, balances, adjustments",
+          "Units that convert themselves (the pipe arrives in 6 m lengths and sells by the metre)",
+          "Multi-shop, and it installs like an app",
+          "Seven demo businesses with a month of real activity"
+        ],
+        "es": [
+          "Se adapta al rubro sin reescribirse: cada comercio declara qué significa producto",
+          "Stock con trazabilidad total: depósitos, movimientos, saldos, ajustes",
+          "Unidades que se convierten solas (el caño llega de 6m y se vende por metro)",
+          "Multi-tienda, y se instala como app",
+          "Siete comercios demo con un mes de actividad real"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "Argentine management systems never quite get the groundwork right: catalogue and stock. And every trade forces a rewrite of the whole program.",
+          "es": "Los sistemas de gestión argentinos nunca terminan de resolver la base: catálogo y stock. Y cada rubro obliga a reescribir el programa entero."
+        },
+        "constraints": {
+          "en": [
+            "Only what is true for EVERY business that buys, stores and sells gets into the core",
+            "The variant is the stock unit, always, even with no dimensions",
+            "The stock ledger is neither edited nor deleted: correcting means recording again",
+            "Isolation between businesses is guaranteed by Postgres (RLS), not by the ORM"
+          ],
+          "es": [
+            "Lo que entra al core tiene que ser cierto para TODO comercio que compra, guarda y vende",
+            "La variante es la unidad de stock, siempre, incluso sin dimensiones",
+            "El ledger de stock no se edita ni se borra: corregir es volver a registrar",
+            "El aislamiento entre comercios lo garantiza Postgres (RLS), no el ORM"
+          ]
+        },
+        "outcome": {
+          "en": "Live since 2026-08-24: a single Cloudflare Worker serves the static front and the API over Neon Postgres through Hyperdrive. 248 tests against real Postgres, because RLS does not exist in sqlite and a green test there would prove nothing.",
+          "es": "En producción desde el 24-08-2026: un único Cloudflare Worker sirve el front estático y la API sobre Neon Postgres vía Hyperdrive. 248 tests contra Postgres real, porque RLS no existe en sqlite y un test verde ahí no probaría nada."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/hornero.webp",
+      "logo": "/images/logos/hornero.webp"
+    },
+    {
+      "id": "aureas",
+      "order": 4,
+      "name": "Aurea's",
+      "kicker": {
+        "en": "Subscriptions · Marketplace",
+        "es": "Suscripciones · Marketplace"
+      },
+      "org": "dmeter",
+      "role": "TODO",
+      "year": "TODO",
+      "size": "large",
+      "tagline": {
+        "en": "Digital presence for artists: the digital home, the recurring billing, the CRM that holds it up and the directory where they get hired.",
+        "es": "Presencia digital para artistas: la casa digital, la facturación recurrente, el CRM que la sostiene y el directorio donde los contratan."
+      },
+      "url": "https://www.aureas.art/",
+      "stack": [
+        "Astro 5",
+        "Prisma",
+        "PostgreSQL",
+        "Mercado Pago",
+        "Resend",
+        "Tailwind 4"
+      ],
+      "highlights": {
+        "en": [
+          "Recurring billing that never fails silently",
+          "Prices live in a single file",
+          "Their own panel and CRM",
+          "La Red: the directory where they get hired, working without JavaScript",
+          "26 digital homes live, each with its own subdomain and design system"
+        ],
+        "es": [
+          "Facturación recurrente que nunca falla en silencio: validación de firma e idempotencia",
+          "Los precios viven en un solo archivo: seis planes derivados de dos números",
+          "Panel y CRM propios: cuentas, órdenes, suscripciones, artistas y listings",
+          "La Red: directorio con búsqueda filtrada que funciona sin JavaScript",
+          "26 casas digitales en producción, cada artista con su subdominio y design system"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "An artist who wants to live off their work needs four things that never come together: a place of their own online, a way to get paid every month, something to keep contacts in order, and somewhere to be found and hired.",
+          "es": "Un artista que quiere vivir de su obra necesita cuatro cosas que nunca vienen juntas: un lugar propio en internet, una forma de cobrar todos los meses, algo que ordene los contactos y un lugar donde lo encuentren para contratarlo."
+        },
+        "constraints": {
+          "en": [
+            "Recurring billing cannot fail silently: if a payment drops, someone has to know",
+            "Prices live in a single file, not scattered through the code",
+            "The directory has to work without JavaScript"
+          ],
+          "es": [
+            "La facturación recurrente no puede fallar en silencio: si un pago se cae, alguien tiene que enterarse",
+            "Los precios viven en un solo archivo, no repartidos por el código",
+            "El directorio tiene que funcionar sin JavaScript"
+          ]
+        },
+        "outcome": {
+          "en": "26 digital homes in production, each artist with their own subdomain and design system, not the same template repeated. Mercado Pago subscriptions with signature validation and idempotency.",
+          "es": "26 casas digitales en producción, cada artista con su subdominio y su design system, no la misma plantilla repetida. Suscripciones de Mercado Pago con validación de firma e idempotencia."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "logo": "/images/logos/aureas.webp",
+      "image": "/images/projects/aureas.webp"
+    },
+    {
+      "id": "blend-store",
+      "order": 5,
+      "name": "Blend Store",
+      "kicker": {
+        "en": "E-commerce · Retail",
+        "es": "E-commerce · Retail"
+      },
+      "org": "dmeter",
+      "role": "TODO",
+      "year": "TODO",
+      "size": "small",
+      "tagline": {
+        "en": "The online store of a premium clothing brand, with the same system running the counter: one stock for what sells on the web and in the shop.",
+        "es": "La tienda online de una marca de ropa premium, con el mismo sistema corriendo el mostrador: un solo stock para lo que se vende en web y en local."
+      },
+      "url": "https://www.blendstore.com.ar/",
+      "stack": [
+        "Next.js 15",
+        "Prisma",
+        "PostgreSQL",
+        "Mercado Pago",
+        "GSAP"
+      ],
+      "highlights": {
+        "en": [
+          "One stock, two channels: counter and web draw from the same place",
+          "Payment cannot oversell",
+          "Point of sale for the shop",
+          "The size and colour matrix, generated from what the owner declares",
+          "Order states with declared transitions that notify"
+        ],
+        "es": [
+          "Un stock, dos canales: mostrador y web tiran del mismo lugar",
+          "El pago no puede sobrevender: webhook de Mercado Pago con validación de firma",
+          "Punto de venta para el local",
+          "Matriz de talles y colores generada desde lo que declara el dueño",
+          "Estados de orden con transiciones declaradas que notifican"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "A brand selling both in-shop and online ends up with two stocks that never match, and the one who pays for it is the customer who bought something that was already gone.",
+          "es": "Una marca que vende en local y en web termina con dos stocks que nunca coinciden, y el que paga el error es el cliente que compró algo que ya no estaba."
+        },
+        "constraints": {
+          "en": [
+            "One stock for both channels: counter and web draw from the same place",
+            "Payment cannot oversell under any condition",
+            "Order states are declared transitions, not whatever whoever is looking decides"
+          ],
+          "es": [
+            "Un solo stock para los dos canales: mostrador y web tiran del mismo lugar",
+            "El pago no puede sobrevender bajo ninguna condición",
+            "Los estados de una orden son transiciones declaradas, no lo que decida quien esté mirando"
+          ]
+        },
+        "outcome": {
+          "en": "Mercado Pago webhook with signature validation, a point of sale for the shop, and a size and colour matrix generated from what the owner declares.",
+          "es": "Webhook de Mercado Pago con validación de firma, punto de venta para el local y matriz de talles y colores generada desde lo que declara el dueño."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/blend-store.webp",
+      "logo": "/images/logos/blend-store.webp"
+    },
+    {
+      "id": "relay",
+      "order": 6,
+      "name": "Relay",
+      "kicker": {
+        "en": "Operations software",
+        "es": "Software de operaciones"
+      },
+      "org": "dmeter",
+      "role": "TODO",
+      "year": "TODO",
+      "size": "medium",
+      "tagline": {
+        "en": "The workspace where a company stops jumping between twelve tabs: chats, email, files and numbers on a single screen.",
+        "es": "El workspace donde una empresa deja de saltar entre doce pestañas: chats, mails, archivos y números en una sola pantalla."
+      },
+      "url": "https://dmeter.com.ar/#cases",
+      "stack": [],
+      "highlights": {
+        "en": [
+          "A single inbox",
+          "Context travels with the thread",
+          "Automations that run themselves",
+          "Roles and access",
+          "It plugs into what they already use"
+        ],
+        "es": [
+          "Una sola bandeja de entrada",
+          "El contexto viaja con la conversación",
+          "Automatizaciones que corren solas",
+          "Roles y accesos",
+          "Se enchufa a lo que la empresa ya usa"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "A company operates spread across chats, email and spreadsheets. The context behind each decision scatters, and nobody reconstructs it afterwards.",
+          "es": "Una empresa opera repartida entre chats, mails y planillas. El contexto de cada decisión queda desperdigado y nadie lo reconstruye después."
+        },
+        "constraints": {
+          "en": [
+            "Context has to travel with the thread, not live in someone’s head",
+            "It plugs into what the company already uses: migrating all at once is not an option"
+          ],
+          "es": [
+            "El contexto tiene que viajar con la conversación, no quedar en la cabeza de alguien",
+            "Se enchufa a lo que la empresa ya usa: migrar de golpe no es opción"
+          ]
+        },
+        "outcome": {
+          "en": "A single inbox with roles and access, and automations that run themselves.",
+          "es": "Una sola bandeja de entrada con roles y accesos, y automatizaciones que corren solas."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/relay.webp",
+      "logo": "/images/logos/relay.webp"
+    },
+    {
+      "id": "malmberg",
+      "order": 7,
+      "name": "Malmberg.nl",
+      "kicker": {
+        "en": "EdTech · HubSpot CMS",
+        "es": "EdTech · HubSpot CMS"
+      },
+      "org": "invisible-geeks",
+      "role": "Project Lead",
+      "year": "2024",
+      "size": "medium",
+      "tagline": {
+        "en": "Migration of the Dutch educational publisher to HubSpot CMS, on a custom React Islands boilerplate: only the component that needs it gets hydrated.",
+        "es": "Migración de la editorial educativa holandesa a HubSpot CMS, sobre un boilerplate propio de React Islands: sólo se hidrata el componente que lo necesita."
+      },
+      "url": "https://malmberg.nl",
+      "stack": [
+        "React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "HubSpot CMS",
+        "Serverless Functions"
+      ],
+      "highlights": {
+        "en": [
+          "800+ pages migrated",
+          "Custom React Islands boilerplate: only genuinely interactive components ship JavaScript",
+          "HubL modules and templates with fields editable from the CMS",
+          "Automated deployment scripts over the HubSpot CLI"
+        ],
+        "es": [
+          "800+ páginas migradas",
+          "Boilerplate propio de React Islands: sólo se hidrata el componente que lo necesita",
+          "Módulos y templates HubL con campos configurables desde el editor",
+          "Scripts de deployment automatizado sobre HubSpot CLI"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "Migrating an entire educational publisher to HubSpot CMS without losing performance: HubSpot renders on the server, and shipping full React kills load time.",
+          "es": "Migrar una editorial educativa entera a HubSpot CMS sin perder rendimiento: HubSpot renderiza en servidor y meter React completo mata el tiempo de carga."
+        },
+        "constraints": {
+          "en": [
+            "Compatible with every HubSpot CMS feature",
+            "The content team has to be able to edit without touching code"
+          ],
+          "es": [
+            "Compatible con todas las features del CMS de HubSpot",
+            "El equipo de contenido tiene que poder editar sin tocar código"
+          ]
+        },
+        "outcome": {
+          "en": "Islands architecture with selective hydration: only the JavaScript of genuinely interactive components travels.",
+          "es": "Arquitectura de islas con hidratación selectiva: sólo viaja el JavaScript de los componentes realmente interactivos."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/malmberg.webp",
+      "logo": "/images/logos/malmberg.webp"
+    },
+    {
+      "id": "tgf",
+      "order": 8,
+      "name": "El Zorro Gris",
+      "kicker": {
+        "en": "Older adults · SaaS",
+        "es": "Adultos mayores · SaaS"
+      },
+      "org": "invisible-geeks",
+      "role": "TODO",
+      "year": "2025-2026",
+      "size": "large",
+      "tagline": {
+        "en": "A platform for older adults: finance, health, culture and leisure in one place, with a travel engine that builds the itinerary around how much the traveller can actually take.",
+        "es": "Plataforma para adultos mayores: finanzas, salud, cultura y ocio en un solo lugar, con un motor de viajes que arma el itinerario según cuánto aguanta el viajero."
+      },
+      "url": "https://elzorrogris.es/",
+      "stack": [
+        "Laravel",
+        "Vue 3",
+        "Inertia.js",
+        "Stripe",
+        "MySQL"
+      ],
+      "highlights": {
+        "en": [
+          "Five verticals: Finance & Insurance, Health & Wellbeing, Culture & Learning, Leisure & Entertainment, and Travel",
+          "Fatigue algorithm: every activity carries physical effort and mental fatigue on a 1-5 scale, and the itinerary is built without crossing the limit",
+          "Age segments from 45-55 to 76+: the daily activity cap and the tolerable IIF/IIA indices change with each",
+          "Real adjustment factors: extreme weather adds effort, high season adds fatigue, the post-lunch slot penalises",
+          "Analytical literature guides, with reading progress independent from the work itself",
+          "Custom chatbot with streaming, and subscriptions through Stripe"
+        ],
+        "es": [
+          "Cinco verticales: Finanzas & Seguros, Salud & Bienestar, Cultura & Formación, Ocio & Entretenimiento y Viajes",
+          "Algoritmo de fatiga: cada actividad tiene esfuerzo físico y fatiga mental en escala 1-5, y el itinerario se arma sin pasarse del límite",
+          "Segmentación por edad de 45-55 a 76+: cambia el máximo de actividades por día y los índices IIF/IIA tolerables",
+          "Factores de ajuste reales: clima extremo suma esfuerzo, temporada alta suma fatiga, la sobremesa penaliza",
+          "Guías analíticas de literatura, con progreso de lectura independiente de la obra",
+          "Chatbot propio con streaming, y suscripciones con Stripe"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "An older adult has their interests scattered across services that do not talk to each other, and travel planners optimise for distance and price, never for the traveller. For someone who is 70, an \"efficient\" itinerary is an exhausting one: three large museums in a row is physically unworkable, and no search engine knows it.",
+          "es": "Un adulto mayor tiene sus intereses repartidos entre servicios que no hablan entre sí, y los planificadores de viaje optimizan distancia y precio, nunca al viajero. Para alguien de 70 años un itinerario \"eficiente\" es un itinerario agotador: tres museos grandes seguidos es físicamente inviable y ningún buscador lo sabe."
+        },
+        "constraints": {
+          "en": [
+            "At most 2 high-demand activities per day, and a mandatory rest after an intense one",
+            "Over 65: a cap of 3 continuous hours of cultural activity",
+            "Over 75: a 60 to 90 minute post-lunch rest, non-negotiable"
+          ],
+          "es": [
+            "Máximo 2 actividades de alta exigencia por día, y descanso obligatorio después de una intensa",
+            "Más de 65: tope de 3 horas continuadas de actividad cultural",
+            "Más de 75: descanso post-almuerzo de 60 a 90 minutos, no negociable"
+          ]
+        },
+        "outcome": {
+          "en": "An engine with explicit, versioned business rules rather than heuristics buried in the code: the effort table per activity type and the limits per age segment are data, and they change without touching the algorithm.",
+          "es": "Un motor con reglas de negocio explícitas y versionadas, no heurísticas escondidas en el código: la tabla de esfuerzo por tipo de actividad y los límites por segmento de edad son datos, y se ajustan sin tocar el algoritmo."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/tgf.webp",
+      "logo": "/images/logos/elzorrogris.svg"
+    },
+    {
+      "id": "prolicht",
+      "order": 9,
+      "name": "Prolicht",
+      "kicker": {
+        "en": "Manufacturing · CMS migration",
+        "es": "Manufactura · Migración de CMS"
+      },
+      "org": "invisible-geeks",
+      "role": "TODO",
+      "year": "2026",
+      "size": "large",
+      "tagline": {
+        "en": "The site and catalogue of PROLICHT, the Austrian architectural LED lighting manufacturer: 257 projects and the product families migrated off the old CMS.",
+        "es": "Sitio y catálogo de PROLICHT, fabricante austríaco de iluminación LED arquitectónica: 257 proyectos y las familias de producto migradas del CMS viejo."
+      },
+      "url": "https://www.prolicht.at",
+      "stack": [
+        "Laravel 12",
+        "Vue 3",
+        "Inertia.js",
+        "Tailwind 4",
+        "MySQL 8",
+        "Docker",
+        "Vite"
+      ],
+      "highlights": {
+        "en": [
+          "257 projects migrated off the previous CMS, with custom commands that pull heros and scrape the galleries",
+          "Product families enriched from the old CMS dumps: translations, technical specs, images and video",
+          "SVG sketches for each luminaire, versioned in the repo and published by the seeder",
+          "Room configurator to compose a space from the catalogue",
+          "Presentation editor: the studio builds the project by zones and shares a link with the client",
+          "SSR migration and a custom design system"
+        ],
+        "es": [
+          "257 proyectos migrados del CMS anterior, con comandos propios que bajan heros y scrapean las galerías de prolicht.at",
+          "Familias de producto enriquecidas desde los dumps del CMS viejo: traducciones, fichas técnicas, imágenes y video",
+          "Sketches SVG de cada luminaria versionados en el repo y publicados por el seeder",
+          "Room configurator para armar el ambiente con las luminarias del catálogo",
+          "Editor de presentaciones: el estudio arma el proyecto por zonas y comparte un link con el cliente",
+          "Migración a SSR y design system propio"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "A manufacturer with two decades of catalogue had everything trapped in an old CMS: 257 projects, hundreds of luminaires with technical sheets and sketches, and editorial content in several languages.",
+          "es": "Un fabricante con dos décadas de catálogo tenía todo atrapado en un CMS viejo: 257 proyectos, cientos de luminarias con ficha técnica y sketch, y contenido editorial en varios idiomas."
+        },
+        "constraints": {
+          "en": [
+            "The migration has to be reproducible: run it again without duplicating or losing data",
+            "Heavy assets stay out of the repo, but the SVG sketches go in because they are source",
+            "The catalogue has to browse the way it did, or the architects already using it get lost"
+          ],
+          "es": [
+            "La migración tiene que ser reproducible: se corre de nuevo sin duplicar ni perder datos",
+            "Los assets pesados no van al repo, pero los sketches SVG sí porque son fuente",
+            "El catálogo se navega igual que antes o los arquitectos que ya lo usan se pierden"
+          ]
+        },
+        "outcome": {
+          "en": "Artisan commands that download, enrich and seed the whole catalogue, with --dry-run to see the diff before applying it.",
+          "es": "Comandos de Artisan que bajan, enriquecen y siembran el catálogo entero, con --dry-run para ver el diff antes de aplicarlo."
+        }
+      },
+      "ai": {
+        "used": [],
+        "impact": "TODO"
+      },
+      "image": "/images/projects/prolicht.webp",
+      "logo": "/images/logos/prolicht.svg"
+    }
+  ],
+  "_pendientes": {
+    "capturas_faltantes": "Portal de Pericias queda sin captura por decision de Luciano: usa el logo centrado como fallback en la card. Todos los demas tienen la suya.",
+    "invisible_geeks_nda": "Malmberg, TGF y Prolicht son proyectos de cliente de IG. CONFIRMAR cuales se pueden mostrar publicamente antes de publicar.",
+    "roles": "Definir el rol de Luciano en cada proyecto. Hoy todos en TODO salvo Malmberg (Project Lead, del CV).",
+    "ai_por_proyecto": "El campo ai.used / ai.impact sigue vacio en todos.",
+    "descartados": "Pet Bus y Miguel Montes Garcia quedan fuera por decision de Luciano.",
+    "tgf_url": "Luciano indico elzorrogris.com como URL de TGF. OJO: el sitio que responde hoy es 'Cabanias el zorro gris - Tinogasta', un sitio de alojamiento (Habitaciones / Restaurant / Reservar), que no se parece a la plataforma del repo tgf-web. Confirmar si la captura debe ser esa.",
+    "relay_logo_nota": "Relay no tiene marca propia: usa el isotipo de dmeter, variante blanca (/images/dmeter-white-isotype.png). Decision de Luciano."
+  }
+}

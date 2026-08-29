@@ -1,0 +1,50 @@
+{
+  "_note": "Contenido verificado desde dmeter.com.ar. Los campos en TODO los tiene que completar Luciano: no se inventa su rol.",
+  "name": "Dmeter",
+  "url": "https://dmeter.com.ar",
+  "logo": "/images/logos/dmeter.webp",
+  "role": "Frontend Architect · AI",
+  "pitch": {
+    "en": "We take AI from demo to production. We find which of the hours you lose can already be automated, and we automate them inside your systems. What doesn't exist yet, we build and ship.",
+    "es": "Llevamos la IA del demo a producción. Encontramos cuáles de las horas que perdés ya se pueden automatizar, y las automatizamos dentro de tus sistemas. Lo que todavía no existe, lo construimos y lo ponemos a andar."
+  },
+  "roleDetail": {
+    "en": "TODO",
+    "es": "TODO"
+  },
+  "process": [
+    {
+      "n": "01",
+      "title": { "en": "We find where AI makes you win", "es": "Encontramos dónde la IA te conviene" },
+      "text": {
+        "en": "We map the data and the processes, spot where the returns are, pick where to start — and you get it in writing.",
+        "es": "Mapeamos los datos y los procesos, detectamos dónde está el retorno, elegimos por dónde empezar, y te lo damos por escrito."
+      }
+    },
+    {
+      "n": "02",
+      "title": { "en": "We map the path", "es": "Trazamos el camino" },
+      "text": {
+        "en": "Data, model and architecture, what success means for you, and clear costs and timelines. The full plan before touching code.",
+        "es": "Datos, modelo y arquitectura, qué significa \"éxito\" para vos, y costos y plazos claros. El plan completo antes de tocar código."
+      }
+    },
+    {
+      "n": "03",
+      "title": { "en": "We make it real", "es": "Lo hacemos real" },
+      "text": {
+        "en": "In weeks you have the first system running, connected to your stack and tested against your cases, not a demo. Guardrails from day one.",
+        "es": "En semanas tenés el primer sistema andando, conectado a tu stack y probado contra tus casos, no contra un demo. Guardrails desde el día uno."
+      }
+    },
+    {
+      "n": "04",
+      "title": { "en": "We scale it with your team", "es": "Lo escalamos con tu equipo" },
+      "text": {
+        "en": "It stays running in production, we keep improving it, and we train your team to take it from here.",
+        "es": "Queda corriendo en producción, lo seguimos mejorando, y entrenamos a tu equipo para que lo lleve desde ahí."
+      }
+    }
+  ],
+  "projectIds": ["ibera", "portal-de-pericias", "hornero", "aureas", "blend-store", "relay"]
+}
