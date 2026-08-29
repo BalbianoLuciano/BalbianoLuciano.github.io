@@ -22,6 +22,11 @@ export default {
       },
     },
     colors: {
+      // `theme.colors` esta fuera de `extend`, asi que reemplaza la paleta
+      // entera de Tailwind. Sin estas dos, `bg-transparent` y `border-current`
+      // no generan nada: los inputs caian al fondo blanco del browser.
+      transparent: 'transparent',
+      current: 'currentColor',
       '07': '#375441',
       '06': '#3A5A40',
       '05': '#557053',
@@ -33,7 +38,7 @@ export default {
       dark: '#000000',
       danger: '#CDA2AB',
       success: '#6F8665',
-      white: '#ffffff',
+      white: '#F7F3EC', // off-white calido: no hay blanco puro en el sitio
     },
     fontFamily: {
       outfit: ['"Outfit"', 'sans-serif'],

@@ -12,3 +12,91 @@
 body {
   margin: 0;
 }
+
+/* Tipografias disponibles para las islas de React (los <style> de Astro son scoped) */
+.font-dharma {
+  font-family: 'dharma-gothic-e', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-termina {
+  font-family: 'termina', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Trigger de contacto: la palabra desde la que se dispara la mascara radial */
+.contact-trigger {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  /* Ojo: `font: inherit` (shorthand) pisaria el tamano y la familia que traen
+     las clases de Tailwind y .contact. Solo reseteamos lo que hace falta. */
+  line-height: inherit;
+  letter-spacing: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.contact-trigger:hover {
+  opacity: 0.55;
+}
+
+/* Rieles horizontales: el scroll es activo pero la barra no se muestra */
+.no-scrollbar {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE / Edge legacy */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;                  /* Chrome / Safari */
+}
+
+/* Riel de proyectos: todo escalado un poco hacia abajo, y la card que queda
+   mas cerca del centro del riel recupera su tamanio nominal. La escala vive en
+   el wrapper interno y no en el <button>, porque GSAP usa el transform del
+   <button> para el barrido al cambiar de idioma. */
+.project-card__inner {
+  transform: scale(0.92);
+  opacity: 0.62;
+  transform-origin: center center;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.55s ease;
+}
+
+.project-card.is-focused .project-card__inner,
+.project-card:hover .project-card__inner {
+  transform: scale(1);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__inner {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* Cambio de idioma: el texto de Astro sale y entra con un fade escalonado en
+   vez de reemplazarse de golpe. El delay lo pone setLang() por elemento. */
+[data-i18n] {
+  display: inline-block;
+  transition:
+    opacity 0.26s ease,
+    transform 0.26s ease;
+}
+
+[data-i18n].i18n-out {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-i18n] {
+    transition: none;
+  }
+}

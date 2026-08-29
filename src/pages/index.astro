@@ -1,15 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
-import { FaGithub, FaInstagram, FaLinkedin, FaReact } from 'react-icons/fa';
-import { IoLogoJavascript } from 'react-icons/io5';
-import { IoLogoFirebase } from 'react-icons/io5';
-import { FaLaravel } from 'react-icons/fa6';
-import { RiTailwindCssFill } from 'react-icons/ri';
-import { RiNextjsLine } from 'react-icons/ri';
-import { SiExpo } from 'react-icons/si';
-import { SiAstro } from 'react-icons/si';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiVuedotjs,
+  SiLaravel,
+  SiPostgresql,
+  SiTailwindcss,
+  SiAstro,
+  SiClaude,
+} from 'react-icons/si';
 import { PiMouseScrollThin } from 'react-icons/pi';
+
+// Las tecnologias salen de lo que realmente aparece en projects.json, no de una
+// lista aspiracional: Expo, Firebase y JavaScript no figuran en ningun proyecto.
+const technologies = [
+  { name: 'React', Icon: SiReact },
+  { name: 'Next.js', Icon: SiNextdotjs },
+  { name: 'TypeScript', Icon: SiTypescript },
+  { name: 'Vue', Icon: SiVuedotjs },
+  { name: 'Laravel', Icon: SiLaravel },
+  { name: 'PostgreSQL', Icon: SiPostgresql },
+  { name: 'Tailwind CSS', Icon: SiTailwindcss },
+  { name: 'Astro', Icon: SiAstro },
+  { name: 'Claude Code', Icon: SiClaude },
+];
+import Projects from '../components/Projects.jsx';
+import Contact from '../components/Contact.jsx';
+import ProjectOverlay from '../components/ProjectOverlay.jsx';
+import DmeterOverlay from '../components/DmeterOverlay.jsx';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -18,56 +40,79 @@ const currentYear = new Date().getFullYear();
   <div class="flex flex-row relative justify-center items-center">
     <div class="container">
       <div
-        class="initial-container top-half flex items-center justify-end flex-col"
+        class="initial-container top-half flex items-center justify-end flex-col gap-1 md:gap-2 pb-2"
       >
-        <div class="flex flex-col gap-2 items-center">
-          <p class="text-[50px] text-dark tracking-widest contact uppercase">
-            Socials
+        <div
+          class="absolute top-5 right-6 flex items-center gap-2 font-outfit text-xs uppercase tracking-[0.2em]"
+        >
+          <button type="button" data-lang="en" class="lang-btn">EN</button>
+          <span class="text-dark/25" aria-hidden="true">/</span>
+          <button type="button" data-lang="es" class="lang-btn">ES</button>
+        </div>
+        <div class="flex flex-col gap-0.5 md:gap-1 items-center">
+          <p class="text-[24px] md:text-[32px] lg:text-[40px] text-dark tracking-widest contact uppercase">
+            <span data-i18n="socials">Socials</span>
           </p>
           <div class="flex gap-2">
-            <FaGithub style={{ fontSize: '2em' }} />
-            <FaLinkedin style={{ fontSize: '2em' }} />
-            <FaInstagram style={{ fontSize: '2em' }} />
+            <FaGithub style={{ fontSize: '1.25em' }} />
+            <FaLinkedin style={{ fontSize: '1.25em' }} />
+            <FaInstagram style={{ fontSize: '1.25em' }} />
           </div>
         </div>
-        <h1 class="text-[150px] tracking-widest text-center uppercase">
-          Full-stack Developer
+        <h1 class="text-[40px] md:text-[70px] lg:text-[100px] xl:text-[120px] tracking-widest text-center uppercase leading-none px-2">
+          <span data-i18n="role">AI Engineer</span>
         </h1>
-        <p class="text-[70px] tracking-widest name uppercase">
+        <p
+          class="text-[11px] md:text-sm lg:text-base font-outfit uppercase tracking-[0.3em] text-dark/60"
+        >
+          <span data-i18n="method">Spec-Driven Development</span>
+        </p>
+        <p class="text-[28px] md:text-[40px] lg:text-[50px] xl:text-[60px] tracking-widest name uppercase">
           Luciano Balbiano
         </p>
+        <p
+          class="flex flex-wrap items-center justify-center gap-1.5 font-outfit text-[10px] uppercase tracking-[0.2em] text-dark/50 md:text-xs"
+        >
+          <span data-i18n="dreamLine">Building my dream at</span>
+          <button type="button" id="dmeter-trigger" class="dmeter-trigger">Dmeter</button>
+        </p>
         <i
-          class="bi bi-chevron-compact-down text-dark text-[50px] chevron chevron-down"
+          class="bi bi-chevron-compact-down text-dark text-[30px] md:text-[40px] chevron chevron-down"
         ></i>
       </div>
       <div
-        class="initial-container bottom-half flex flex-col gap-20 items-center justify-start"
+        class="initial-container bottom-half flex flex-col gap-1 md:gap-2 items-center justify-start pt-2"
       >
-        <div class="flex flex-col gap-2 items-center">
+        <div class="flex flex-col gap-0.5 md:gap-1 items-center">
           <i
-            class="bi bi-chevron-compact-up text-dark text-[50px] chevron chevron-up"
+            class="bi bi-chevron-compact-up text-dark text-[30px] md:text-[40px] chevron chevron-up"
           ></i>
-          <p class="text-[50px] text-dark tracking-widest contact uppercase">
-            Main Technologies
+          <p class="text-[24px] md:text-[32px] lg:text-[40px] text-dark tracking-widest contact uppercase">
+            <span data-i18n="mainTech">Main Technologies</span>
           </p>
-          <div class="flex gap-2">
-            <SiExpo style={{ fontSize: '2em' }} />
-            <IoLogoJavascript style={{ fontSize: '2em' }} />
-            <IoLogoFirebase style={{ fontSize: '2em' }} />
-            <FaLaravel style={{ fontSize: '2em' }} />
-            <RiTailwindCssFill style={{ fontSize: '2em' }} />
-            <RiNextjsLine style={{ fontSize: '2em' }} />
-            <FaReact style={{ fontSize: '2em' }} />
-            <SiAstro style={{ fontSize: '2em' }} />
+          <div class="flex gap-3 md:gap-4 flex-wrap justify-center max-w-md md:max-w-lg">
+            {
+              technologies.map(({ name, Icon }) => (
+                <Icon
+                  title={name}
+                  aria-label={name}
+                  style={{ fontSize: '1.4em' }}
+                />
+              ))
+            }
           </div>
         </div>
-        <div class="flex flex-col items-center justify-center">
-          <p class="text-[50px] text-dark tracking-widest contact uppercase">
-            Contact
-          </p>
-          <div class="flex flex-col gap-2">
+        <div class="flex flex-col items-center justify-center gap-0.5 md:gap-1">
+          <button
+            type="button"
+            id="contact-trigger"
+            class="contact-trigger text-[24px] md:text-[32px] lg:text-[40px] text-dark tracking-widest contact uppercase"
+          >
+            <span data-i18n="contact">Contact</span>
+          </button>
+          <div class="flex flex-col gap-0.5 text-xs md:text-sm">
             <div
-              class="flex items-center text-dark py-2 px-4 rounded-lg font-outfit"
+              class="flex items-center text-dark py-0.5 px-2 rounded-lg font-outfit"
             >
               <i class="bi bi-envelope-fill pr-2"></i>
               <span>balbiano06@gmail.com</span>
@@ -78,33 +123,50 @@ const currentYear = new Date().getFullYear();
             </div>
           </div>
         </div>
-        <div class="text-sm text-dark font-outfit">
-          © BalbianoLuciano™ {currentYear}. All rights reserved.
+        <div class="text-[10px] md:text-xs text-dark font-outfit mt-1">
+          © BalbianoLuciano™ {currentYear}. <span data-i18n="rights">All rights reserved.</span>
         </div>
       </div>
-      <div class="hidden-container flex justify-center">
-        <h2 class="uppercase text-white text-[100px]">Projects</h2>
+      <div class="hidden-container flex flex-col overflow-hidden">
+        <h2
+          class="shrink-0 px-6 pt-24 pb-4 uppercase text-white text-[44px] md:px-12 md:text-[64px] lg:text-[80px] tracking-widest leading-none"
+        >
+          <span data-i18n="projects">Projects</span>
+        </h2>
+        <Projects client:load />
       </div>
       <div
         id="click-message"
         class="click-message uppercase tracking-widest text-2xl hidden"
       >
         <PiMouseScrollThin style={{ fontSize: '3em', marginRight: '8px' }} />
-        Try scrolling
+        <span data-i18n="tryScrolling">Try scrolling</span>
       </div>
     </div>
   </div>
+
+  {/* Ley 3: fuera del .container. ScrollTrigger lo pinea con un transform y un
+      position:fixed ahi adentro se ancla al ancestro, no al viewport. */}
+  <Contact client:load />
+  <ProjectOverlay client:load />
+  <DmeterOverlay client:load />
 </Layout>
 
 <style>
   .container {
-    height: 200vh; /* Hacemos el contenedor más alto para permitir scroll */
+    height: 165vh; /* Recorrido para abrir las compuertas: mas alto = mas lento */
     position: relative;
   }
 
   .initial-container,
   .hidden-container {
     position: fixed;
+    /* `left: 0` explicito: sin esto un elemento fixed sin left resuelve a su
+       posicion estatica, y como `.container` es la clase de Tailwind (max-width
+       1280px, centrada), los paneles arrancaban a 73px del borde y dejaban una
+       banda blanca a la izquierda en viewports anchos. */
+    left: 0;
+    top: 0;
     width: 100%;
     height: 50vh;
   }
@@ -127,7 +189,7 @@ const currentYear = new Date().getFullYear();
     font-style: normal;
   }
   .initial-container {
-    background-color: white;
+    background-color: #f7f3ec;
     z-index: 1;
   }
 
@@ -165,22 +227,73 @@ const currentYear = new Date().getFullYear();
   .hidden {
     display: none;
   }
+
+  .lang-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.3);
+    letter-spacing: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .lang-btn:hover {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .lang-btn[aria-current='true'] {
+    color: #000;
+  }
+
+  .dmeter-trigger {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #000;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s ease;
+  }
+
+  .dmeter-trigger:hover {
+    opacity: 0.55;
+  }
 </style>
 
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
+  import { getLang, setLang, applyStaticText } from '../i18n/index.js';
 
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener('DOMContentLoaded', () => {
+    // El riel de proyectos solo se queda con la rueda cuando las compuertas
+    // terminaron de abrirse. Si la toma antes, el split se traba a medio camino.
+    let splitOpen = false;
+    const publishSplit = (open: boolean) => {
+      if (open === splitOpen) return;
+      splitOpen = open;
+      window.dispatchEvent(new CustomEvent('split:change', { detail: { open } }));
+    };
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.container',
         start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-        pin: true,
+        // 'bottom bottom' y no 'bottom top': con 'bottom top' el rango pedia
+        // 200vh de recorrido cuando la pagina solo tiene 100vh scrolleables, el
+        // progress se topaba en 0.5 y las compuertas quedaban a medio abrir.
+        end: 'bottom bottom',
+        scrub: 0.5,
+        // Sin pin: las dos mitades ya son position:fixed, asi que no hay nada
+        // que fijar, y el pin-spacer se rompia dentro del wrapper flex.
+        onUpdate: (self) => publishSplit(self.progress >= 0.98),
       },
     });
 
@@ -211,6 +324,62 @@ const currentYear = new Date().getFullYear();
         },
         0
       );
+
+    const langButtons = document.querySelectorAll<HTMLElement>('.lang-btn');
+    const paintLang = (lang: string) => {
+      langButtons.forEach((b) =>
+        b.setAttribute('aria-current', String(b.dataset.lang === lang))
+      );
+    };
+
+    paintLang(getLang());
+    applyStaticText(getLang());
+    document.documentElement.lang = getLang();
+
+    langButtons.forEach((b) => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const lang = b.dataset.lang;
+        if (lang) {
+          setLang(lang);
+          paintLang(lang);
+        }
+      });
+    });
+
+    // Mismo patron que Contact: el origen es el centro de la palabra, para que
+    // la mascara salga de ahi tambien cuando se dispara con teclado.
+    const abrirDesde = (el: HTMLElement, evento: string) => {
+      const rect = el.getBoundingClientRect();
+      window.dispatchEvent(
+        new CustomEvent(evento, {
+          detail: { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 },
+        })
+      );
+    };
+
+    const dmeterTrigger = document.getElementById('dmeter-trigger');
+    dmeterTrigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      abrirDesde(e.currentTarget as HTMLElement, 'dmeter:open');
+    });
+
+    const contactTrigger = document.getElementById('contact-trigger');
+    contactTrigger?.addEventListener('click', (e) => {
+      // Evita que el click burbujee al .initial-container y dispare "Try scrolling".
+      e.stopPropagation();
+      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+      window.dispatchEvent(
+        new CustomEvent('contact:open', {
+          detail: {
+            // Centro de la palabra, no el pixel exacto del cursor: la mascara
+            // sale siempre desde "Contact" aunque se dispare por teclado.
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+          },
+        })
+      );
+    });
 
     const clickMessage = document.getElementById('click-message');
 

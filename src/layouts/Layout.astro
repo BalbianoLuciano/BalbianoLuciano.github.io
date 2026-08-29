@@ -30,6 +30,10 @@ const { title } = Astro.props;
 			// Initialize Lenis
 			const lenis = new Lenis();
 
+			// Exponemos la instancia para que los overlays (ej: Contact) puedan
+			// frenar el scroll mientras estan abiertos.
+			(window as any).lenis = lenis;
+
 			// Listen for the scroll event and log the event data
 			lenis.on('scroll', (e) => {
 				// console.log(e);
