@@ -1,0 +1,78 @@
+<!--
+  Template de EmailJS para el formulario de contacto del portfolio.
+  Pegar en https://dashboard.emailjs.com/admin/templates (pestana "Code").
+
+  Paleta e ideas tomadas del sitio: off-white calido #F7F3EC, negro puro para el
+  texto, etiquetas en mayuscula con tracking ancho, y el mensaje con una linea
+  vertical al costado igual que los highlights del detalle de proyecto.
+
+  Todo va en tablas y con estilos inline porque los clientes de mail ignoran
+  <style> y no cargan fuentes externas. Sin imagenes: nada que bloquear.
+
+  Variables: {{from_name}} {{company}} {{email_id}} {{message}}
+-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F7F3EC;margin:0;padding:32px 16px;">
+  <tr>
+    <td align="center">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
+
+        <!-- Etiqueta superior -->
+        <tr>
+          <td style="padding-bottom:28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8C877D;">
+            Nuevo mensaje &middot; balbianoluciano.github.io
+          </td>
+        </tr>
+
+        <!-- Quien escribe -->
+        <tr>
+          <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:34px;line-height:1.1;font-weight:700;color:#000000;letter-spacing:-0.5px;">
+            {{from_name}}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-top:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;color:#6E695F;">
+            {{company}}
+          </td>
+        </tr>
+
+        <!-- Separador -->
+        <tr>
+          <td style="padding:24px 0 0 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr><td style="border-top:1px solid #DED8CB;font-size:0;line-height:0;">&nbsp;</td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- El mensaje, con la linea al costado -->
+        <tr>
+          <td style="padding-top:24px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="2" style="background-color:#000000;font-size:0;line-height:0;">&nbsp;</td>
+                <td style="padding-left:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65;color:#1A1A1A;white-space:pre-wrap;">{{message}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Responder -->
+        <tr>
+          <td style="padding-top:32px;">
+            <a href="mailto:{{email_id}}" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#000000;text-decoration:underline;">
+              Responder a {{email_id}}
+            </a>
+          </td>
+        </tr>
+
+        <!-- Pie -->
+        <tr>
+          <td style="padding-top:40px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;color:#A39D91;">
+            Enviado desde el formulario de contacto
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>

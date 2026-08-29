@@ -81,9 +81,7 @@ const Contact = () => {
           email_id: form.email,
           reply_to: form.email,
           company: form.company,
-          // El template viejo no imprime {{company}}, asi que lo sumamos al
-          // cuerpo: sin esto ese dato se perderia en silencio.
-          message: form.company ? `${form.message}\n\n(${form.company})` : form.message,
+          message: form.message,
         },
         { publicKey: PUBLIC_KEY }
       );
