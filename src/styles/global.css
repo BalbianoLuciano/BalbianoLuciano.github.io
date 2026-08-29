@@ -44,6 +44,25 @@ body {
   opacity: 0.55;
 }
 
+/* Mismo tratamiento que .dmeter-trigger: en este sitio, palabra subrayada =
+   palabra que abre algo. Va en el span y no en el boton porque el boton es
+   inline-flex y el text-decoration no propaga a los hijos; ademas asi la
+   flecha queda fuera del subrayado. */
+.contact-trigger span {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.contact-trigger__arrow {
+  font-size: 0.45em;
+  transition: transform 0.3s ease;
+}
+
+.contact-trigger:hover .contact-trigger__arrow {
+  transform: translate(2px, -2px);
+}
+
 /* Rieles horizontales: el scroll es activo pero la barra no se muestra */
 .no-scrollbar {
   scrollbar-width: none;          /* Firefox */
