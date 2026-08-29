@@ -8,11 +8,13 @@ import { useLang } from '../i18n/useLang.js';
 
 const linkFor = (name) => socialLinks.find((s) => s.name === name)?.url ?? '#';
 
-// Config de EmailJS por variables de entorno. Si falta alguna, el formulario
-// sigue siendo usable y cae al mailto en vez de romper.
-const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+// Las claves de EmailJS son publicas por diseno: el sitio es estatico, asi que
+// viajan en el bundle igual. Estas son las del portfolio anterior, que ya tiene
+// el servicio y el template creados. Se pueden pisar por secrets sin tocar nada.
+// La proteccion real es el Allowed Domains del panel de EmailJS.
+const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID || 'default_service';
+const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID || 'template_zru1nsj';
+const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY || '8vtI4BRro5JaP6_Fi';
 const canSend = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 const EMPTY = { name: '', company: '', message: '', email: '' };
@@ -74,9 +76,14 @@ const Contact = () => {
         TEMPLATE_ID,
         {
           from_name: form.name,
-          company: form.company,
-          message: form.message,
+          // `email_id` es el nombre que usa el template ya creado
+          // (template_zru1nsj). `reply_to` va por si se cambia mas adelante.
+          email_id: form.email,
           reply_to: form.email,
+          company: form.company,
+          // El template viejo no imprime {{company}}, asi que lo sumamos al
+          // cuerpo: sin esto ese dato se perderia en silencio.
+          message: form.company ? `${form.message}\n\n(${form.company})` : form.message,
         },
         { publicKey: PUBLIC_KEY }
       );
