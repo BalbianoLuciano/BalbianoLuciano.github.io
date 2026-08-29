@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
 import RadialOverlay from './utils/RadialOverlay.jsx';
 import BlankField from './utils/BlankField.jsx';
@@ -19,6 +20,9 @@ const canSend = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 const EMPTY = { name: '', company: '', message: '', email: '' };
 
+const sinAnimacion = () =>
+  window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+
 /**
  * Contacto. Se abre con el evento `contact:open`, que trae el origen de la
  * mascara radial.
@@ -32,7 +36,10 @@ const Contact = () => {
   const [origin, setOrigin] = useState(null);
   const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+  const [view, setView] = useState('form'); // form | sent
   const formRef = useRef(null);
+  const panelRef = useRef(null);
+  const primerRender = useRef(true);
 
   useEffect(() => {
     const onOpen = (event) => {
@@ -42,6 +49,7 @@ const Contact = () => {
         y: typeof y === 'number' ? y : window.innerHeight / 2,
       });
       setStatus('idle');
+      setView('form');
     };
 
     window.addEventListener('contact:open', onOpen);
@@ -86,11 +94,46 @@ const Contact = () => {
         { publicKey: PUBLIC_KEY }
       );
       setStatus('sent');
-      setForm(EMPTY);
+
+      // El formulario se va con un fade antes de que entre el acuse: el swap
+      // instantaneo se sentia como un corte. Los campos se limpian recien al
+      // terminar el fade, para no ver como se vacian mientras se desvanecen.
+      const terminar = () => {
+        setView('sent');
+        setForm(EMPTY);
+      };
+
+      const el = panelRef.current;
+      if (!el || sinAnimacion()) {
+        terminar();
+      } else {
+        gsap.to(el, {
+          opacity: 0,
+          y: -8,
+          duration: 0.3,
+          ease: 'power2.in',
+          onComplete: terminar,
+        });
+      }
     } catch {
       setStatus('error');
     }
   };
+
+  // Entrada de la vista nueva. El primer render lo saltea porque el
+  // RadialOverlay ya hace su propio fade del panel entero.
+  useEffect(() => {
+    if (primerRender.current) {
+      primerRender.current = false;
+      return;
+    }
+    if (!panelRef.current || sinAnimacion()) return;
+    gsap.fromTo(
+      panelRef.current,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+    );
+  }, [view]);
 
   if (!origin) return null;
 
@@ -101,8 +144,9 @@ const Contact = () => {
           {t(lang, 'contactTitle')}
         </h2>
 
-        {status === 'sent' ? (
-          <p className="max-w-xl text-center font-outfit text-lg leading-relaxed text-white/80">
+        <div ref={panelRef} className="w-full max-w-3xl">
+        {view === 'sent' ? (
+          <p className="text-center font-outfit text-lg leading-relaxed text-white/80">
             {t(lang, 'sent')}
           </p>
         ) : (
@@ -160,6 +204,7 @@ const Contact = () => {
             </div>
           </form>
         )}
+        </div>
 
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-outfit text-sm text-white/40">
           <a href="mailto:balbiano06@gmail.com" className="transition-colors hover:text-white">
