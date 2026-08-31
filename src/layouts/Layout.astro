@@ -2,31 +2,106 @@
 import GoogleTag from '../components/utils/GoogleTag.astro';
 
 interface Props {
-	title: string;
+	title?: string;
+	description?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const SITIO = 'https://balbianoluciano.github.io';
+
+const {
+	title = 'Luciano Balbiano — AI Engineer',
+	description = 'AI Engineer especializado en spec-driven development. Construyo sistemas de IA que llegan a producción: servidores MCP, pipelines RAG y agentes integrados en los sistemas que ya usás.',
+	image = '/images/og.jpg',
+} = Astro.props;
+
+// Astro.site tiene que estar definido en astro.config para que canonical y og:url
+// salgan absolutas. Si falta, caemos al dominio para no emitir URLs relativas,
+// que las redes sociales descartan.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITIO).href;
+const imagenAbsoluta = new URL(image, Astro.site ?? SITIO).href;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/images/maletin.ico" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-		<!-- Google tag -->
-		<GoogleTag />
+
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+
+		<!-- Open Graph: es lo que leen WhatsApp, LinkedIn, Slack y Facebook.
+		     Sin esto el link se comparte sin imagen ni descripcion. -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Luciano Balbiano" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={imagenAbsoluta} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Luciano Balbiano — AI Engineer" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:locale:alternate" content="es_ES" />
+
+		<!-- X / Twitter usa su propio espacio de nombres -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imagenAbsoluta} />
+
+		<meta name="author" content="Luciano Balbiano" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#F7F3EC" />
+
+		<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+		<link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+		/>
+
+		<!-- Datos estructurados: es lo que Google usa para el panel de persona -->
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'Person',
+				name: 'Luciano Balbiano',
+				url: SITIO,
+				image: `${SITIO}/images/og.jpg`,
+				jobTitle: 'AI Engineer',
+				email: 'mailto:balbiano06@gmail.com',
+				description,
+				sameAs: [
+					'https://github.com/BalbianoLuciano',
+					'https://www.linkedin.com/in/luciano-balbiano/',
+					'https://www.instagram.com/luciano_balbiano/',
+				],
+				knowsAbout: [
+					'Model Context Protocol',
+					'Retrieval-Augmented Generation',
+					'Spec-Driven Development',
+					'TypeScript',
+					'Laravel',
+					'React',
+				],
+			})}
+		/>
+
+		<GoogleTag />
 	</head>
 	<body>
 		<main>
 			<slot />
 		</main>
 		<script>
-			import Lenis from "lenis";
+			import Lenis from 'lenis';
 			// Initialize Lenis
 			const lenis = new Lenis();
 
@@ -35,12 +110,10 @@ const { title } = Astro.props;
 			(window as any).lenis = lenis;
 
 			// Listen for the scroll event and log the event data
-			lenis.on('scroll', (e) => {
-				// console.log(e);
-			});
+			lenis.on('scroll', () => {});
 
 			// Use requestAnimationFrame to continuously update the scroll
-			function raf(time : any) {
+			function raf(time: any) {
 				lenis.raf(time);
 				requestAnimationFrame(raf);
 			}
