@@ -163,9 +163,11 @@ const ESCALA = [
           Las tres libres y servidas sin depender de ninguna cuenta.
         </p>
         <p class="cuerpo cuerpo--corto">
-          <strong>Los titulos van en minuscula y en cursiva, siempre.</strong> Es
-          la regla que mas separa a este sistema del brutalismo de plantilla, que
-          es todo mayuscula — la caja alta es justamente el cliche.
+          <strong>Los titulos van en minuscula, siempre.</strong> Es la regla que
+          mas separa a este sistema del brutalismo de plantilla, que es todo
+          mayuscula — la caja alta es justamente el cliche. Y siempre rectos:
+          un grotesco pesado inclinado lee a velocidad, y estos edificios son
+          masa aplomada.
         </p>
         <ul class="escala">
           {ESCALA.map((e) => (
@@ -236,7 +238,7 @@ const ESCALA = [
             <li>El numero concreto: 248 tests, 257 proyectos</li>
             <li>Contar el error antes que el resultado</li>
             <li>Una sola idea por slide</li>
-            <li>Titulos en minuscula y cursiva</li>
+            <li>Titulos en minuscula y rectos</li>
             <li>Azul baranda para una cosa por pieza</li>
             <li>Negro sobre hormigon, y lineas finas</li>
           </ul>
@@ -245,7 +247,7 @@ const ESCALA = [
             <li>Adjetivos sin dato detras</li>
             <li>Degradados, sombras suaves, esquinas redondeadas</li>
             <li>Emoji como vinieta</li>
-            <li>Titulos en mayuscula</li>
+            <li>Titulos en mayuscula, o inclinados</li>
             <li>Centrar por costumbre</li>
             <li>Gris neutro puro, o fondo negro</li>
           </ul>
@@ -345,20 +347,6 @@ const ESCALA = [
     font-family: 'Aileron';
     src: url('/fonts/aileron-regular.woff2') format('woff2');
     font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Aileron';
-    src: url('/fonts/aileron-black-italic.woff2') format('woff2');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Aileron';
-    src: url('/fonts/aileron-italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
     font-display: swap;
   }
 </style>
@@ -549,12 +537,13 @@ const ESCALA = [
        velocidad, y una condensada leeria a cartel en vez de a hormigon. */
     font-family: 'Aileron', 'Helvetica Neue', sans-serif;
     font-weight: 900;
-    /* Minuscula y cursiva, siempre. Es la regla que mas separa a este sistema
-       del brutalismo de plantilla, que es todo mayuscula: la caja alta es
-       justamente el cliche. La cursiva de Aileron tiene inclinacion corta y
-       terminaciones rectas, asi que a peso Black sigue leyendo a masa y no a
-       adorno. */
-    font-style: italic;
+    /* Minuscula, siempre. Es la regla que mas separa a este sistema del
+       brutalismo de plantilla, que es todo mayuscula: la caja alta es
+       justamente el cliche.
+       Recta, nunca oblicua. La italica de Aileron es un romano inclinado, y un
+       grotesco pesado inclinado lee a velocidad — es el mismo motivo por el que
+       se descarto la condensada. Estos edificios son masa y estan aplomados. */
+    font-style: normal;
     text-transform: lowercase;
     line-height: 0.9;
     /* El tracking negativo cierra la letra pero tambien el espacio entre
@@ -659,7 +648,6 @@ const ESCALA = [
   .escala__muestra {
     font-family: 'Aileron', sans-serif;
     font-weight: 900;
-    font-style: italic;
     line-height: 0.8;
     color: var(--vacio);
   }

@@ -120,12 +120,14 @@ es la grotesca de 1896 que *precede* a Helvetica y la que Müller-Brockmann usó
 toda su vida. Se sirve local desde `public/fonts/`, así que no depende de
 ninguna cuenta ni CDN. La licencia va al lado de los archivos.
 
-**Regla: los títulos van en minúscula y en cursiva, siempre.**
+**Regla: los títulos van en minúscula, y siempre rectos.**
 
-Es la decisión que más separa a este sistema del brutalismo de plantilla, que es
-todo mayúscula. La caja alta es justamente el cliché. La cursiva de Aileron tiene
-inclinación corta y terminaciones rectas, así que a peso Black sigue leyendo a
-masa y no a adorno.
+Minúscula porque es lo que más separa a este sistema del brutalismo de plantilla,
+que es todo mayúscula: la caja alta es justamente el cliché.
+
+Rectos porque la itálica de Aileron es un romano inclinado, y un grotesco pesado
+inclinado lee a velocidad. Es el mismo motivo por el que se descartó la
+condensada: estos edificios son masa, y están aplomados.
 
 ### Sobre las tipografías del período
 
