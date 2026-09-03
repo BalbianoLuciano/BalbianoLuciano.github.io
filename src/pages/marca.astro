@@ -83,8 +83,18 @@ const ESCALA = [
           la estructura a la vista, y la imagen que conmueve en vez de agradar.
         </p>
         <p class="mono pie">Luciano Balbiano · balbianoluciano.github.io</p>
-        <div class="perforaciones" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span>
+        <div class="huecos">
+          <figure class="hueco"></figure>
+          <figure class="hueco">
+            <img src="/images/marca/banco-de-londres.png"
+                 alt="Banco de Londres y America del Sud, Clorindo Testa con SEPRA, 1966" />
+          </figure>
+          <figure class="hueco"></figure>
+          <figure class="hueco">
+            <img src="/images/marca/embajada-brasil.png" alt="Hormigon visto a plena luz" />
+          </figure>
+          <figure class="hueco"></figure>
+          <figure class="hueco"></figure>
         </div>
       </section>
 
@@ -177,10 +187,14 @@ const ESCALA = [
           <div><dt class="mono">Caja util</dt><dd>900 × 1170 px</dd></div>
           <div><dt class="mono">Slides</dt><dd>De 6 a 10. Mas de 12 no se termina de leer</dd></div>
           <div><dt class="mono">Export</dt><dd>PDF, sin compresion de imagen</dd></div>
+          <div><dt class="mono">Hueco</dt><dd>Vacio es figura, con imagen es ventana. La misma pieza</dd></div>
+          <div><dt class="mono">Imagen</dt><dd>Blanco y negro, contraste 1.35. Se fuerza, no se maquilla</dd></div>
         </dl>
         <p class="prueba">
           <span class="mono">Regla →</span> La slide 1 lleva una sola idea y se
-          entiende sin las demas. Es la unica que se ve antes de deslizar.
+          entiende sin las demas. Es la unica que se ve antes de deslizar. Los
+          huecos van sobre el pilar del margen: se llenan con captura, foto o
+          dato, y los que quedan vacios sostienen la columna igual.
         </p>
       </section>
 
@@ -398,6 +412,7 @@ const ESCALA = [
     position: absolute;
     inset: calc(var(--modulo) * 1.4);
     pointer-events: none;
+    z-index: 0;
     background-image: radial-gradient(
       circle at center,
       rgba(21, 19, 15, 0.22) 0 1.5px,
@@ -407,31 +422,73 @@ const ESCALA = [
     background-position: 0 0;
   }
 
-  /* :not(.perforaciones) porque la figura se posiciona absoluta contra el
-     panel; un `position: relative` a todos los hijos se la comia. */
-  .panel > *:not(.perforaciones) { position: relative; }
+  /* :not(.huecos) porque la figura se posiciona absoluta contra el panel; un
+     `position: relative` a todos los hijos se la comia. */
+  .panel > *:not(.huecos) { position: relative; z-index: 1; }
+
+  /* La trama de tensores ocupa solo el vacio. Donde hay contenido no hay
+     agujeros —igual que en un muro, donde pasa una viga o se abre un hueco no
+     quedan tensores— y ademas se deja holgura para que el punto no toque la
+     letra ni la linea. Se hace tapando: el bloque de texto lleva el fondo del
+     hormigon con un poco de aire alrededor, y el margen negativo compensa ese
+     aire para que la maqueta no se corra. */
+  .panel > .titular,
+  .panel > .cuerpo,
+  .panel > .cita,
+  .panel > .prueba,
+  .panel > .pie,
+  .panel > .etiqueta,
+  .panel > .paleta,
+  .panel > .escala,
+  .panel > .specs,
+  .panel > .limites {
+    background: var(--hormigon);
+    padding: calc(var(--modulo) * 0.32) calc(var(--modulo) * 0.42);
+    margin-left: calc(var(--modulo) * -0.42);
+    margin-right: calc(var(--modulo) * -0.42);
+  }
+
+  /* El pie y la prueba ya traian su propia linea y su propio margen auto. */
+  .panel > .prueba { padding-top: calc(var(--modulo) * 0.6); }
 
   /* Las perforaciones del Banco de Londres: rectangulos de esquina redondeada
      en linea fina, alineados en columna sobre el pilar. Es la unica figura del
      sistema y sale de un edificio concreto, no de un gusto. */
-  .perforaciones {
+  /* Los huecos no son decoracion: son donde va el contenido. Vacios funcionan
+     como figura —la perforacion del Banco de Londres en linea fina— y con una
+     imagen adentro funcionan como ventana. Es la misma pieza en los dos casos,
+     igual que en el edificio: el hueco esta ahi, lo llene el vidrio o el aire. */
+  .huecos {
     position: absolute;
     right: calc(var(--modulo) * 1.4);
     top: calc(var(--modulo) * 1.4);
     bottom: calc(var(--modulo) * 1.4);
-    width: calc(var(--modulo) * 2.2);
+    width: calc(var(--modulo) * 2.4);
     display: grid;
     grid-auto-rows: 1fr;
     gap: calc(var(--modulo) * 0.55);
-    pointer-events: none;
+    z-index: 1;
   }
-  .perforaciones span {
+
+  .hueco {
+    margin: 0;
     border: 1px solid rgba(21, 19, 15, 0.34);
     border-radius: 999px;
+    overflow: hidden;
+    background: var(--hormigon);
   }
-  /* Las de abajo se cierran, como el pilar que se ensancha al llegar al suelo. */
-  .perforaciones span:nth-child(n + 4) { border-radius: 999px 999px 40% 40%; }
-  .perforaciones span:last-child { background: rgba(21, 19, 15, 0.07); }
+  /* Los de abajo se cierran, como el pilar que se ensancha al llegar al suelo. */
+  .huecos .hueco:nth-child(n + 4) { border-radius: 999px 999px 40% 40%; }
+
+  .hueco img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Ley 03 y la referencia de Parallel of Life and Art: contraste alto y el
+       grano a la vista. La imagen no se maquilla, se fuerza. */
+    filter: grayscale(1) contrast(1.35) brightness(0.94);
+  }
   .panel:last-child { border-right: 1px solid rgba(21, 19, 15, 0.28); }
 
   /* Los que llevan tabla o listas necesitan mas ancho que 4:5. */
