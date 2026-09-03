@@ -194,9 +194,30 @@ Lo que sale de la investigación, no del gusto:
 | Agujeros de tensor y juntas | Retícula visible, módulo declarado |
 | Modulor | Escala tipográfica proporcional, no arbitraria |
 | La spec del galpón | **El manual se escribe como especificación** |
-| Óxido, tiza, algas | La paleta sale del envejecimiento, no del gris neutro |
+| El muro a plena luz | **Gris medio de fondo, negro para el vacío.** No al revés: hacerlo oscuro es el error |
+| Las perforaciones y la sombra | El negro se reserva para el texto y las líneas finas |
+| El acero pintado de las barandas | El único acento, y nunca en el muro |
 
 ---
+
+## Corrección tras ver las fotos (2026-09-03)
+
+La primera versión de este manual se hizo leyendo, sin mirar imágenes, y salió
+**fondo negro con acento óxido** — que es exactamente el cliché del *brutalist
+web design* del que este mismo documento advertía.
+
+Luciano pasó tres referencias —la embajada de Brasil, los balcones de Catalinas
+y el Banco de Londres— y muestran otra cosa:
+
+- **El hormigón a plena luz es gris medio, no negro.** El edificio es claro.
+- **Los negros son los vacíos**: las perforaciones del Banco de Londres son
+  agujeros oscuros contra una masa clara, y la sombra bajo el voladizo.
+- **Hay líneas finas por todos lados**: barandas, parantes de ventana, cables
+  de la calle, postes de luz. Es un rasgo tan característico como la masa.
+- **El color existe pero nunca está en el muro**: aparece en el acero pintado
+  —la baranda celeste, la columna amarilla— y en nada más.
+
+La paleta del manual se rehizo a partir de eso.
 
 ## Fuentes
 

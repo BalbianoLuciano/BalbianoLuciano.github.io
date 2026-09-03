@@ -41,12 +41,15 @@ const LEYES = [
   },
 ];
 
+// Muestreada de fotos reales: Banco de Londres, embajada de Brasil, los
+// balcones de Catalinas. A la luz del dia el hormigon es gris medio, y los
+// negros son los vacios: las perforaciones y la sombra bajo los voladizos.
 const PALETA = [
-  { hex: '#14110F', nombre: 'Encofrado', rol: 'Fondo por defecto. Negro calido, no puro: el hormigon nunca da un negro absoluto.' },
-  { hex: '#8A8D8C', nombre: 'Hormigon frio', rol: 'Gris cemento. Texto secundario, lineas de reticula.' },
-  { hex: '#A79E92', nombre: 'Hormigon calido', rol: 'Gris arena, del agregado. El par calido del anterior.' },
-  { hex: '#E9E4D9', nombre: 'Tiza', rol: 'Eflorescencia: las sales que afloran por capilaridad. Texto principal sobre fondo oscuro.' },
-  { hex: '#8F3F1E', nombre: 'Oxido', rol: 'El sangrado de la armadura. Unico acento. Se usa poco y siempre para una sola cosa por pieza.' },
+  { hex: '#A8A49B', nombre: 'Hormigon', rol: 'El fondo. Gris medio calido, el color del muro a plena luz.' },
+  { hex: '#C6C2B8', nombre: 'Hormigon a la luz', rol: 'Las caras iluminadas. Para separar planos sin usar una linea.' },
+  { hex: '#55524C', nombre: 'Sombra', rol: 'Texto secundario, pies, notas al pie del panel.' },
+  { hex: '#15130F', nombre: 'Vacio', rol: 'Las perforaciones y la sombra bajo el voladizo. Todo el texto principal, y las lineas finas.' },
+  { hex: '#2F5568', nombre: 'Baranda', rol: 'Unico acento, y sale del acero pintado — en estos edificios el color nunca esta en el muro. Una cosa por pieza.' },
 ];
 
 const ESCALA = [
@@ -80,6 +83,9 @@ const ESCALA = [
           la estructura a la vista, y la imagen que conmueve en vez de agradar.
         </p>
         <p class="mono pie">Luciano Balbiano · balbianoluciano.github.io</p>
+        <div class="perforaciones" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
       </section>
 
       <!-- De donde sale -->
@@ -113,11 +119,11 @@ const ESCALA = [
       <!-- Paleta -->
       <section class="panel panel--ancho">
         <p class="mono etiqueta">Paleta</p>
-        <h2 class="titular">El hormigon<br />no es gris</h2>
+        <h2 class="titular">Gris de dia,<br />negro en el vacio</h2>
         <p class="cuerpo cuerpo--corto">
-          Varia con el agregado y envejece con manchas de color propio. Una paleta
-          de solo grises es fiel a las fotos en blanco y negro del movimiento, no
-          al movimiento.
+          El error es hacerlo oscuro. A la luz estos edificios son gris medio: lo
+          negro son las perforaciones y la sombra bajo el voladizo. El color existe,
+          pero nunca en el muro — esta en el acero pintado de las barandas.
         </p>
         <ul class="paleta">
           {PALETA.map((c) => (
@@ -208,8 +214,8 @@ const ESCALA = [
             <li>El numero concreto: 248 tests, 257 proyectos</li>
             <li>Contar el error antes que el resultado</li>
             <li>Una sola idea por slide</li>
-            <li>Oxido para una cosa por pieza</li>
-            <li>Blanco tiza sobre encofrado</li>
+            <li>Azul baranda para una cosa por pieza</li>
+            <li>Negro sobre hormigon, y lineas finas</li>
           </ul>
           <ul class="limites__no">
             <li>Mockups, stock, renders de laptop flotando</li>
@@ -217,7 +223,7 @@ const ESCALA = [
             <li>Degradados, sombras suaves, esquinas redondeadas</li>
             <li>Emoji como vinieta</li>
             <li>Centrar por costumbre</li>
-            <li>Gris neutro puro</li>
+            <li>Gris neutro puro, o fondo negro</li>
           </ul>
         </div>
       </section>
@@ -298,17 +304,22 @@ const ESCALA = [
 </Layout>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap');
 </style>
 
 <style>
   /* Paleta: sale del envejecimiento del hormigon, no de una rampa de grises. */
   .hoja {
-    --encofrado: #14110f;
-    --frio: #8a8d8c;
-    --calido: #a79e92;
-    --tiza: #e9e4d9;
-    --oxido: #8f3f1e;
+    /* Muestreada de las fotos: Banco de Londres, embajada de Brasil, balcones
+       de Catalinas. El hormigon a la luz es gris medio calido, NO negro. Los
+       negros son los vacios: las perforaciones, las sombras bajo los voladizos.
+       El azul sale de las barandas de acero, que es donde el color aparece de
+       verdad en estos edificios — nunca en el muro. */
+    --hormigon: #a8a49b;
+    --hormigon-luz: #c6c2b8;
+    --hormigon-sombra: #55524c;
+    --vacio: #15130f;
+    --baranda: #2f5568;
 
     --modulo: clamp(18px, 2.2vw, 34px);
 
@@ -316,8 +327,8 @@ const ESCALA = [
     inset: 0;
     display: flex;
     flex-direction: column;
-    background: var(--encofrado);
-    color: var(--tiza);
+    background: var(--hormigon);
+    color: var(--vacio);
     overflow: hidden;
   }
 
@@ -334,7 +345,7 @@ const ESCALA = [
     align-items: baseline;
     gap: var(--modulo);
     padding: var(--modulo) var(--modulo) 0;
-    color: var(--frio);
+    color: var(--hormigon-sombra);
     flex: 0 0 auto;
   }
 
@@ -373,7 +384,7 @@ const ESCALA = [
     gap: calc(var(--modulo) * 0.7);
     padding: calc(var(--modulo) * 1.4);
     /* La junta entre paneles es la junta del encofrado: una linea, no un hueco. */
-    border-left: 1px solid rgba(233, 228, 217, 0.16);
+    border-left: 1px solid rgba(21, 19, 15, 0.34);
     container-type: inline-size;
     position: relative;
   }
@@ -389,62 +400,91 @@ const ESCALA = [
     pointer-events: none;
     background-image: radial-gradient(
       circle at center,
-      rgba(233, 228, 217, 0.13) 0 1.5px,
+      rgba(21, 19, 15, 0.22) 0 1.5px,
       transparent 1.6px
     );
     background-size: var(--modulo) var(--modulo);
     background-position: 0 0;
   }
 
-  .panel > * { position: relative; }
-  .panel:last-child { border-right: 1px solid rgba(233, 228, 217, 0.16); }
+  /* :not(.perforaciones) porque la figura se posiciona absoluta contra el
+     panel; un `position: relative` a todos los hijos se la comia. */
+  .panel > *:not(.perforaciones) { position: relative; }
+
+  /* Las perforaciones del Banco de Londres: rectangulos de esquina redondeada
+     en linea fina, alineados en columna sobre el pilar. Es la unica figura del
+     sistema y sale de un edificio concreto, no de un gusto. */
+  .perforaciones {
+    position: absolute;
+    right: calc(var(--modulo) * 1.4);
+    top: calc(var(--modulo) * 1.4);
+    bottom: calc(var(--modulo) * 1.4);
+    width: calc(var(--modulo) * 2.2);
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: calc(var(--modulo) * 0.55);
+    pointer-events: none;
+  }
+  .perforaciones span {
+    border: 1px solid rgba(21, 19, 15, 0.34);
+    border-radius: 999px;
+  }
+  /* Las de abajo se cierran, como el pilar que se ensancha al llegar al suelo. */
+  .perforaciones span:nth-child(n + 4) { border-radius: 999px 999px 40% 40%; }
+  .perforaciones span:last-child { background: rgba(21, 19, 15, 0.07); }
+  .panel:last-child { border-right: 1px solid rgba(21, 19, 15, 0.28); }
 
   /* Los que llevan tabla o listas necesitan mas ancho que 4:5. */
   .panel--ancho { aspect-ratio: 5 / 5.2; }
 
   .etiqueta {
-    color: var(--oxido);
+    color: var(--baranda);
     margin: 0;
     flex: 0 0 auto;
   }
 
   .titular {
-    font-family: 'dharma-gothic-e', sans-serif;
-    font-weight: 700;
+    /* Univers es de Linotype y es paga. Archivo es la mas cercana disponible y
+       trae eje de ancho, que es la logica de sistema de Univers: el nombre
+       declara el peso y el ancho. Ancha y pesada porque estos edificios son
+       masa, no velocidad — una condensada leeria a cartel, no a hormigon. */
+    font-family: 'Archivo', 'Helvetica Neue', sans-serif;
+    font-variation-settings: 'wdth' 112;
+    font-weight: 800;
     text-transform: uppercase;
-    line-height: 0.86;
-    letter-spacing: 0.005em;
+    line-height: 0.88;
+    letter-spacing: -0.015em;
     /* Se mide en cqw contra el panel, no en vw: cada panel es su propio
        contenedor y el titular tiene que caber ahi adentro, no en la pantalla. */
-    font-size: clamp(2.2rem, 11cqw, 5.4rem);
+    font-size: clamp(1.5rem, 7.2cqw, 3.4rem);
     margin: 0;
     max-width: 100%;
     overflow-wrap: break-word;
     hyphens: auto;
   }
-  .titular--xl { font-size: clamp(2.8rem, 15cqw, 7rem); }
-  .titular--l { font-size: clamp(2.4rem, 12cqw, 5.8rem); text-transform: lowercase; }
+  .titular--xl { font-size: clamp(1.9rem, 9.6cqw, 4.4rem); }
+  .titular--l { font-size: clamp(1.7rem, 8.4cqw, 3.9rem); text-transform: lowercase; }
 
   .cuerpo {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.82rem, 2.5cqw, 1.06rem);
     line-height: 1.55;
-    color: var(--tiza);
+    color: var(--vacio);
     margin: 0;
     max-width: 46ch;
   }
   .cuerpo--corto { max-width: 60ch; }
-  .cuerpo em { color: var(--calido); font-style: italic; }
-  .cuerpo strong { color: var(--tiza); font-weight: 600; }
+  .cuerpo em { color: var(--hormigon-sombra); font-style: italic; }
+  .cuerpo strong { color: var(--vacio); font-weight: 600; }
 
   .cita {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.82rem, 2.4cqw, 1.02rem);
     line-height: 1.5;
-    color: var(--calido);
+    color: var(--hormigon-sombra);
     margin: 0;
     padding-left: calc(var(--modulo) * 0.7);
-    border-left: 2px solid var(--oxido);
+    border-left: 2px solid var(--baranda);
     max-width: 48ch;
   }
 
@@ -452,14 +492,14 @@ const ESCALA = [
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.78rem, 2.3cqw, 0.98rem);
     line-height: 1.5;
-    color: var(--calido);
+    color: var(--hormigon-sombra);
     margin: auto 0 0;
     padding-top: calc(var(--modulo) * 0.6);
-    border-top: 1px solid rgba(233, 228, 217, 0.16);
+    border-top: 1px solid rgba(21, 19, 15, 0.28);
   }
-  .prueba .mono { color: var(--oxido); display: block; margin-bottom: 0.35em; }
+  .prueba .mono { color: var(--baranda); display: block; margin-bottom: 0.35em; }
 
-  .pie { color: var(--frio); margin: auto 0 0; }
+  .pie { color: var(--hormigon-sombra); margin: auto 0 0; }
   .panel--portada .pie,
   .panel--cierre .pie { margin-top: auto; }
 
@@ -477,7 +517,7 @@ const ESCALA = [
     flex: 0 0 auto;
     width: calc(var(--modulo) * 1.9);
     height: calc(var(--modulo) * 1.9);
-    border: 1px solid rgba(233, 228, 217, 0.22);
+    border: 1px solid rgba(21, 19, 15, 0.4);
   }
   .tono__texto {
     display: grid;
@@ -487,8 +527,8 @@ const ESCALA = [
     line-height: 1.4;
   }
   .tono__texto strong { font-weight: 600; }
-  .tono__texto code { color: var(--oxido); font-size: 0.66rem; letter-spacing: 0.1em; }
-  .tono__texto span:last-child { color: var(--frio); }
+  .tono__texto code { color: var(--baranda); font-size: 0.66rem; letter-spacing: 0.1em; }
+  .tono__texto span:last-child { color: var(--hormigon-sombra); }
 
   /* Escala tipografica */
   .escala {
@@ -505,21 +545,23 @@ const ESCALA = [
     align-items: baseline;
     gap: calc(var(--modulo) * 0.5);
     padding-bottom: calc(var(--modulo) * 0.3);
-    border-bottom: 1px solid rgba(233, 228, 217, 0.1);
+    border-bottom: 1px solid rgba(21, 19, 15, 0.16);
   }
-  .escala__px { color: var(--oxido); font-variant-numeric: tabular-nums; }
+  .escala__px { color: var(--baranda); font-variant-numeric: tabular-nums; }
   .escala__muestra {
-    font-family: 'dharma-gothic-e', sans-serif;
+    font-family: 'Archivo', sans-serif;
+    font-variation-settings: 'wdth' 112;
+    font-weight: 800;
     line-height: 0.8;
-    color: var(--tiza);
+    color: var(--vacio);
   }
   .escala__uso {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.68rem, 1.9cqw, 0.86rem);
     line-height: 1.35;
-    color: var(--calido);
+    color: var(--hormigon-sombra);
   }
-  .escala__uso .mono { color: var(--frio); font-size: 0.6rem; }
+  .escala__uso .mono { color: var(--hormigon-sombra); font-size: 0.6rem; }
 
   /* Specs de la slide */
   .specs { margin: 0; display: grid; gap: calc(var(--modulo) * 0.4); }
@@ -529,14 +571,14 @@ const ESCALA = [
     gap: calc(var(--modulo) * 0.5);
     align-items: baseline;
     padding-bottom: calc(var(--modulo) * 0.3);
-    border-bottom: 1px solid rgba(233, 228, 217, 0.1);
+    border-bottom: 1px solid rgba(21, 19, 15, 0.16);
   }
-  .specs dt { color: var(--oxido); margin: 0; }
+  .specs dt { color: var(--baranda); margin: 0; }
   .specs dd {
     margin: 0;
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.72rem, 2cqw, 0.9rem);
-    color: var(--tiza);
+    color: var(--vacio);
   }
 
   /* Limites */
@@ -552,10 +594,10 @@ const ESCALA = [
   .limites ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6em; align-content: start; }
   .limites li { padding-left: 1.1em; position: relative; }
   .limites li::before { position: absolute; left: 0; font-family: 'IBM Plex Mono', monospace; }
-  .limites__si li { color: var(--tiza); }
-  .limites__si li::before { content: '+'; color: var(--tiza); }
-  .limites__no li { color: var(--frio); }
-  .limites__no li::before { content: '−'; color: var(--oxido); }
+  .limites__si li { color: var(--vacio); }
+  .limites__si li::before { content: '+'; color: var(--vacio); }
+  .limites__no li { color: var(--hormigon-sombra); }
+  .limites__no li::before { content: '−'; color: var(--baranda); }
 
   /* En pantallas chicas la slide no entra a lo alto: manda el ancho. */
   @media (max-width: 700px) {
