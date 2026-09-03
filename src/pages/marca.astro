@@ -1,0 +1,569 @@
+---
+import Layout from '../layouts/Layout.astro';
+// El Typekit (Dharma, Termina) y Outfit se cargan desde aca. Layout no lo hace.
+import '../styles/global.css';
+
+/**
+ * Manual de marca.
+ *
+ * Va como riel horizontal por dos razones, no por una: respeta la Ley 1 de
+ * `specs/001-interaction-language.md` (nada de scroll vertical, los rieles
+ * scrollean al costado) y ademas es una previsualizacion del formato que el
+ * propio manual especifica — LinkedIn se publica en PDF y queda como slides.
+ *
+ * Cada panel tiene la proporcion real de la slide: 4:5.
+ */
+
+const LEYES = [
+  {
+    n: '01',
+    titulo: 'Perturbar, no agradar',
+    cuerpo: 'Banham definio la imagen brutalista contra Tomas de Aquino: la belleza es <em>quod visum placet</em>, lo que visto agrada; la imagen es <em>quod visum perturbat</em>, lo que visto conmueve. Una pieza que busca el like se optimiza para el promedio. Esta se optimiza para frenar el pulgar.',
+    prueba: 'Si la slide 1 no funciona sin las otras diez, no sirve.',
+  },
+  {
+    n: '02',
+    titulo: 'La logica va en la manga',
+    cuerpo: 'Sobre Hunstanton, Banham escribio que lo que incomoda a los criticos es <em>the ruthless logic worn on the sleeve</em>. No que el edificio tenga logica: que la muestre. Se publica el metodo, no solo la conclusion.',
+    prueba: 'Cada pieza expone como se llego, no solo a donde.',
+  },
+  {
+    n: '03',
+    titulo: 'As found',
+    cuerpo: 'Los Smithson lo definieron como <em>a confronting recognition of what the postwar world actually was like</em>. Henderson y Paolozzi juntaban material caminando terrenos bombardeados. Se usa lo que hay, sin maquillar.',
+    prueba: 'Capturas reales, salida de terminal real, diffs reales. Cero mockups, cero stock.',
+  },
+  {
+    n: '04',
+    titulo: 'La estructura queda a la vista',
+    cuerpo: 'Un muro de hormigon visto conserva los agujeros de los tensores y las juntas de los paneles, distribuidos con regularidad. No es ornamento: es la huella del proceso constructivo. La reticula no se disimula.',
+    prueba: 'El modulo se declara y se ve. Nada se centra por costumbre.',
+  },
+];
+
+const PALETA = [
+  { hex: '#14110F', nombre: 'Encofrado', rol: 'Fondo por defecto. Negro calido, no puro: el hormigon nunca da un negro absoluto.' },
+  { hex: '#8A8D8C', nombre: 'Hormigon frio', rol: 'Gris cemento. Texto secundario, lineas de reticula.' },
+  { hex: '#A79E92', nombre: 'Hormigon calido', rol: 'Gris arena, del agregado. El par calido del anterior.' },
+  { hex: '#E9E4D9', nombre: 'Tiza', rol: 'Eflorescencia: las sales que afloran por capilaridad. Texto principal sobre fondo oscuro.' },
+  { hex: '#8F3F1E', nombre: 'Oxido', rol: 'El sangrado de la armadura. Unico acento. Se usa poco y siempre para una sola cosa por pieza.' },
+];
+
+const ESCALA = [
+  { px: 162, uso: 'Titular de slide 1', clase: 'Dharma Gothic' },
+  { px: 108, uso: 'Titular interior', clase: 'Dharma Gothic' },
+  { px: 72, uso: 'Subtitulo', clase: 'Dharma Gothic' },
+  { px: 48, uso: 'Destacado en cuerpo', clase: 'Outfit' },
+  { px: 32, uso: 'Cuerpo', clase: 'Outfit' },
+  { px: 24, uso: 'Pie, dato, etiqueta', clase: 'IBM Plex Mono' },
+];
+---
+
+<Layout
+  title="Manual de marca — Luciano Balbiano"
+  description="Sistema visual para publicaciones y portfolio, derivado del brutalismo arquitectonico: as found, estructura expuesta, y la imagen que perturba en vez de agradar."
+>
+  <div class="hoja">
+    <header class="cabecera">
+      <p class="kicker">Manual de marca · v1 · 2026</p>
+      <p class="pista">Scrolleá al costado →</p>
+    </header>
+
+    <div class="riel" data-lenis-prevent id="riel">
+      <!-- Portada -->
+      <section class="panel panel--portada">
+        <p class="mono etiqueta">Especificacion 002</p>
+        <h1 class="titular titular--xl">Manual<br />de marca</h1>
+        <p class="cuerpo">
+          Un sistema derivado del brutalismo arquitectonico. No de su estetica
+          —hormigon y Helvetica— sino de su etica: los materiales tal como son,
+          la estructura a la vista, y la imagen que conmueve en vez de agradar.
+        </p>
+        <p class="mono pie">Luciano Balbiano · balbianoluciano.github.io</p>
+      </section>
+
+      <!-- De donde sale -->
+      <section class="panel">
+        <p class="mono etiqueta">Origen</p>
+        <h2 class="titular">El brutalismo<br />empezo como<br />una spec</h2>
+        <p class="cuerpo">
+          El primer proyecto que Alison Smithson reclamo como brutalista —una casa
+          en Soho, 1953, nunca construida— se definio en el pliego antes que en el
+          dibujo:
+        </p>
+        <p class="cita">
+          It is our intention in this building to have the structure exposed
+          entirely, without interior finishes wherever practicable. The contractor
+          should aim at a high standard of basic construction, as in a small
+          warehouse.
+        </p>
+        <p class="mono pie">Citado por Reyner Banham, Architectural Review, dic. 1955</p>
+      </section>
+
+      <!-- Las leyes -->
+      {LEYES.map((ley) => (
+        <section class="panel">
+          <p class="mono etiqueta">Ley {ley.n}</p>
+          <h2 class="titular" set:html={ley.titulo} />
+          <p class="cuerpo" set:html={ley.cuerpo} />
+          <p class="prueba"><span class="mono">Prueba →</span> {ley.prueba}</p>
+        </section>
+      ))}
+
+      <!-- Paleta -->
+      <section class="panel panel--ancho">
+        <p class="mono etiqueta">Paleta</p>
+        <h2 class="titular">El hormigon<br />no es gris</h2>
+        <p class="cuerpo cuerpo--corto">
+          Varia con el agregado y envejece con manchas de color propio. Una paleta
+          de solo grises es fiel a las fotos en blanco y negro del movimiento, no
+          al movimiento.
+        </p>
+        <ul class="paleta">
+          {PALETA.map((c) => (
+            <li class="tono">
+              <span class="muestra" style={`background:${c.hex}`} aria-hidden="true"></span>
+              <span class="tono__texto">
+                <strong>{c.nombre}</strong>
+                <code class="mono">{c.hex}</code>
+                <span>{c.rol}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Tipografia -->
+      <section class="panel panel--ancho">
+        <p class="mono etiqueta">Tipografia</p>
+        <h2 class="titular">Tres registros</h2>
+        <p class="cuerpo cuerpo--corto">
+          <strong>Dharma Gothic</strong> para el titular: condensada, aguanta
+          cuerpos enormes sin romper la caja. <strong>Outfit</strong> para el
+          cuerpo. <strong>IBM Plex Mono</strong> para el dato, la etiqueta y la
+          cifra — es el registro de la spec, y hace visible que hay un sistema.
+        </p>
+        <ul class="escala">
+          {ESCALA.map((e) => (
+            <li>
+              <span class="mono escala__px">{e.px}</span>
+              <span class="escala__muestra" style={`font-size:${Math.min(e.px / 2.4, 52)}px`}>Aa</span>
+              <span class="escala__uso">{e.uso}<br /><span class="mono">{e.clase}</span></span>
+            </li>
+          ))}
+        </ul>
+        <p class="mono pie">Razon 1.5. Ningun cuerpo fuera de la escala.</p>
+      </section>
+
+      <!-- La slide -->
+      <section class="panel panel--ancho">
+        <p class="mono etiqueta">Formato</p>
+        <h2 class="titular">La slide</h2>
+        <p class="cuerpo cuerpo--corto">
+          LinkedIn se publica en PDF y queda como carrusel. Todo se disena a
+          <strong> 1080 × 1350</strong> (4:5), que es la proporcion que mas
+          superficie ocupa en el feed.
+        </p>
+        <dl class="specs">
+          <div><dt class="mono">Lienzo</dt><dd>1080 × 1350 px · 4:5</dd></div>
+          <div><dt class="mono">Modulo</dt><dd>90 px — 1080 / 12</dd></div>
+          <div><dt class="mono">Margen</dt><dd>90 px · un modulo, los cuatro lados</dd></div>
+          <div><dt class="mono">Caja util</dt><dd>900 × 1170 px</dd></div>
+          <div><dt class="mono">Slides</dt><dd>De 6 a 10. Mas de 12 no se termina de leer</dd></div>
+          <div><dt class="mono">Export</dt><dd>PDF, sin compresion de imagen</dd></div>
+        </dl>
+        <p class="prueba">
+          <span class="mono">Regla →</span> La slide 1 lleva una sola idea y se
+          entiende sin las demas. Es la unica que se ve antes de deslizar.
+        </p>
+      </section>
+
+      <!-- Imagen -->
+      <section class="panel">
+        <p class="mono etiqueta">Imagen</p>
+        <h2 class="titular">Parallel of<br />Life and Art</h2>
+        <p class="cuerpo">
+          En 1953 Henderson, Paolozzi y los Smithson colgaron 122 paneles del techo
+          del ICA en angulos distintos: radiografias, fotos de prensa, microscopia,
+          pintura renacentista, manuales tecnicos. Sin jerarquia entre las fuentes,
+          ampliadas hasta que el grano queda a la vista.
+        </p>
+        <p class="cuerpo">
+          Esa es la grafica del movimiento, y no la tipografia suiza que se le
+          suele atribuir.
+        </p>
+        <p class="prueba">
+          <span class="mono">Prueba →</span> Grano alto, contraste alto, imagen
+          encontrada. El proceso de reproduccion se ve, no se disimula.
+        </p>
+      </section>
+
+      <!-- Se hace / no se hace -->
+      <section class="panel panel--ancho">
+        <p class="mono etiqueta">Limites</p>
+        <h2 class="titular">Se hace<br />/ no se hace</h2>
+        <div class="limites">
+          <ul class="limites__si">
+            <li>Capturas reales, aunque esten feas</li>
+            <li>El numero concreto: 248 tests, 257 proyectos</li>
+            <li>Contar el error antes que el resultado</li>
+            <li>Una sola idea por slide</li>
+            <li>Oxido para una cosa por pieza</li>
+            <li>Blanco tiza sobre encofrado</li>
+          </ul>
+          <ul class="limites__no">
+            <li>Mockups, stock, renders de laptop flotando</li>
+            <li>Adjetivos sin dato detras</li>
+            <li>Degradados, sombras suaves, esquinas redondeadas</li>
+            <li>Emoji como vinieta</li>
+            <li>Centrar por costumbre</li>
+            <li>Gris neutro puro</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Voz -->
+      <section class="panel">
+        <p class="mono etiqueta">Voz</p>
+        <h2 class="titular">Como se<br />escribe</h2>
+        <p class="cuerpo">
+          Voseo. Frases que abren nombrando lo que el otro necesita, no lo que uno
+          quiere. Se nombra el elefante en vez de esquivarlo. Se vende con hechos,
+          no con adjetivos: no <em>somos expertos</em> sino <em>hace cinco anos
+          que estamos en esto</em>.
+        </p>
+        <p class="cuerpo">
+          Dos registros: el comercial fluye con comas y parrafos de tres lineas.
+          El tecnico usa frases cortas y declarativas, encabeza con
+          <span class="mono">El problema:</span> y cierra justificando una decision,
+          incluida la de no hacer algo.
+        </p>
+        <p class="mono pie">Detalle completo en jobsearch/VOZ.md</p>
+      </section>
+
+      <!-- Cierre -->
+      <section class="panel panel--cierre">
+        <p class="mono etiqueta">Cierre</p>
+        <p class="titular titular--l">quod visum<br />perturbat</p>
+        <p class="cuerpo">
+          Lo que visto, conmueve. Es la definicion de Banham y es el unico criterio
+          que hace falta cuando una pieza esta lista pero no se sabe si sirve:
+          <strong>¿frena?</strong> Si solo gusta, todavia no esta.
+        </p>
+        <p class="mono pie">Fundamentacion completa en marca/INVESTIGACION.md</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- is:inline porque Astro no estaba emitiendo el script hoisteado desde el
+       slot del Layout. Son veinte lineas de JS plano: no gana nada bundleado. -->
+  <script is:inline>
+    // El riel scrollea al costado con la rueda vertical. Mismo criterio que el
+    // riel de proyectos: se interpola hacia un objetivo en vez de saltar, que
+    // es lo que hace que no se sienta a tirones.
+    (function () {
+      var riel = document.getElementById('riel');
+      if (!riel) return;
+
+      var objetivo = 0;
+      var cuadro = null;
+      var SUAVIDAD = 0.14;
+
+      function paso() {
+        var delta = objetivo - riel.scrollLeft;
+        if (Math.abs(delta) < 0.5) {
+          riel.scrollLeft = objetivo;
+          cuadro = null;
+          return;
+        }
+        riel.scrollLeft += delta * SUAVIDAD;
+        cuadro = requestAnimationFrame(paso);
+      }
+
+      riel.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+        var max = riel.scrollWidth - riel.clientWidth;
+        if (max <= 0) return;
+        e.preventDefault();
+        objetivo = Math.min(max, Math.max(0, objetivo + e.deltaY));
+        if (cuadro === null) cuadro = requestAnimationFrame(paso);
+      }, { passive: false });
+
+      // Si se arrastra la barra o se usa el teclado, el objetivo sigue al real.
+      riel.addEventListener('scroll', function () {
+        if (cuadro === null) objetivo = riel.scrollLeft;
+      });
+    })();
+  </script>
+</Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+</style>
+
+<style>
+  /* Paleta: sale del envejecimiento del hormigon, no de una rampa de grises. */
+  .hoja {
+    --encofrado: #14110f;
+    --frio: #8a8d8c;
+    --calido: #a79e92;
+    --tiza: #e9e4d9;
+    --oxido: #8f3f1e;
+
+    --modulo: clamp(18px, 2.2vw, 34px);
+
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--encofrado);
+    color: var(--tiza);
+    overflow: hidden;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--modulo);
+    padding: var(--modulo) var(--modulo) 0;
+    color: var(--frio);
+    flex: 0 0 auto;
+  }
+
+  .kicker,
+  .pista {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* El riel. Cada panel es una slide a proporcion real. */
+  .riel {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Sin scroll-snap. Probado: con `mandatory` y tambien con `proximity`, el
+       snap corrige la posicion en cada cuadro y anula la interpolacion, asi que
+       el riel avanza de a pixeles y parece trabado. El riel de proyectos
+       tampoco usa snap, por lo mismo. */
+    padding: var(--modulo);
+    flex: 1 1 auto;
+    scrollbar-width: none;
+  }
+  .riel::-webkit-scrollbar { display: none; }
+
+  .panel {
+    flex: 0 0 auto;
+    aspect-ratio: 4 / 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--modulo) * 0.7);
+    padding: calc(var(--modulo) * 1.4);
+    /* La junta entre paneles es la junta del encofrado: una linea, no un hueco. */
+    border-left: 1px solid rgba(233, 228, 217, 0.16);
+    container-type: inline-size;
+    position: relative;
+  }
+
+  /* Los agujeros de los tensores del encofrado. En un muro de hormigon visto
+     quedan distribuidos con regularidad y no se tapan: son la huella del
+     proceso. Aca cumplen la misma funcion que alla — dan escala al vacio y
+     dejan el modulo a la vista sin dibujar una grilla explicita. */
+  .panel::before {
+    content: '';
+    position: absolute;
+    inset: calc(var(--modulo) * 1.4);
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle at center,
+      rgba(233, 228, 217, 0.13) 0 1.5px,
+      transparent 1.6px
+    );
+    background-size: var(--modulo) var(--modulo);
+    background-position: 0 0;
+  }
+
+  .panel > * { position: relative; }
+  .panel:last-child { border-right: 1px solid rgba(233, 228, 217, 0.16); }
+
+  /* Los que llevan tabla o listas necesitan mas ancho que 4:5. */
+  .panel--ancho { aspect-ratio: 5 / 5.2; }
+
+  .etiqueta {
+    color: var(--oxido);
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  .titular {
+    font-family: 'dharma-gothic-e', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.86;
+    letter-spacing: 0.005em;
+    /* Se mide en cqw contra el panel, no en vw: cada panel es su propio
+       contenedor y el titular tiene que caber ahi adentro, no en la pantalla. */
+    font-size: clamp(2.2rem, 11cqw, 5.4rem);
+    margin: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .titular--xl { font-size: clamp(2.8rem, 15cqw, 7rem); }
+  .titular--l { font-size: clamp(2.4rem, 12cqw, 5.8rem); text-transform: lowercase; }
+
+  .cuerpo {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.82rem, 2.5cqw, 1.06rem);
+    line-height: 1.55;
+    color: var(--tiza);
+    margin: 0;
+    max-width: 46ch;
+  }
+  .cuerpo--corto { max-width: 60ch; }
+  .cuerpo em { color: var(--calido); font-style: italic; }
+  .cuerpo strong { color: var(--tiza); font-weight: 600; }
+
+  .cita {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.82rem, 2.4cqw, 1.02rem);
+    line-height: 1.5;
+    color: var(--calido);
+    margin: 0;
+    padding-left: calc(var(--modulo) * 0.7);
+    border-left: 2px solid var(--oxido);
+    max-width: 48ch;
+  }
+
+  .prueba {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.78rem, 2.3cqw, 0.98rem);
+    line-height: 1.5;
+    color: var(--calido);
+    margin: auto 0 0;
+    padding-top: calc(var(--modulo) * 0.6);
+    border-top: 1px solid rgba(233, 228, 217, 0.16);
+  }
+  .prueba .mono { color: var(--oxido); display: block; margin-bottom: 0.35em; }
+
+  .pie { color: var(--frio); margin: auto 0 0; }
+  .panel--portada .pie,
+  .panel--cierre .pie { margin-top: auto; }
+
+  /* Paleta */
+  .paleta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: calc(var(--modulo) * 0.45);
+    overflow-y: auto;
+  }
+  .tono { display: flex; gap: calc(var(--modulo) * 0.6); align-items: flex-start; }
+  .muestra {
+    flex: 0 0 auto;
+    width: calc(var(--modulo) * 1.9);
+    height: calc(var(--modulo) * 1.9);
+    border: 1px solid rgba(233, 228, 217, 0.22);
+  }
+  .tono__texto {
+    display: grid;
+    gap: 0.12em;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.72rem, 2cqw, 0.9rem);
+    line-height: 1.4;
+  }
+  .tono__texto strong { font-weight: 600; }
+  .tono__texto code { color: var(--oxido); font-size: 0.66rem; letter-spacing: 0.1em; }
+  .tono__texto span:last-child { color: var(--frio); }
+
+  /* Escala tipografica */
+  .escala {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: calc(var(--modulo) * 0.35);
+    overflow-y: auto;
+  }
+  .escala li {
+    display: grid;
+    grid-template-columns: 3.4rem 3.6rem 1fr;
+    align-items: baseline;
+    gap: calc(var(--modulo) * 0.5);
+    padding-bottom: calc(var(--modulo) * 0.3);
+    border-bottom: 1px solid rgba(233, 228, 217, 0.1);
+  }
+  .escala__px { color: var(--oxido); font-variant-numeric: tabular-nums; }
+  .escala__muestra {
+    font-family: 'dharma-gothic-e', sans-serif;
+    line-height: 0.8;
+    color: var(--tiza);
+  }
+  .escala__uso {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.68rem, 1.9cqw, 0.86rem);
+    line-height: 1.35;
+    color: var(--calido);
+  }
+  .escala__uso .mono { color: var(--frio); font-size: 0.6rem; }
+
+  /* Specs de la slide */
+  .specs { margin: 0; display: grid; gap: calc(var(--modulo) * 0.4); }
+  .specs > div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: calc(var(--modulo) * 0.5);
+    align-items: baseline;
+    padding-bottom: calc(var(--modulo) * 0.3);
+    border-bottom: 1px solid rgba(233, 228, 217, 0.1);
+  }
+  .specs dt { color: var(--oxido); margin: 0; }
+  .specs dd {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.72rem, 2cqw, 0.9rem);
+    color: var(--tiza);
+  }
+
+  /* Limites */
+  .limites {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--modulo) * 0.9);
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.7rem, 1.95cqw, 0.88rem);
+    line-height: 1.45;
+    overflow-y: auto;
+  }
+  .limites ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6em; align-content: start; }
+  .limites li { padding-left: 1.1em; position: relative; }
+  .limites li::before { position: absolute; left: 0; font-family: 'IBM Plex Mono', monospace; }
+  .limites__si li { color: var(--tiza); }
+  .limites__si li::before { content: '+'; color: var(--tiza); }
+  .limites__no li { color: var(--frio); }
+  .limites__no li::before { content: '−'; color: var(--oxido); }
+
+  /* En pantallas chicas la slide no entra a lo alto: manda el ancho. */
+  @media (max-width: 700px) {
+    .panel, .panel--ancho { aspect-ratio: auto; width: 86vw; height: 100%; overflow-y: auto; }
+    .limites { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .riel { scroll-behavior: auto; }
+  }
+</style>
