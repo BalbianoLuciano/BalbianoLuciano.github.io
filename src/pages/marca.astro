@@ -53,9 +53,9 @@ const PALETA = [
 ];
 
 const ESCALA = [
-  { px: 162, uso: 'Titular de slide 1', clase: 'Aileron Black' },
-  { px: 108, uso: 'Titular interior', clase: 'Aileron Black' },
-  { px: 72, uso: 'Subtitulo', clase: 'Aileron Black' },
+  { px: 162, uso: 'Titular de slide 1', clase: 'Dharma Gothic' },
+  { px: 108, uso: 'Titular interior', clase: 'Dharma Gothic' },
+  { px: 72, uso: 'Subtitulo', clase: 'Dharma Gothic' },
   { px: 48, uso: 'Destacado en cuerpo', clase: 'Outfit' },
   { px: 32, uso: 'Cuerpo', clase: 'Outfit' },
   { px: 24, uso: 'Pie, dato, etiqueta', clase: 'IBM Plex Mono' },
@@ -154,13 +154,13 @@ const ESCALA = [
         <p class="mono etiqueta">Tipografia</p>
         <h2 class="titular">Tres registros</h2>
         <p class="cuerpo cuerpo--corto">
-          <strong>Aileron Black</strong> para el titular. Es la mas cercana libre
-          a Akzidenz-Grotesk, la grotesca de 1896 que precede a Helvetica y que
-          Muller-Brockmann uso toda su vida: la familia correcta por historia, no
-          por parecido. Pesada y no condensada, porque estos edificios son masa.
+          <strong>Dharma Gothic</strong> para el titular. Condensada, que echa el
+          ritmo vertical y angosto de los pilares del Banco de Londres.
           <strong>Outfit</strong> para el cuerpo. <strong>IBM Plex Mono</strong>
           para el dato, la etiqueta y la cifra — el registro de la spec.
-          Las tres libres y servidas sin depender de ninguna cuenta.
+          Detras de Dharma va <strong>Aileron</strong>, la mas cercana libre a
+          Akzidenz-Grotesk: es el respaldo, porque Dharma llega de un kit de
+          Adobe que ya no tiene cuenta activa.
         </p>
         <p class="cuerpo cuerpo--corto">
           <strong>Los titulos van en caja de oracion:</strong> mayuscula solo la
@@ -536,8 +536,15 @@ const ESCALA = [
        —es la grotesca que precede a Helvetica y la del estilo suizo— y el peso
        Black da la masa. Pesada y no condensada: estos edificios son masa, no
        velocidad, y una condensada leeria a cartel en vez de a hormigon. */
-    font-family: 'Aileron', 'Helvetica Neue', sans-serif;
-    font-weight: 900;
+    /* Dharma Gothic E. Condensada, y eso tiene fundamento propio: el ritmo
+       dominante del Banco de Londres es vertical y angosto, una fila de pilares
+       altos y estrechos. La condensada echa ese ritmo mejor que una ancha.
+       Aileron va de respaldo y no de adorno: Dharma se sirve del kit de Typekit
+       de una cuenta de Adobe que ya no esta activa. El dia que el kit deje de
+       responder, el titulo cae en una grotesca de la familia de Akzidenz, que
+       es servida local — y no en la Helvetica del sistema. */
+    font-family: 'dharma-gothic-e', 'Aileron', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
     /* Caja de oracion: mayuscula solo la primera, el resto minuscula. Es la
        regla que mas separa a este sistema del brutalismo de plantilla, que es
        todo mayuscula — la caja alta es justamente el cliche.
@@ -549,22 +556,22 @@ const ESCALA = [
        se descarto la condensada. Estos edificios son masa y estan aplomados. */
     font-style: normal;
     text-transform: none;
-    line-height: 0.9;
+    line-height: 0.84;
     /* El tracking negativo cierra la letra pero tambien el espacio entre
        palabras, y en cursiva se pegaban: "empezocomo", "unaspec". Se compensa
        devolviendo el espacio solo entre palabras. */
-    letter-spacing: -0.016em;
-    word-spacing: 0.1em;
+    letter-spacing: 0.004em;
+    word-spacing: 0.04em;
     /* Se mide en cqw contra el panel, no en vw: cada panel es su propio
        contenedor y el titular tiene que caber ahi adentro, no en la pantalla. */
-    font-size: clamp(1.75rem, 8.8cqw, 4.2rem);
+    font-size: clamp(2.3rem, 11.5cqw, 5.6rem);
     margin: 0;
     max-width: 100%;
     overflow-wrap: break-word;
     hyphens: auto;
   }
-  .titular--xl { font-size: clamp(2.2rem, 11.6cqw, 5.4rem); }
-  .titular--l { font-size: clamp(1.8rem, 9.2cqw, 4.3rem); }
+  .titular--xl { font-size: clamp(2.9rem, 15cqw, 7.2rem); }
+  .titular--l { font-size: clamp(2.5rem, 12.5cqw, 6rem); }
 
   .cuerpo {
     font-family: 'Outfit', sans-serif;
@@ -650,8 +657,8 @@ const ESCALA = [
   }
   .escala__px { color: var(--baranda); font-variant-numeric: tabular-nums; }
   .escala__muestra {
-    font-family: 'Aileron', sans-serif;
-    font-weight: 900;
+    font-family: 'dharma-gothic-e', 'Aileron', sans-serif;
+    font-weight: 700;
     line-height: 0.8;
     color: var(--vacio);
   }

@@ -114,11 +114,18 @@ Ver los materiales por lo que son, no por lo que aparentan.
 
 Univers quedó descartada: es de Linotype, es paga, y Luciano ya no tiene Adobe.
 
-Se usa **Aileron** (Sora Sagano, **CC0 / dominio público**), la más cercana libre
-a **Akzidenz-Grotesk**. Eso es más correcto históricamente que Univers: Akzidenz
-es la grotesca de 1896 que *precede* a Helvetica y la que Müller-Brockmann usó
-toda su vida. Se sirve local desde `public/fonts/`, así que no depende de
-ninguna cuenta ni CDN. La licencia va al lado de los archivos.
+El titular queda en **Dharma Gothic E**, que ya es la tipografía del portfolio.
+Y tiene fundamento propio: el ritmo dominante del Banco de Londres es **vertical
+y angosto**, una fila de pilares altos y estrechos, y una condensada echa ese
+ritmo mejor que una ancha. Además entra mucho más texto por renglón, así que los
+títulos largos no se parten.
+
+Detrás va **Aileron** (Sora Sagano, **CC0 / dominio público**), la más cercana
+libre a **Akzidenz-Grotesk** — la grotesca de 1896 que *precede* a Helvetica y la
+que Müller-Brockmann usó toda su vida. **No es adorno, es respaldo**: Dharma se
+sirve de un kit de Typekit de una cuenta de Adobe que ya no está activa. El día
+que el kit deje de responder, el título cae en Aileron, servida local desde
+`public/fonts/`, y no en la Helvetica del sistema.
 
 **Regla: los títulos van en caja de oración, y siempre rectos.**
 
