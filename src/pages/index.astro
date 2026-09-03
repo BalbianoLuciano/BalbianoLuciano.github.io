@@ -190,12 +190,24 @@ const currentYear = new Date().getFullYear();
     font-style: normal;
   }
   .initial-container {
-    background-color: #f7f3ec;
+    background-color: #a8a49b; /* hormigon a plena luz */
+    /* Los agujeros de los tensores del encofrado (spec 002, /marca). Dos capas
+       y el orden importa: las elipses del color del hormigon van ARRIBA de los
+       puntos y los apagan donde vive el texto, asi la trama ocupa solo el
+       vacio. Es solo background: no toca la estructura del split ni GSAP. */
+    background-image:
+      radial-gradient(ellipse 44% 30% at 50% 26%, #a8a49b 42%, transparent 100%),
+      radial-gradient(ellipse 30% 22% at 50% 74%, #a8a49b 42%, transparent 100%),
+      radial-gradient(circle at center, rgba(21, 19, 15, 0.2) 0 1.5px, transparent 1.6px);
+    background-size:
+      100% 100%,
+      100% 100%,
+      34px 34px;
     z-index: 1;
   }
 
   .hidden-container {
-    background-color: black;
+    background-color: #15130f; /* el vacio detras de las compuertas */
     height: 100vh;
   }
 
@@ -221,7 +233,7 @@ const currentYear = new Date().getFullYear();
     display: flex;
     align-items: center;
     background: none;
-    color: black;
+    color: #15130f;
     z-index: 50;
   }
 
@@ -234,17 +246,17 @@ const currentYear = new Date().getFullYear();
     border: 0;
     padding: 0;
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.3);
+    color: rgba(21, 19, 15, 0.42);
     letter-spacing: inherit;
     transition: color 0.3s ease;
   }
 
   .lang-btn:hover {
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(21, 19, 15, 0.66);
   }
 
   .lang-btn[aria-current='true'] {
-    color: #000;
+    color: #15130f;
   }
 
   .dmeter-trigger {
@@ -252,7 +264,7 @@ const currentYear = new Date().getFullYear();
     border: 0;
     padding: 0;
     cursor: pointer;
-    color: #000;
+    color: #15130f;
     letter-spacing: inherit;
     text-transform: inherit;
     font: inherit;

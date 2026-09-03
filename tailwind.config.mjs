@@ -35,10 +35,20 @@ export default {
       '02': '#A3B18A',
       '01': '#B1BB9B',
       '00': '#BFC4AC',
-      dark: '#000000',
+      // Paleta del manual de marca (spec 002, /marca). Sale del envejecimiento
+      // del hormigon y de fotos reales, no de una rampa de grises.
+      //
+      // Los nombres `dark` y `white` se conservan a proposito: los usa medio
+      // sitio, y renombrarlos obligaria a tocar cada componente. Cambia el
+      // valor, no la clase.
+      dark: '#15130F', // vacio: la perforacion, la sombra bajo el voladizo
+      hormigon: '#A8A49B', // el muro a plena luz
+      luz: '#C6C2B8', // las caras iluminadas
+      sombra: '#55524C', // texto secundario
+      baranda: '#2F5568', // unico acento, y sale del acero pintado
       danger: '#CDA2AB',
       success: '#6F8665',
-      white: '#F7F3EC', // off-white calido: no hay blanco puro en el sitio
+      white: '#C6C2B8', // sobre el vacio de los overlays se lee el hormigon
     },
     fontFamily: {
       outfit: ['"Outfit"', 'sans-serif'],
