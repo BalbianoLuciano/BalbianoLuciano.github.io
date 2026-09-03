@@ -163,17 +163,18 @@ const ESCALA = [
           Las tres libres y servidas sin depender de ninguna cuenta.
         </p>
         <p class="cuerpo cuerpo--corto">
-          <strong>Los titulos van en minuscula, siempre.</strong> Es la regla que
-          mas separa a este sistema del brutalismo de plantilla, que es todo
-          mayuscula — la caja alta es justamente el cliche. Y siempre rectos:
-          un grotesco pesado inclinado lee a velocidad, y estos edificios son
-          masa aplomada.
+          <strong>Los titulos van en caja de oracion:</strong> mayuscula solo la
+          primera, el resto minuscula, y los nombres propios conservan la suya.
+          Es la regla que mas separa a este sistema del brutalismo de plantilla,
+          que es todo mayuscula — la caja alta es justamente el cliche. Y siempre
+          rectos: un grotesco pesado inclinado lee a velocidad, y estos edificios
+          son masa aplomada.
         </p>
         <ul class="escala">
           {ESCALA.map((e) => (
             <li>
               <span class="mono escala__px">{e.px}</span>
-              <span class="escala__muestra" style={`font-size:${Math.min(e.px / 2.4, 52)}px`}>aa</span>
+              <span class="escala__muestra" style={`font-size:${Math.min(e.px / 2.4, 52)}px`}>Aa</span>
               <span class="escala__uso">{e.uso}<br /><span class="mono">{e.clase}</span></span>
             </li>
           ))}
@@ -238,7 +239,7 @@ const ESCALA = [
             <li>El numero concreto: 248 tests, 257 proyectos</li>
             <li>Contar el error antes que el resultado</li>
             <li>Una sola idea por slide</li>
-            <li>Titulos en minuscula y rectos</li>
+            <li>Titulos en caja de oracion y rectos</li>
             <li>Azul baranda para una cosa por pieza</li>
             <li>Negro sobre hormigon, y lineas finas</li>
           </ul>
@@ -276,7 +277,7 @@ const ESCALA = [
       <!-- Cierre -->
       <section class="panel panel--cierre">
         <p class="mono etiqueta">Cierre</p>
-        <p class="titular titular--l">quod visum<br />perturbat</p>
+        <p class="titular titular--l">Quod visum<br />perturbat</p>
         <p class="cuerpo">
           Lo que visto, conmueve. Es la definicion de Banham y es el unico criterio
           que hace falta cuando una pieza esta lista pero no se sabe si sirve:
@@ -537,14 +538,17 @@ const ESCALA = [
        velocidad, y una condensada leeria a cartel en vez de a hormigon. */
     font-family: 'Aileron', 'Helvetica Neue', sans-serif;
     font-weight: 900;
-    /* Minuscula, siempre. Es la regla que mas separa a este sistema del
-       brutalismo de plantilla, que es todo mayuscula: la caja alta es
-       justamente el cliche.
+    /* Caja de oracion: mayuscula solo la primera, el resto minuscula. Es la
+       regla que mas separa a este sistema del brutalismo de plantilla, que es
+       todo mayuscula — la caja alta es justamente el cliche.
+       Se resuelve con `none` y no forzando minuscula, porque forzarla se comeria
+       los nombres propios: "Parallel of Life and Art" quedaria en minuscula.
+       El titulo se escribe como se escribe una oracion, y ya.
        Recta, nunca oblicua. La italica de Aileron es un romano inclinado, y un
        grotesco pesado inclinado lee a velocidad — es el mismo motivo por el que
        se descarto la condensada. Estos edificios son masa y estan aplomados. */
     font-style: normal;
-    text-transform: lowercase;
+    text-transform: none;
     line-height: 0.9;
     /* El tracking negativo cierra la letra pero tambien el espacio entre
        palabras, y en cursiva se pegaban: "empezocomo", "unaspec". Se compensa
