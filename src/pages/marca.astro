@@ -53,9 +53,9 @@ const PALETA = [
 ];
 
 const ESCALA = [
-  { px: 162, uso: 'Titular de slide 1', clase: 'Dharma Gothic' },
-  { px: 108, uso: 'Titular interior', clase: 'Dharma Gothic' },
-  { px: 72, uso: 'Subtitulo', clase: 'Dharma Gothic' },
+  { px: 162, uso: 'Titular de slide 1', clase: 'Aileron Black' },
+  { px: 108, uso: 'Titular interior', clase: 'Aileron Black' },
+  { px: 72, uso: 'Subtitulo', clase: 'Aileron Black' },
   { px: 48, uso: 'Destacado en cuerpo', clase: 'Outfit' },
   { px: 32, uso: 'Cuerpo', clase: 'Outfit' },
   { px: 24, uso: 'Pie, dato, etiqueta', clase: 'IBM Plex Mono' },
@@ -154,16 +154,24 @@ const ESCALA = [
         <p class="mono etiqueta">Tipografia</p>
         <h2 class="titular">Tres registros</h2>
         <p class="cuerpo cuerpo--corto">
-          <strong>Dharma Gothic</strong> para el titular: condensada, aguanta
-          cuerpos enormes sin romper la caja. <strong>Outfit</strong> para el
-          cuerpo. <strong>IBM Plex Mono</strong> para el dato, la etiqueta y la
-          cifra — es el registro de la spec, y hace visible que hay un sistema.
+          <strong>Aileron Black</strong> para el titular. Es la mas cercana libre
+          a Akzidenz-Grotesk, la grotesca de 1896 que precede a Helvetica y que
+          Muller-Brockmann uso toda su vida: la familia correcta por historia, no
+          por parecido. Pesada y no condensada, porque estos edificios son masa.
+          <strong>Outfit</strong> para el cuerpo. <strong>IBM Plex Mono</strong>
+          para el dato, la etiqueta y la cifra — el registro de la spec.
+          Las tres libres y servidas sin depender de ninguna cuenta.
+        </p>
+        <p class="cuerpo cuerpo--corto">
+          <strong>Los titulos van en minuscula y en cursiva, siempre.</strong> Es
+          la regla que mas separa a este sistema del brutalismo de plantilla, que
+          es todo mayuscula — la caja alta es justamente el cliche.
         </p>
         <ul class="escala">
           {ESCALA.map((e) => (
             <li>
               <span class="mono escala__px">{e.px}</span>
-              <span class="escala__muestra" style={`font-size:${Math.min(e.px / 2.4, 52)}px`}>Aa</span>
+              <span class="escala__muestra" style={`font-size:${Math.min(e.px / 2.4, 52)}px`}>aa</span>
               <span class="escala__uso">{e.uso}<br /><span class="mono">{e.clase}</span></span>
             </li>
           ))}
@@ -228,6 +236,7 @@ const ESCALA = [
             <li>El numero concreto: 248 tests, 257 proyectos</li>
             <li>Contar el error antes que el resultado</li>
             <li>Una sola idea por slide</li>
+            <li>Titulos en minuscula y cursiva</li>
             <li>Azul baranda para una cosa por pieza</li>
             <li>Negro sobre hormigon, y lineas finas</li>
           </ul>
@@ -236,6 +245,7 @@ const ESCALA = [
             <li>Adjetivos sin dato detras</li>
             <li>Degradados, sombras suaves, esquinas redondeadas</li>
             <li>Emoji como vinieta</li>
+            <li>Titulos en mayuscula</li>
             <li>Centrar por costumbre</li>
             <li>Gris neutro puro, o fondo negro</li>
           </ul>
@@ -318,7 +328,39 @@ const ESCALA = [
 </Layout>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  /* Aileron, de Sora Sagano. Es la mas cercana libre a Akzidenz-Grotesk, que es
+     la grotesca de 1896 anterior a Helvetica y la que uso Muller-Brockmann toda
+     su vida. Licencia CC0: dominio publico, uso comercial, sin atribucion.
+     Se sirve local y no desde un CDN, asi que no depende de ninguna cuenta.
+     La licencia va al lado del archivo, en public/fonts/. */
+  @font-face {
+    font-family: 'Aileron';
+    src: url('/fonts/aileron-black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Aileron';
+    src: url('/fonts/aileron-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Aileron';
+    src: url('/fonts/aileron-black-italic.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Aileron';
+    src: url('/fonts/aileron-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
 </style>
 
 <style>
@@ -501,26 +543,35 @@ const ESCALA = [
   }
 
   .titular {
-    /* Univers es de Linotype y es paga. Archivo es la mas cercana disponible y
-       trae eje de ancho, que es la logica de sistema de Univers: el nombre
-       declara el peso y el ancho. Ancha y pesada porque estos edificios son
-       masa, no velocidad — una condensada leeria a cartel, no a hormigon. */
-    font-family: 'Archivo', 'Helvetica Neue', sans-serif;
-    font-variation-settings: 'wdth' 112;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 0.88;
-    letter-spacing: -0.015em;
+    /* Aileron Black. La familia de Akzidenz-Grotesk es la correcta por historia
+       —es la grotesca que precede a Helvetica y la del estilo suizo— y el peso
+       Black da la masa. Pesada y no condensada: estos edificios son masa, no
+       velocidad, y una condensada leeria a cartel en vez de a hormigon. */
+    font-family: 'Aileron', 'Helvetica Neue', sans-serif;
+    font-weight: 900;
+    /* Minuscula y cursiva, siempre. Es la regla que mas separa a este sistema
+       del brutalismo de plantilla, que es todo mayuscula: la caja alta es
+       justamente el cliche. La cursiva de Aileron tiene inclinacion corta y
+       terminaciones rectas, asi que a peso Black sigue leyendo a masa y no a
+       adorno. */
+    font-style: italic;
+    text-transform: lowercase;
+    line-height: 0.9;
+    /* El tracking negativo cierra la letra pero tambien el espacio entre
+       palabras, y en cursiva se pegaban: "empezocomo", "unaspec". Se compensa
+       devolviendo el espacio solo entre palabras. */
+    letter-spacing: -0.016em;
+    word-spacing: 0.1em;
     /* Se mide en cqw contra el panel, no en vw: cada panel es su propio
        contenedor y el titular tiene que caber ahi adentro, no en la pantalla. */
-    font-size: clamp(1.5rem, 7.2cqw, 3.4rem);
+    font-size: clamp(1.75rem, 8.8cqw, 4.2rem);
     margin: 0;
     max-width: 100%;
     overflow-wrap: break-word;
     hyphens: auto;
   }
-  .titular--xl { font-size: clamp(1.9rem, 9.6cqw, 4.4rem); }
-  .titular--l { font-size: clamp(1.7rem, 8.4cqw, 3.9rem); text-transform: lowercase; }
+  .titular--xl { font-size: clamp(2.2rem, 11.6cqw, 5.4rem); }
+  .titular--l { font-size: clamp(1.8rem, 9.2cqw, 4.3rem); }
 
   .cuerpo {
     font-family: 'Outfit', sans-serif;
@@ -606,9 +657,9 @@ const ESCALA = [
   }
   .escala__px { color: var(--baranda); font-variant-numeric: tabular-nums; }
   .escala__muestra {
-    font-family: 'Archivo', sans-serif;
-    font-variation-settings: 'wdth' 112;
-    font-weight: 800;
+    font-family: 'Aileron', sans-serif;
+    font-weight: 900;
+    font-style: italic;
     line-height: 0.8;
     color: var(--vacio);
   }

@@ -110,6 +110,23 @@ caminaban los terrenos bombardeados del East End juntando material.
 
 Ver los materiales por lo que son, no por lo que aparentan.
 
+### La decisión: Aileron Black Itálica, en minúscula
+
+Univers quedó descartada: es de Linotype, es paga, y Luciano ya no tiene Adobe.
+
+Se usa **Aileron** (Sora Sagano, **CC0 / dominio público**), la más cercana libre
+a **Akzidenz-Grotesk**. Eso es más correcto históricamente que Univers: Akzidenz
+es la grotesca de 1896 que *precede* a Helvetica y la que Müller-Brockmann usó
+toda su vida. Se sirve local desde `public/fonts/`, así que no depende de
+ninguna cuenta ni CDN. La licencia va al lado de los archivos.
+
+**Regla: los títulos van en minúscula y en cursiva, siempre.**
+
+Es la decisión que más separa a este sistema del brutalismo de plantilla, que es
+todo mayúscula. La caja alta es justamente el cliché. La cursiva de Aileron tiene
+inclinación corta y terminaciones rectas, así que a peso Black sigue leyendo a
+masa y no a adorno.
+
 ### Sobre las tipografías del período
 
 Akzidenz-Grotesk (1896), Univers y Helvetica (ambas 1957), Folio (1957) son
