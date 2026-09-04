@@ -43,6 +43,15 @@ problema del otro, después la propuesta.
 hay competencia y lo dice. Aplicado a búsqueda laboral: si le falta algo que el
 aviso pide, lo dice y explica con qué lo cubre.
 
+**3-bis. Pero no todo hueco es un elefante.**
+Nombrar el que es material y se va a descubrir igual —el nivel de inglés, un
+cloud que no tocó— es honestidad y juega a favor. Ofrecer un año de diferencia
+en un requisito de años no lo es: no es una carencia de capacidad, nadie lo
+verifica, y abrir con eso les regala el filtro antes de que lean nada.
+
+La prueba: **¿lo van a descubrir solos, y cambia si puede hacer el trabajo?**
+Si las dos son sí, se dice. Si alguna es no, se calla y se contesta si preguntan.
+
 **4. Vende con hechos, no con adjetivos.**
 "Estamos hace 5 años en este rubro y nos encontramos con todo tipo de
 situaciones" — no dice "somos expertos". Nunca escribir "apasionado",
@@ -98,6 +107,26 @@ formulario de Humand, sobre la automatización más compleja que construyó:
 de screening, cover letters con contenido y challenges escritos. La regla es el
 destinatario: si del otro lado hay alguien de RRHH, comercial; si hay alguien que
 va a leer el código, técnico.
+
+## El largo del detalle técnico
+
+Corrección del 2026-09-04, sobre un borrador que él rechazó tres veces.
+
+**En un primer contacto no va el detalle fino de stack.** Cosas como *"corre
+sobre Next y React 19 con Postgres detrás"* o *"row-level security en vez del
+ORM"* son para el CV, para el portfolio o para la entrevista técnica — no para
+el mail de presentación. En un primer mail suenan a que uno se está luciendo.
+
+Va la versión general: **"React y TypeScript"**, y listo. Lo específico se
+cuenta cuando lo preguntan.
+
+**La estructura simple funciona mejor que la ingeniosa.** Sus palabras: *"Hola X,
+te escribo porque tal, soy tal, me destaco con tal y puedo aportar tal"*. Tres
+intentos de abrir con una tesis sobre el negocio del otro fallaron; el que
+funcionó abre diciendo para qué escribe y sigue contando quién es.
+
+**Y lo de Arquitectura y Urbanismo no va en avisos de IT.** No es relevante y
+distrae. Si el diseño viene al caso, alcanza con decir que le gusta el diseño.
 
 ## La corrección ortográfica
 
