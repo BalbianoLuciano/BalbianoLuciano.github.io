@@ -19,3 +19,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Búsqueda laboral: nombra empresas, personas y montos. El repo es público.
+jobsearch/aplicaciones/*
+!jobsearch/aplicaciones/.gitkeep
+jobsearch/TRACKER.md
+
+# Datos que no pueden ser publicos.
+jobsearch/PRIVADO.md
