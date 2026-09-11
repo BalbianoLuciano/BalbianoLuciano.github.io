@@ -3,8 +3,83 @@
   "_note": "Campos en TODO requieren input de Luciano. Los 6 cases de Dmeter fueron extraidos y verificados desde https://dmeter.com.ar/#cases el 2026-08-28.",
   "projects": [
     {
-      "id": "ibera",
+      "id": "gridwright",
       "order": 1,
+      "name": "Gridwright",
+      "kicker": {
+        "en": "Tooling · Design to code",
+        "es": "Herramienta · Diseño a código"
+      },
+      "org": "personal",
+      "role": "Creator",
+      "year": "2026",
+      "size": "medium",
+      "tagline": {
+        "en": "A layout pipeline driven from Claude Code: a Figma node goes in, and a built component comes out, verified against the design and registered in the project's design system.",
+        "es": "Un pipeline de maquetación que se maneja desde Claude Code: entra un nodo de Figma y sale un componente construido, verificado contra el diseño y registrado en el design system del proyecto."
+      },
+      "url": "https://github.com/BalbianoLuciano/gridwright",
+      "stack": [
+        "TypeScript",
+        "Node",
+        "Playwright",
+        "Claude Code",
+        "Vite",
+        "Tailwind 4",
+        "sharp",
+        "ts-morph"
+      ],
+      "highlights": {
+        "en": [
+          "The state machine lives on disk and a CLI enforces it: Claude does not decide which stage comes next, it asks",
+          "Anything that can be checked with an assert is code: pulling assets, distilling the tree, matching tokens, rendering and diffing",
+          "Every component is rendered with Playwright and compared against the design with a perceptual diff",
+          "Reads the project's own tokens and conventions, from Tailwind 4 to shadcn, so what it writes compiles there",
+          "Builds whole views: the parent writes the layout and the sections run in parallel",
+          "250 tests across six packages"
+        ],
+        "es": [
+          "La máquina de estados vive en disco y un CLI la hace cumplir: Claude no decide qué etapa sigue, pregunta",
+          "Todo lo que se puede chequear con un assert es código: bajar assets, destilar el árbol, matchear tokens, renderizar y comparar",
+          "Cada componente se renderiza con Playwright y se compara contra el diseño con un diff perceptual",
+          "Lee los tokens y las convenciones del propio proyecto, de Tailwind 4 a shadcn, para que lo que escribe compile ahí",
+          "Arma vistas completas: el padre escribe el layout y las secciones corren en paralelo",
+          "250 tests repartidos en seis paquetes"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "The obvious way to have an agent build a layout is a long prompt explaining how. It had been tried: a five-phase workflow written in prose, and the agent skipped the analysis every time the request looked simple. A prompt is a suggestion.",
+          "es": "La forma obvia de que un agente maquete es un prompt largo que le explique cómo. Ya se había probado: un workflow de cinco fases escrito en prosa, y el agente se salteaba el análisis cada vez que el pedido parecía simple. Un prompt es una sugerencia."
+        },
+        "constraints": {
+          "en": [
+            "If it can be checked with an assert, the model does not do it",
+            "Every run has to leave the design system bigger: a component that looks right but adds nothing to the system is a failed run",
+            "The ruler before the factory: without a calibrated metric there is no telling a good run from a bad one"
+          ],
+          "es": [
+            "Si se puede chequear con un assert, no lo hace el modelo",
+            "Cada corrida tiene que dejar el design system más grande: un componente que queda bien pero no suma nada al sistema es una corrida fallida",
+            "La regla antes que la fábrica: sin una métrica calibrada no hay forma de distinguir una corrida buena de una mala"
+          ]
+        },
+        "outcome": {
+          "en": "A CLI that holds the state and tells Claude what comes next, and a dashboard that is the project's own component library, with the diff against the design as evidence.",
+          "es": "Un CLI que guarda el estado y le dice a Claude qué sigue, y un dashboard que es la biblioteca de componentes del proyecto, con el diff contra el diseño como evidencia."
+        }
+      },
+      "ai": {
+        "used": [
+          "Claude Code"
+        ],
+        "impact": "The model does the creative part — writing the component idiomatically, naming, the prop API, deciding what to reuse — and code does everything that can be measured."
+      },
+      "image": "/images/projects/gridwright.webp"
+    },
+    {
+      "id": "ibera",
+      "order": 2,
       "name": "Instituto Universitario Iberá",
       "kicker": {
         "en": "Higher education",
@@ -73,7 +148,7 @@
     },
     {
       "id": "portal-de-pericias",
-      "order": 2,
+      "order": 3,
       "name": "Portal de Pericias",
       "kicker": {
         "en": "Legal · SaaS",
@@ -144,7 +219,7 @@
     },
     {
       "id": "hornero",
-      "order": 3,
+      "order": 4,
       "name": "Hornero",
       "kicker": {
         "en": "Retail · SMB",
@@ -217,7 +292,7 @@
     },
     {
       "id": "aureas",
-      "order": 4,
+      "order": 5,
       "name": "Aurea's",
       "kicker": {
         "en": "Subscriptions · Marketplace",
@@ -287,7 +362,7 @@
     },
     {
       "id": "blend-store",
-      "order": 5,
+      "order": 6,
       "name": "Blend Store",
       "kicker": {
         "en": "E-commerce · Retail",
@@ -356,7 +431,7 @@
     },
     {
       "id": "relay",
-      "order": 6,
+      "order": 7,
       "name": "Relay",
       "kicker": {
         "en": "Operations software",
@@ -417,7 +492,7 @@
     },
     {
       "id": "malmberg",
-      "order": 7,
+      "order": 8,
       "name": "Malmberg.nl",
       "kicker": {
         "en": "EdTech · HubSpot CMS",
@@ -482,7 +557,7 @@
     },
     {
       "id": "tgf",
-      "order": 8,
+      "order": 9,
       "name": "El Zorro Gris",
       "kicker": {
         "en": "Older adults · SaaS",
@@ -553,7 +628,7 @@
     },
     {
       "id": "prolicht",
-      "order": 9,
+      "order": 10,
       "name": "Prolicht",
       "kicker": {
         "en": "Manufacturing · CMS migration",
