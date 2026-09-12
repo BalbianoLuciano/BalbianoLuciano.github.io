@@ -3,11 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { PiMouseScrollThin } from 'react-icons/pi';
+import socialLinks from '../components/utils/socialLinks.json';
 import Projects from '../components/Projects.jsx';
 import Contact from '../components/Contact.jsx';
 import DmeterOverlay from '../components/DmeterOverlay.jsx';
 
 const currentYear = new Date().getFullYear();
+
+// Los links salen del mismo json que usa el resto del sitio; el orden es el de
+// los iconos en pantalla.
+const url = (name: string) => socialLinks.find((s) => s.name === name)?.url;
+const socials = [
+  { name: 'GitHub', href: url('github'), Icon: FaGithub },
+  { name: 'LinkedIn', href: url('linkedin'), Icon: FaLinkedin },
+  { name: 'Instagram', href: url('instagram'), Icon: FaInstagram },
+];
 ---
 
 <Layout>
@@ -28,9 +38,19 @@ const currentYear = new Date().getFullYear();
             <span data-i18n="socials">Socials</span>
           </p>
           <div class="flex gap-2">
-            <FaGithub style={{ fontSize: '1.25em' }} />
-            <FaLinkedin style={{ fontSize: '1.25em' }} />
-            <FaInstagram style={{ fontSize: '1.25em' }} />
+            {
+              socials.map(({ name, href, Icon }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={name}
+                  class="social-link"
+                >
+                  <Icon style={{ fontSize: '1.25em' }} />
+                </a>
+              ))
+            }
           </div>
         </div>
         <h1 class="text-[40px] md:text-[70px] lg:text-[100px] xl:text-[120px] tracking-widest text-center uppercase leading-none px-2">
@@ -233,6 +253,16 @@ const currentYear = new Date().getFullYear();
     text-decoration: underline;
     text-underline-offset: 4px;
     transition: opacity 0.3s ease;
+  }
+
+  .social-link {
+    display: inline-flex;
+    color: #15130f;
+    transition: opacity 0.3s ease;
+  }
+
+  .social-link:hover {
+    opacity: 0.55;
   }
 
   .dmeter-trigger:hover {
