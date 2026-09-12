@@ -88,3 +88,11 @@ la Ley 2 sigue valiendo para Contacto y Dmeter.
 
 La captura no se muestra como foto: se arma con los puntos de los tensores (la
 trama de las compuertas), y al pasar el mouse queda la foto en B/N.
+
+## Cursor
+
+- Con las compuertas cerradas, "Try scrolling" acompaña al cursor todo el
+  tiempo. Se apaga cuando empiezan a abrirse y sobre cualquier cosa clickeable.
+- Un solo cursor en todo el sitio: una flecha de chapa cortada a escuadra, en
+  vacío con borde de luz y el agujero del tensor en la punta. No cambia sobre
+  lo clickeable; eso lo dicen el hover y el rótulo.

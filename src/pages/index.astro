@@ -92,7 +92,8 @@ const currentYear = new Date().getFullYear();
       </div>
       <div
         id="click-message"
-        class="click-message uppercase tracking-widest text-2xl hidden"
+        class="click-message uppercase tracking-widest text-2xl"
+        aria-hidden="true"
       >
         <PiMouseScrollThin style={{ fontSize: '3em', marginRight: '8px' }} />
         <span data-i18n="tryScrolling">Try scrolling</span>
@@ -175,11 +176,13 @@ const currentYear = new Date().getFullYear();
     opacity: 0;
   }
 
+  /* "Try scrolling" acompania al cursor mientras las compuertas estan cerradas.
+     Fixed y no absolute: se posiciona con clientX/clientY. */
   .click-message {
     font-family: 'dharma-gothic-e', sans-serif;
     font-weight: 700;
     font-style: normal;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -187,6 +190,13 @@ const currentYear = new Date().getFullYear();
     background: none;
     color: #15130f;
     z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .click-message.is-visible {
+    opacity: 1;
   }
 
   .hidden {
@@ -247,6 +257,19 @@ const currentYear = new Date().getFullYear();
       window.dispatchEvent(new CustomEvent('split:change', { detail: { open } }));
     };
 
+    // El cartel sigue al cursor todo el tiempo mientras las compuertas estan
+    // cerradas. Se apaga apenas empiezan a abrirse, y cuando el cursor esta
+    // sobre algo clickeable: ahi manda el puntero.
+    const clickMessage = document.getElementById('click-message');
+    const clickeable = 'a, button, [role="button"], input, textarea, select, label';
+    let cerradas = true;
+    let sobreClickeable = false;
+    let dentro = false;
+
+    const pintarCartel = () => {
+      clickMessage?.classList.toggle('is-visible', cerradas && dentro && !sobreClickeable);
+    };
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.container',
@@ -258,7 +281,11 @@ const currentYear = new Date().getFullYear();
         scrub: 0.5,
         // Sin pin: las dos mitades ya son position:fixed, asi que no hay nada
         // que fijar, y el pin-spacer se rompia dentro del wrapper flex.
-        onUpdate: (self) => publishSplit(self.progress >= 0.98),
+        onUpdate: (self) => {
+          publishSplit(self.progress >= 0.98);
+          cerradas = self.progress < 0.04;
+          pintarCartel();
+        },
       },
     });
 
@@ -346,9 +373,10 @@ const currentYear = new Date().getFullYear();
       );
     });
 
-    const clickMessage = document.getElementById('click-message');
-
     document.addEventListener('mousemove', (e) => {
+      dentro = true;
+      sobreClickeable = Boolean((e.target as Element | null)?.closest?.(clickeable));
+      pintarCartel();
       gsap.to(clickMessage, {
         x: e.clientX + 20,
         y: e.clientY + 20,
@@ -357,13 +385,9 @@ const currentYear = new Date().getFullYear();
       });
     });
 
-    document.querySelectorAll('.initial-container').forEach((container) => {
-      container.addEventListener('click', () => {
-        clickMessage?.classList.remove('hidden');
-        setTimeout(() => {
-          clickMessage?.classList.add('hidden');
-        }, 500);
-      });
+    document.documentElement.addEventListener('mouseleave', () => {
+      dentro = false;
+      pintarCartel();
     });
   });
 </script>
