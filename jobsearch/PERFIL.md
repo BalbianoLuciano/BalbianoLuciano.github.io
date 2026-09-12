@@ -181,5 +181,9 @@ Preguntar antes de afirmar cualquiera de estos:
 - [x] ~~Relación formal con Dmeter~~ — **CO-FUNDADOR**, confirmado el 2026-09-03.
       Es la respuesta a "¿cómo sostenés dos puestos a la vez?": no son dos
       empleos, es una empresa que fundó y un empleo. Ver la nota de abajo.
+- [ ] **Horario real en Invisible Geeks** — ¿cumple horario español completo (9 a
+      18 CEST, que en Buenos Aires son las 4 AM a la 1 PM) o trabaja horario
+      argentino con solapamiento? Aparece cada vez que un aviso europeo pide
+      horario de allá. Sin este dato no se puede afirmar nada en un mail.
 - [ ] Tamaño de los equipos que lidera (IG y Dmeter)
 - [ ] Stack de Relay
