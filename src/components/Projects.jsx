@@ -329,6 +329,14 @@ const Projects = () => {
     };
   }, []);
 
+  // Los logos se piden de entrada: el rotulo aparece con el hover y si el logo
+  // recien ahi se descarga, entra un instante despues que el nombre.
+  useEffect(() => {
+    projects.forEach((p) => {
+      if (p.logo) new Image().src = p.logo;
+    });
+  }, []);
+
   // Al cerrarse las compuertas el mapa vuelve al reposo, para que la proxima
   // apertura no arranque con un proyecto abierto.
   useEffect(() => {
@@ -562,7 +570,10 @@ const Projects = () => {
             <span className="mapa__rotulo-meta">
               {numero(rotulado)} · {pick(rotulado.kicker, lang)}
             </span>
-            <span className="mapa__rotulo-nombre font-dharma">{rotulado.name}</span>
+            <span className="mapa__rotulo-fila">
+              {rotulado.logo && <img className="mapa__rotulo-logo" src={rotulado.logo} alt="" />}
+              <span className="mapa__rotulo-nombre font-dharma">{rotulado.name}</span>
+            </span>
           </>
         )}
       </div>
@@ -584,7 +595,10 @@ const Projects = () => {
             <span className="mapa__rotulo-meta">
               {numero(encendido)} / {String(N).padStart(2, '0')} · {pick(encendido.kicker, lang)}
             </span>
-            <span className="mapa__leyenda-nombre font-dharma">{encendido.name}</span>
+            <span className="mapa__rotulo-fila">
+              {encendido.logo && <img className="mapa__rotulo-logo" src={encendido.logo} alt="" />}
+              <span className="mapa__leyenda-nombre font-dharma">{encendido.name}</span>
+            </span>
             <span className="mapa__leyenda-pista">{t(lang, 'tapToOpen')}</span>
           </>
         )}
