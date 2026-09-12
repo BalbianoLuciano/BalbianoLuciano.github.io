@@ -10,7 +10,9 @@ import { useLang } from '../i18n/useLang.js';
  *
  * - En reposo las piezas estan sueltas, en linea fina. Se ven desde que las
  *   compuertas empiezan a separarse.
- * - Hover: el rotulo con el nombre sigue al cursor. No dispara nada mas.
+ * - Hover: el rotulo con el nombre sigue al cursor. No dispara nada mas. En
+ *   tactil no hay hover: el scroll que sigue a las compuertas va encendiendo
+ *   las piezas de a una, con el nombre abajo (evento mapa:recorrido).
  * - Click: las piezas se ensamblan, la elegida se pinta, y el conjunto viaja a
  *   una posicion distinta para cada proyecto. En el vacio que deja aparece el
  *   caso entero: no hay un segundo nivel. Click en el vacio o Escape y el
@@ -310,6 +312,8 @@ const Projects = () => {
   const [ultimo, setUltimo] = useState(null);
   const [panel, setPanel] = useState(null);
   const [hover, setHover] = useState(null);
+  // La pieza encendida por el scroll en tactil
+  const [enfocado, setEnfocado] = useState(null);
   const [hayMas, setHayMas] = useState(false);
 
   const reduce = useMemo(prefiereQuieto, []);
@@ -333,6 +337,17 @@ const Projects = () => {
     };
     window.addEventListener('split:change', onSplit);
     return () => window.removeEventListener('split:change', onSplit);
+  }, []);
+
+  // Un tramo por proyecto. El primer pedacito queda sin encender: recien
+  // abiertas las compuertas se ve el mapa entero antes del primer proyecto.
+  useEffect(() => {
+    const onRecorrido = (e) => {
+      const p = e.detail?.progress ?? 0;
+      setEnfocado(p < 0.03 ? null : Math.min(N - 1, Math.floor(((p - 0.03) / 0.97) * N)));
+    };
+    window.addEventListener('mapa:recorrido', onRecorrido);
+    return () => window.removeEventListener('mapa:recorrido', onRecorrido);
   }, []);
 
   const recalcular = useCallback((indice) => {
@@ -472,6 +487,7 @@ const Projects = () => {
 
   const elegido = ultimo != null ? projects[ultimo] : null;
   const rotulado = hover != null ? projects[hover] : null;
+  const encendido = activo == null && enfocado != null ? projects[enfocado] : null;
   const numero = (p) => String(p.order).padStart(2, '0');
 
   const caso = useMemo(() => {
@@ -507,7 +523,9 @@ const Projects = () => {
               ref={(el) => {
                 piezasRef.current[k] = el;
               }}
-              className={`mapa__pieza ${activo === k ? 'is-activa' : ''}`}
+              className={`mapa__pieza ${activo === k ? 'is-activa' : ''} ${
+                activo == null && enfocado === k ? 'is-encendida' : ''
+              }`}
               role="button"
               tabIndex={0}
               aria-pressed={activo === k}
@@ -548,6 +566,29 @@ const Projects = () => {
           </>
         )}
       </div>
+
+      {/* Tactil: el nombre de la pieza encendida, abajo. Tocarlo abre el proyecto,
+          igual que tocar la pieza. */}
+      <button
+        type="button"
+        className={`mapa__leyenda ${encendido ? 'is-visible' : ''}`}
+        tabIndex={encendido ? 0 : -1}
+        aria-hidden={encendido ? undefined : true}
+        onClick={(e) => {
+          e.stopPropagation();
+          if (enfocado != null) elegir(enfocado);
+        }}
+      >
+        {encendido && (
+          <>
+            <span className="mapa__rotulo-meta">
+              {numero(encendido)} / {String(N).padStart(2, '0')} · {pick(encendido.kicker, lang)}
+            </span>
+            <span className="mapa__leyenda-nombre font-dharma">{encendido.name}</span>
+            <span className="mapa__leyenda-pista">{t(lang, 'tapToOpen')}</span>
+          </>
+        )}
+      </button>
 
       <section
         ref={panelRef}

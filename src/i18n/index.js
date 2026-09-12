@@ -44,6 +44,7 @@ export const ui = {
     seeItLive: 'See it live',
     seeCode: 'See the code',
     backToMap: 'Back to the map',
+    tapToOpen: 'Tap to open',
 
     dreamLine: 'Building my dream at',
     myDream: 'My dream',
@@ -79,6 +80,7 @@ export const ui = {
     seeItLive: 'Ver el sitio',
     seeCode: 'Ver el código',
     backToMap: 'Volver al mapa',
+    tapToOpen: 'Tocá para abrir',
 
     dreamLine: 'Construyendo mi sueño en',
     myDream: 'Mi sueño',

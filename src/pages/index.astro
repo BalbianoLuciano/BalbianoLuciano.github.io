@@ -4,11 +4,19 @@ import '../styles/global.css';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { PiMouseScrollThin } from 'react-icons/pi';
 import socialLinks from '../components/utils/socialLinks.json';
+import projectsData from '../data/projects.json';
 import Projects from '../components/Projects.jsx';
 import Contact from '../components/Contact.jsx';
 import DmeterOverlay from '../components/DmeterOverlay.jsx';
 
 const currentYear = new Date().getFullYear();
+
+// En pantallas tactiles no hay hover: despues de abrir las compuertas la pagina
+// sigue, y cada tramo de scroll enciende un proyecto del mapa. Mismo filtro que
+// Projects.jsx: los que no tienen tagline cargado no se muestran.
+const proyectosVisibles = projectsData.projects.filter(
+  (p) => p.tagline?.en && !String(p.tagline.en).startsWith('TODO')
+).length;
 
 // Los links salen del mismo json que usa el resto del sitio; el orden es el de
 // los iconos en pantalla.
@@ -22,7 +30,7 @@ const socials = [
 
 <Layout>
   <div class="flex flex-row relative justify-center items-center">
-    <div class="container">
+    <div class="container" style={`--proyectos: ${proyectosVisibles}`}>
       <div
         class="initial-container top-half flex items-center justify-end flex-col gap-1 md:gap-2 pb-2"
       >
@@ -131,6 +139,13 @@ const socials = [
   .container {
     height: 165vh; /* Recorrido para abrir las compuertas: mas alto = mas lento */
     position: relative;
+  }
+
+  /* Tactil: 65vh para las compuertas y despues un tramo por proyecto */
+  @media (hover: none) and (pointer: coarse) {
+    .container {
+      height: calc(165vh + var(--proyectos, 0) * 24vh);
+    }
   }
 
   .initial-container,
@@ -304,10 +319,11 @@ const socials = [
       scrollTrigger: {
         trigger: '.container',
         start: 'top top',
-        // 'bottom bottom' y no 'bottom top': con 'bottom top' el rango pedia
-        // 200vh de recorrido cuando la pagina solo tiene 100vh scrolleables, el
-        // progress se topaba en 0.5 y las compuertas quedaban a medio abrir.
-        end: 'bottom bottom',
+        // Las compuertas se abren en los primeros 65vh de scroll. En escritorio
+        // es toda la pagina (165vh - 100vh); en tactil la pagina sigue, y el
+        // resto es el recorrido por los proyectos.
+        end: () => `+=${window.innerHeight * 0.65}`,
+        invalidateOnRefresh: true,
         scrub: 0.5,
         // Sin pin: las dos mitades ya son position:fixed, asi que no hay nada
         // que fijar, y el pin-spacer se rompia dentro del wrapper flex.
@@ -346,6 +362,22 @@ const socials = [
         },
         0
       );
+
+    // Tactil: el scroll que sigue a las compuertas recorre el mapa. Projects
+    // traduce el progreso a que pieza se enciende.
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      ScrollTrigger.create({
+        trigger: '.container',
+        start: () => window.innerHeight * 0.65,
+        end: 'max',
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          window.dispatchEvent(
+            new CustomEvent('mapa:recorrido', { detail: { progress: self.progress } })
+          );
+        },
+      });
+    }
 
     const langButtons = document.querySelectorAll<HTMLElement>('.lang-btn');
     const paintLang = (lang: string) => {

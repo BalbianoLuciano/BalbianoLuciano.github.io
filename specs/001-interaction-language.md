@@ -72,6 +72,10 @@ compuertas hay pantalla negra y el pilar de piezas del carrusel de Gridwright.
 Cada pieza es un proyecto; las juntas son distintas entre cada par y calzan.
 
 - **Hover**: el rótulo con el nombre sigue al cursor. No dispara nada más.
+- **Táctil** (no hay hover): después de abrir las compuertas la página sigue
+  scrolleando, un tramo de 24vh por proyecto, y cada tramo enciende una pieza
+  con su nombre abajo. Tocar la pieza o el nombre la abre. En escritorio la
+  página no cambia: son los mismos 65vh de compuertas.
 - **Click**: las piezas se ensamblan, la elegida se pinta de luz y el conjunto
   viaja —girando y achicándose si hace falta— a un lugar distinto para cada
   proyecto. El detalle aparece en el vacío que deja.

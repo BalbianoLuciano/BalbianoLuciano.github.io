@@ -133,7 +133,8 @@ body,
 }
 
 .mapa__pieza:hover path,
-.mapa__pieza:focus-visible path {
+.mapa__pieza:focus-visible path,
+.mapa__pieza.is-encendida path {
   fill: rgba(198, 194, 184, 0.06);
   stroke: rgba(198, 194, 184, 1);
 }
@@ -183,6 +184,57 @@ body,
   line-height: 1;
   color: #c6c2b8;
   white-space: nowrap;
+}
+
+/* Tactil: el pilar un poco mas bajo, para que entre la leyenda debajo */
+@media (hover: none) and (pointer: coarse) {
+  .mapa__pilar {
+    height: min(64vh, 700px);
+  }
+}
+
+.mapa__leyenda {
+  position: absolute;
+  /* left y right fijos y no left: 50%: con left 50% la caja solo podia usar la
+     mitad del ancho y un rubro largo se partia en tres renglones */
+  left: 16px;
+  right: 16px;
+  bottom: max(4vh, 20px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  background: none;
+  border: 0;
+  color: #c6c2b8;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mapa__leyenda.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.mapa__leyenda-nombre {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.mapa__leyenda-pista {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(198, 194, 184, 0.45);
 }
 
 .mapa__panel {
@@ -418,6 +470,7 @@ body,
 @media (prefers-reduced-motion: reduce) {
   .mapa__pieza path,
   .mapa__rotulo,
+  .mapa__leyenda,
   .lamina img,
   .lamina canvas {
     transition: none;
