@@ -30,7 +30,6 @@ const technologies = [
 ];
 import Projects from '../components/Projects.jsx';
 import Contact from '../components/Contact.jsx';
-import ProjectOverlay from '../components/ProjectOverlay.jsx';
 import DmeterOverlay from '../components/DmeterOverlay.jsx';
 
 const currentYear = new Date().getFullYear();
@@ -128,12 +127,8 @@ const currentYear = new Date().getFullYear();
           © BalbianoLuciano™ {currentYear}. <span data-i18n="rights">All rights reserved.</span>
         </div>
       </div>
+      {/* Detras de las compuertas no hay titulo: pantalla negra y el mapa. */}
       <div class="hidden-container flex flex-col overflow-hidden">
-        <h2
-          class="shrink-0 px-6 pt-24 pb-4 uppercase text-white text-[44px] md:px-12 md:text-[64px] lg:text-[80px] tracking-widest leading-none"
-        >
-          <span data-i18n="projects">Projects</span>
-        </h2>
         <Projects client:load />
       </div>
       <div
@@ -149,7 +144,6 @@ const currentYear = new Date().getFullYear();
   {/* Ley 3: fuera del .container. ScrollTrigger lo pinea con un transform y un
       position:fixed ahi adentro se ancla al ancestro, no al viewport. */}
   <Contact client:load />
-  <ProjectOverlay client:load />
   <DmeterOverlay client:load />
 </Layout>
 
@@ -183,8 +177,7 @@ const currentYear = new Date().getFullYear();
     font-style: normal;
   }
 
-  .initial-container h1,
-  .hidden-container h2 {
+  .initial-container h1 {
     font-family: 'dharma-gothic-e', sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -286,8 +279,8 @@ const currentYear = new Date().getFullYear();
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener('DOMContentLoaded', () => {
-    // El riel de proyectos solo se queda con la rueda cuando las compuertas
-    // terminaron de abrirse. Si la toma antes, el split se traba a medio camino.
+    // El mapa de proyectos se entera por este evento de cuando las compuertas
+    // terminaron de abrirse o se volvieron a cerrar.
     let splitOpen = false;
     const publishSplit = (open: boolean) => {
       if (open === splitOpen) return;

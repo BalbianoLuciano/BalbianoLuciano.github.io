@@ -1,6 +1,7 @@
 /* Global Styles */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import url('https://use.typekit.net/tyi0xxl.css'); /* Dharma y Termina */
 
 *,
@@ -73,29 +74,338 @@ body {
   display: none;                  /* Chrome / Safari */
 }
 
-/* Riel de proyectos: todo escalado un poco hacia abajo, y la card que queda
-   mas cerca del centro del riel recupera su tamanio nominal. La escala vive en
-   el wrapper interno y no en el <button>, porque GSAP usa el transform del
-   <button> para el barrido al cambiar de idioma. */
-.project-card__inner {
-  transform: scale(0.92);
-  opacity: 0.62;
-  transform-origin: center center;
-  transition:
-    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
-    opacity 0.55s ease;
+/* Mapa de proyectos (Projects.jsx). Pantalla negra, el pilar en el medio y
+   nada mas. Paleta del manual: luz #C6C2B8 sobre vacio #15130f; baranda
+   #2F5568 una sola vez, en el boton del caso. */
+.mapa {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #c6c2b8;
 }
 
-.project-card.is-focused .project-card__inner,
-.project-card:hover .project-card__inner {
-  transform: scale(1);
+.mapa__pilar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: min(74vh, 700px);
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.mapa__pilar svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mapa__pieza {
+  cursor: pointer;
+  outline: none;
+}
+
+.mapa__pieza path {
+  /* transparent y no none: con none el hueco de la pieza no recibe el hover */
+  fill: rgba(198, 194, 184, 0);
+  stroke: rgba(198, 194, 184, 0.42);
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+  transition:
+    fill 0.45s ease,
+    stroke 0.3s ease;
+}
+
+.mapa__pieza:hover path,
+.mapa__pieza:focus-visible path {
+  fill: rgba(198, 194, 184, 0.06);
+  stroke: rgba(198, 194, 184, 1);
+}
+
+.mapa__pieza.is-activa path {
+  fill: #c6c2b8;
+  stroke: #c6c2b8;
+  transition-delay: 0.2s;
+}
+
+.mapa__rotulo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px 10px;
+  /* Fondo del vacio: el rotulo suele caer encima de las lineas del pilar */
+  background: rgba(21, 19, 15, 0.92);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.mapa__rotulo.is-visible {
   opacity: 1;
 }
 
+.mapa__rotulo-meta,
+.mapa__meta,
+.mapa__puntos span,
+.mapa__stack {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.mapa__rotulo-meta {
+  font-size: 11px;
+  color: rgba(198, 194, 184, 0.55);
+}
+
+.mapa__rotulo-nombre {
+  font-size: 34px;
+  line-height: 1;
+  color: #c6c2b8;
+  white-space: nowrap;
+}
+
+.mapa__panel {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3cqh, 28px);
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  container: panel / size;
+}
+
+.mapa.is-abierto .mapa__panel {
+  pointer-events: auto;
+}
+
+.mapa__cabeza {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.mapa__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 20px;
+  font-size: 11px;
+  color: rgba(198, 194, 184, 0.5);
+}
+
+.mapa__identidad {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.mapa__logo {
+  height: clamp(32px, 7cqh, 56px);
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  object-position: left;
+}
+
+.mapa__nombre {
+  font-size: clamp(40px, min(9cqw, 11cqh), 104px);
+  line-height: 0.92;
+  color: #c6c2b8;
+}
+
+/* El caso fluye en columnas hacia la derecha: alto fijo, column-fill auto, y lo
+   que no entra arma columnas nuevas fuera de la caja que se recorren en
+   horizontal. Nunca scroll vertical (Ley 1). */
+.mapa__flujo {
+  flex: 1;
+  min-height: 0;
+  column-width: clamp(260px, 26cqw, 360px);
+  column-gap: clamp(28px, 4cqw, 56px);
+  column-fill: auto;
+  column-rule: 1px solid rgba(198, 194, 184, 0.1);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Si hay columnas a la derecha, el borde se apaga para avisar que sigue */
+.mapa__flujo.hay-mas {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 96px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 96px), transparent);
+}
+
+.mapa__bloque--columna {
+  break-before: column;
+}
+
+.mapa__titulo {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(198, 194, 184, 0.45);
+  margin-bottom: 12px;
+  break-after: avoid;
+}
+
+.mapa__bajada {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(15px, 2.4cqh, 18px);
+  line-height: 1.5;
+  color: rgba(198, 194, 184, 0.82);
+  margin-bottom: 18px;
+  break-inside: avoid;
+}
+
+.mapa__parrafo,
+.mapa__restricciones li,
+.mapa__resultado,
+.mapa__puntos p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  break-inside: avoid;
+}
+
+.mapa__parrafo {
+  color: rgba(198, 194, 184, 0.72);
+  margin-bottom: 12px;
+}
+
+.mapa__restricciones {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.mapa__restricciones li {
+  color: rgba(198, 194, 184, 0.52);
+}
+
+.mapa__restricciones li::before {
+  content: '— ';
+}
+
+.mapa__resultado {
+  color: #c6c2b8;
+}
+
+.mapa__puntos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mapa__puntos li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  break-inside: avoid;
+}
+
+.mapa__puntos span {
+  font-size: 11px;
+  color: rgba(198, 194, 184, 0.4);
+}
+
+.mapa__puntos p {
+  color: rgba(198, 194, 184, 0.72);
+}
+
+.mapa__stack {
+  font-size: 11px;
+  line-height: 1.8;
+  color: rgba(198, 194, 184, 0.4);
+  break-inside: avoid;
+}
+
+/* El unico acento de la pantalla: baranda */
+.mapa__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 12px 20px;
+  background: #2f5568;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #c6c2b8;
+  transition: opacity 0.3s ease;
+}
+
+.mapa__volver {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: rgba(198, 194, 184, 0.62);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.mapa__link:hover,
+.mapa__volver:hover {
+  opacity: 0.7;
+}
+
+/* La captura hecha con la trama de los tensores. Debajo, la foto en B/N: al
+   pasar el mouse la trama se abre y queda la foto. */
+.lamina {
+  position: relative;
+  margin: 0;
+  /* provisorio: al cargar la captura toma su proporcion real */
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  break-inside: avoid;
+}
+
+.lamina img,
+.lamina canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.lamina img {
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(1) contrast(1.35);
+  opacity: 0;
+}
+
+.lamina:hover img {
+  opacity: 1;
+}
+
+.lamina:hover canvas {
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .project-card__inner {
-    transform: none;
-    opacity: 1;
+  .mapa__pieza path,
+  .mapa__rotulo,
+  .lamina img,
+  .lamina canvas {
     transition: none;
   }
 }

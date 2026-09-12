@@ -16,7 +16,7 @@ No hay scroll vertical en ninguna parte del sitio.
 | Zona | Movimiento permitido |
 |---|---|
 | Hero split-screen | Scroll vertical **sólo** para separar las dos mitades. Es el único caso. |
-| Grilla de proyectos | Scroll **horizontal** activo. |
+| Mapa de proyectos | Ninguno. El pilar y el detalle entran en una pantalla. |
 | Detalle de proyecto | Scroll **horizontal** activo. |
 | Contacto | Ninguno. Entra en una pantalla. |
 | Proceso (SDD) | Ninguno o horizontal. Nunca vertical. |
@@ -64,3 +64,27 @@ contenedor pineado, en el `Layout`.
   **Viola la Ley 1.** Se reemplaza por un riel horizontal.
 - El `<h2>PROJECTS</h2>` scrollea y desaparece. Al no haber scroll vertical,
   pasa a ser un encabezado fijo del riel.
+
+## Enmienda 2026-09-12 — el mapa de proyectos
+
+El riel horizontal de cards se reemplazó por un **mapa**: detrás de las
+compuertas hay pantalla negra y el pilar de piezas del carrusel de Gridwright.
+Cada pieza es un proyecto; las juntas son distintas entre cada par y calzan.
+
+- **Hover**: el rótulo con el nombre sigue al cursor. No dispara nada más.
+- **Click**: las piezas se ensamblan, la elegida se pinta de luz y el conjunto
+  viaja —girando y achicándose si hace falta— a un lugar distinto para cada
+  proyecto. El detalle aparece en el vacío que deja.
+- **Volver**: click en el vacío, Escape o "Volver al mapa".
+
+Las piezas se ven desde que las compuertas empiezan a separarse: no hay un
+momento de pantalla negra vacía.
+
+**No hay un segundo nivel.** El panel es el caso entero —logo, la spec con
+restricciones y resultado, qué hace, stack y link— en columnas que siguen hacia
+la derecha cuando no entran (Ley 1). El overlay del caso completo se eliminó.
+El viaje del pilar es navegar el mismo nivel, así que no usa la máscara radial;
+la Ley 2 sigue valiendo para Contacto y Dmeter.
+
+La captura no se muestra como foto: se arma con los puntos de los tensores (la
+trama de las compuertas), y al pasar el mouse queda la foto en B/N.

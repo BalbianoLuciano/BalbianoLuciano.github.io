@@ -43,6 +43,8 @@ export const ui = {
     theSpec: 'The spec',
     whatItDoes: 'What it does',
     seeItLive: 'See it live',
+    seeCode: 'See the code',
+    backToMap: 'Back to the map',
 
     dreamLine: 'Building my dream at',
     myDream: 'My dream',
@@ -77,6 +79,8 @@ export const ui = {
     theSpec: 'La spec',
     whatItDoes: 'Qué hace',
     seeItLive: 'Ver el sitio',
+    seeCode: 'Ver el código',
+    backToMap: 'Volver al mapa',
 
     dreamLine: 'Construyendo mi sueño en',
     myDream: 'Mi sueño',
