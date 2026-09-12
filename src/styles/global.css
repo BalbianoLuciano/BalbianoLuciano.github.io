@@ -310,6 +310,15 @@ body,
   mask-image: linear-gradient(to right, #000 calc(100% - 96px), transparent);
 }
 
+/* En una columna sola el esfumado de 96px se comia el texto que se esta
+   leyendo: alcanza con un borde corto */
+@container panel (max-width: 520px) {
+  .mapa__flujo.hay-mas {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  }
+}
+
 .mapa__bloque--columna {
   break-before: column;
 }
