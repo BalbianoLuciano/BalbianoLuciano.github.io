@@ -2,32 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiVuedotjs,
-  SiLaravel,
-  SiPostgresql,
-  SiTailwindcss,
-  SiAstro,
-  SiClaude,
-} from 'react-icons/si';
 import { PiMouseScrollThin } from 'react-icons/pi';
-
-// Las tecnologias salen de lo que realmente aparece en projects.json, no de una
-// lista aspiracional: Expo, Firebase y JavaScript no figuran en ningun proyecto.
-const technologies = [
-  { name: 'React', Icon: SiReact },
-  { name: 'Next.js', Icon: SiNextdotjs },
-  { name: 'TypeScript', Icon: SiTypescript },
-  { name: 'Vue', Icon: SiVuedotjs },
-  { name: 'Laravel', Icon: SiLaravel },
-  { name: 'PostgreSQL', Icon: SiPostgresql },
-  { name: 'Tailwind CSS', Icon: SiTailwindcss },
-  { name: 'Astro', Icon: SiAstro },
-  { name: 'Claude Code', Icon: SiClaude },
-];
 import Projects from '../components/Projects.jsx';
 import Contact from '../components/Contact.jsx';
 import DmeterOverlay from '../components/DmeterOverlay.jsx';
@@ -59,7 +34,7 @@ const currentYear = new Date().getFullYear();
           </div>
         </div>
         <h1 class="text-[40px] md:text-[70px] lg:text-[100px] xl:text-[120px] tracking-widest text-center uppercase leading-none px-2">
-          <span data-i18n="role">AI Engineer</span>
+          <span data-i18n="role">Software Engineer</span>
         </h1>
         <p
           class="text-[11px] md:text-sm lg:text-base font-outfit uppercase tracking-[0.3em] text-dark/60"
@@ -82,25 +57,9 @@ const currentYear = new Date().getFullYear();
       <div
         class="initial-container bottom-half flex flex-col gap-1 md:gap-2 items-center justify-start pt-2"
       >
-        <div class="flex flex-col gap-0.5 md:gap-1 items-center">
-          <i
-            class="bi bi-chevron-compact-up text-dark text-[30px] md:text-[40px] chevron chevron-up"
-          ></i>
-          <p class="text-[24px] md:text-[32px] lg:text-[40px] text-dark tracking-widest contact uppercase">
-            <span data-i18n="mainTech">Main Technologies</span>
-          </p>
-          <div class="flex gap-3 md:gap-4 flex-wrap justify-center max-w-md md:max-w-lg">
-            {
-              technologies.map(({ name, Icon }) => (
-                <Icon
-                  title={name}
-                  aria-label={name}
-                  style={{ fontSize: '1.4em' }}
-                />
-              ))
-            }
-          </div>
-        </div>
+        <i
+          class="bi bi-chevron-compact-up text-dark text-[30px] md:text-[40px] chevron chevron-up"
+        ></i>
         <div class="flex flex-col items-center justify-center gap-0.5 md:gap-1">
           <button
             type="button"

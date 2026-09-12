@@ -17,9 +17,8 @@ const STORAGE_KEY = 'portfolio-lang';
 export const ui = {
   en: {
     socials: 'Socials',
-    role: 'AI Engineer',
+    role: 'Software Engineer',
     method: 'Spec-Driven Development',
-    mainTech: 'Main Technologies',
     contact: 'Contact',
     projects: 'Projects',
     tryScrolling: 'Try scrolling',
@@ -53,9 +52,8 @@ export const ui = {
   },
   es: {
     socials: 'Redes',
-    role: 'AI Engineer',
+    role: 'Software Engineer',
     method: 'Spec-Driven Development',
-    mainTech: 'Tecnologías',
     contact: 'Contacto',
     projects: 'Proyectos',
     tryScrolling: 'Probá scrollear',
