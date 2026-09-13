@@ -14,6 +14,7 @@
       "role": "Creator",
       "year": "2026",
       "size": "medium",
+      "color": "#d97757",
       "tagline": {
         "en": "A layout pipeline driven from Claude Code: a Figma node goes in, and a built component comes out, verified against the design and registered in the project's design system.",
         "es": "Un pipeline de maquetación que se maneja desde Claude Code: entra un nodo de Figma y sale un componente construido, verificado contra el diseño y registrado en el design system del proyecto."
@@ -89,6 +90,7 @@
       "role": "TODO",
       "year": "TODO",
       "size": "large",
+      "color": "#648d13",
       "tagline": {
         "en": "A private university's institutional site, with its own content manager and student capture wired straight into the CRM.",
         "es": "Sitio institucional de una universidad privada, con su propio gestor de contenido y captación de alumnos conectada directo al CRM."
@@ -158,6 +160,7 @@
       "role": "TODO",
       "year": "TODO",
       "size": "medium",
+      "color": "#3c76aa",
       "tagline": {
         "en": "A multi-tenant platform where a court-appointed expert runs the whole practice: cases, expert reports, evidence, fees and deadlines.",
         "es": "Plataforma multi-tenant donde un perito judicial maneja toda su práctica: causas, informes, prueba con validez judicial, honorarios y plazos."
@@ -229,6 +232,7 @@
       "role": "TODO",
       "year": "2026",
       "size": "medium",
+      "color": "#954c2a",
       "tagline": {
         "en": "A management system that works the same for a clothing shop, a hardware store or a gym. One engine: what changes between trades is data, not code.",
         "es": "Sistema de gestión que funciona igual para una tienda de ropa, una ferretería o un gimnasio. Un solo motor: lo que cambia entre rubros es la data, no el programa."
@@ -302,6 +306,7 @@
       "role": "TODO",
       "year": "TODO",
       "size": "large",
+      "color": "#fe6385",
       "tagline": {
         "en": "Digital presence for artists: the digital home, the recurring billing, the CRM that holds it up and the directory where they get hired.",
         "es": "Presencia digital para artistas: la casa digital, la facturación recurrente, el CRM que la sostiene y el directorio donde los contratan."
@@ -372,6 +377,7 @@
       "role": "TODO",
       "year": "TODO",
       "size": "small",
+      "color": "#d4af37",
       "tagline": {
         "en": "The online store of a premium clothing brand, with the same system running the counter: one stock for what sells on the web and in the shop.",
         "es": "La tienda online de una marca de ropa premium, con el mismo sistema corriendo el mostrador: un solo stock para lo que se vende en web y en local."
@@ -441,6 +447,7 @@
       "role": "TODO",
       "year": "TODO",
       "size": "medium",
+      "color": "#f99833",
       "tagline": {
         "en": "The workspace where a company stops jumping between twelve tabs: chats, email, files and numbers on a single screen.",
         "es": "El workspace donde una empresa deja de saltar entre doce pestañas: chats, mails, archivos y números en una sola pantalla."
@@ -502,6 +509,7 @@
       "role": "Project Lead",
       "year": "2024",
       "size": "medium",
+      "color": "#e81b3a",
       "tagline": {
         "en": "Migration of the Dutch educational publisher to HubSpot CMS, on a custom React Islands boilerplate: only the component that needs it gets hydrated.",
         "es": "Migración de la editorial educativa holandesa a HubSpot CMS, sobre un boilerplate propio de React Islands: sólo se hidrata el componente que lo necesita."
@@ -567,6 +575,7 @@
       "role": "TODO",
       "year": "2025-2026",
       "size": "large",
+      "color": "#297dff",
       "tagline": {
         "en": "A platform for older adults: finance, health, culture and leisure in one place, with a travel engine that builds the itinerary around how much the traveller can actually take.",
         "es": "Plataforma para adultos mayores: finanzas, salud, cultura y ocio en un solo lugar, con un motor de viajes que arma el itinerario según cuánto aguanta el viajero."
@@ -638,6 +647,7 @@
       "role": "TODO",
       "year": "2026",
       "size": "large",
+      "color": "#90c9e7",
       "tagline": {
         "en": "The site and catalogue of PROLICHT, the Austrian architectural LED lighting manufacturer: 257 projects and the product families migrated off the old CMS.",
         "es": "Sitio y catálogo de PROLICHT, fabricante austríaco de iluminación LED arquitectónica: 257 proyectos y las familias de producto migradas del CMS viejo."

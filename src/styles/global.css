@@ -132,11 +132,14 @@ body,
     stroke 0.3s ease;
 }
 
+/* Hover (y la pieza encendida por el scroll en tactil): la pieza se llena con
+   el color de su proyecto, sacado del logo o del sitio. Es el unico lugar del
+   portfolio con color fuera de la paleta. Sin color cargado, vuelve a la luz. */
 .mapa__pieza:hover path,
 .mapa__pieza:focus-visible path,
 .mapa__pieza.is-encendida path {
-  fill: rgba(198, 194, 184, 0.06);
-  stroke: rgba(198, 194, 184, 1);
+  fill: var(--color-proyecto, rgba(198, 194, 184, 0.06));
+  stroke: var(--color-proyecto, #c6c2b8);
 }
 
 .mapa__pieza.is-activa path {

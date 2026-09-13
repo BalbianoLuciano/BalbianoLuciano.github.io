@@ -534,6 +534,9 @@ const Projects = () => {
               className={`mapa__pieza ${activo === k ? 'is-activa' : ''} ${
                 activo == null && enfocado === k ? 'is-encendida' : ''
               }`}
+              // El color del proyecto (projects.json) solo aparece en el hover: es
+              // el unico lugar del sitio con color fuera de la paleta del manual.
+              style={p.color ? { '--color-proyecto': p.color } : undefined}
               role="button"
               tabIndex={0}
               aria-pressed={activo === k}
