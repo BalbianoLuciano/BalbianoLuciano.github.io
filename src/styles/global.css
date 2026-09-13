@@ -436,19 +436,12 @@ body,
   break-inside: avoid;
 }
 
-/* El unico acento de la pantalla: baranda */
+/* El link al sitio usa las mismas clases que el de Dmeter (Projects.jsx):
+   aca solo va su lugar dentro de la columna. */
 .mapa__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  width: fit-content;
   margin-bottom: 22px;
-  padding: 12px 20px;
-  background: #2f5568;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: #c6c2b8;
-  transition: opacity 0.3s ease;
+  break-inside: avoid;
 }
 
 .mapa__volver {
@@ -465,7 +458,6 @@ body,
   transition: opacity 0.3s ease;
 }
 
-.mapa__link:hover,
 .mapa__volver:hover {
   opacity: 0.7;
 }

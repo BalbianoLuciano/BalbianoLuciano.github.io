@@ -635,7 +635,14 @@ const Projects = () => {
             <div ref={flujoRef} className={`mapa__flujo no-scrollbar ${hayMas ? 'hay-mas' : ''}`}>
               <p className="mapa__bajada">{pick(elegido.tagline, lang)}</p>
               {!isPlaceholder(elegido.url) && (
-                <a className="mapa__link" href={elegido.url} target="_blank" rel="noreferrer">
+                // Mismas clases que el "See it live" de DmeterOverlay: un solo estilo
+                // de link al sitio en todo el portfolio.
+                <a
+                  className="mapa__link flex items-center gap-2 font-outfit text-sm uppercase tracking-[0.2em] text-white underline-offset-8 transition-opacity hover:underline"
+                  href={elegido.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {t(lang, esRepo(elegido.url) ? 'seeCode' : 'seeItLive')}
                   <i className="bi bi-arrow-up-right" aria-hidden="true" />
                 </a>
