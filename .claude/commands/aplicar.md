@@ -100,5 +100,22 @@ quiere ver y copiar de una.
 ## Si te pasa varios links de una
 
 Procesalos todos. Uno por archivo, todos en el tracker. Al final, un resumen
-corto: cuáles valen la pena y cuáles no encajan, con el motivo. Decile cuando
-algo no le sirve — es más útil que un borrador para un puesto que no le va.
+corto: cuáles valen la pena y cuáles son flojas, con el motivo.
+
+## No se descarta por encaje: se advierte
+
+Corrección del 2026-09-15, en sus palabras: *"no podemos descartar tanto"*.
+
+Aunque el stack no coincida, el nivel sea otro o sea en otro país, **el borrador
+se arma igual**: con los huecos dichos de frente en el texto (VOZ 3-bis) y, si
+es en otro país, preguntando por remoto o nombrando la mudanza. El veredicto
+("floja", "stack principal fuera", "presencial en Chile") va como advertencia
+en el chat y en el archivo, no como motivo para no escribir.
+
+Solo no se arma el copy cuando:
+- **no es un aviso** (una empresa vendiendo sus servicios, un post sin puesto), o
+- **aplicar exige mentir** en algo que se verifica (decir que reside donde no
+  reside, que tiene un lenguaje que no tiene).
+
+Aun ahí se busca la variante honesta: ofrecerse a la red de una consultora de
+staff augmentation, preguntar por otros puestos de la misma empresa.
