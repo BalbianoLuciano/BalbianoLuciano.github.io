@@ -160,6 +160,74 @@ claro y sin modismos forzados.
 Abre con "Hi <nombre>," y cierra con "Talk soon" o "Looking forward to it" —
 nunca "Best regards" a secas ni "Yours sincerely".
 
+## Con recruiters: un poco más formal
+
+Corrección del 2026-09-15, en sus palabras: *"un poquito más formal los
+mensajes, 'si les sirve' suena raro"*.
+
+La muestra de Janeth es cómo le escribe a una **clienta**. A una recruiter o a
+un mail de selección le escribe con el mismo ritmo pero un escalón más formal.
+El voseo se queda.
+
+| En vez de | Va |
+|---|---|
+| "Hola Jorge! ¿Cómo estás?" | "Hola Jorge, ¿cómo estás?" |
+| "hoy lidero" | "actualmente lidero" |
+| "estoy en Buenos Aires" | "resido en Buenos Aires" |
+| "no los usé, lo aclaro de entrada" | "quiero aclarar que no los utilicé en producción" |
+| "¿Te paso el CV?" / "Te dejo el CV" | "¿Te puedo enviar mi CV?" / "Con gusto te envío mi CV" |
+| "si te sirve lo vemos en una reu" | "quedo disponible para coordinar una entrevista" |
+| "Cualquier cosa me escribís por acá!" | (se saca) |
+| "Saludos!" | "Saludos cordiales,\nLuciano Balbiano" (en mails) |
+
+Nunca: "si te sirve", "si les sirve", "reu", "cualquier cosa". Sigue prohibido
+"quedo a la espera de su respuesta": "quedo disponible para coordinar" ofrece
+algo, no espera.
+
+Los mensajes de Dmeter desde el perfil de Bautista siguen con su plantilla.
+
+**El portfolio va siempre, también en los mails.** Un recruiter abre un link
+antes que un PDF, y ahí ve los proyectos. En el CV la URL está, pero enterrada.
+Va pegado al cierre:
+
+- Mail: "Te adjunto mi CV y te comparto mi portfolio, con los proyectos en
+  detalle: https://balbianoluciano.github.io. Quedo disponible para coordinar una
+  entrevista."
+- DM: "Mi portfolio: https://balbianoluciano.github.io. ¿Te puedo enviar mi CV?"
+
+Si el DM se pasa de 500 caracteres al sumarlo, se recorta el resto: el link se
+queda.
+
+## Cuando es un proyecto, no un empleo: se escribe como Dmeter
+
+Regla del 2026-09-14. Si el aviso busca a alguien para **construir un proyecto**
+(freelance, "profesional independiente o equipo chico", piden propuesta
+económica), el mensaje no va como Luciano candidato: va como **Dmeter**, y sale
+**desde el perfil de Bautista**, su socio. Primera persona de Bautista.
+
+La plantilla es la que usa Bautista:
+
+> Hola <nombre>! ¿Cómo estás? Acabo de leer tu post sobre <lo que busca> y
+> tenemos lo que estás buscando.
+>
+> Somos Dmeter, una software factory conformada, además de mí, por 3
+> desarrolladores seniors, y podemos hacernos cargo del proyecto.
+>
+> https://dmeter.com.ar/es/
+>
+> Si necesitás despejar cualquier duda, coordinamos una call de 15 minutos y lo
+> charlamos.
+
+Sobre esa base se suma lo que el aviso pide ver: un proyecto de Dmeter que se
+parezca (con link, si tiene demo abierta), y si piden propuesta, ofrecerla. Corto:
+es un DM, no una carta. Plural ("hicimos", "te armamos"), nunca "co-fundé".
+
+**Menos de 500 caracteres.** LinkedIn lo recomienda en el mismo compositor
+(mejor tasa de respuesta), y la primera versión de 877 hubo que recortarla.
+Y mirar quién publica: si no es técnico, afuera la jerga (multi-tenant, roles y
+permisos, definición funcional); queda el proyecto parecido con un link que
+pueda probar.
+
 ## El largo
 
 - **Mail de aplicación**: 3 párrafos, 150-200 palabras. Nunca más.
