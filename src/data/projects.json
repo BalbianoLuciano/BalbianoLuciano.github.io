@@ -3,8 +3,85 @@
   "_note": "Campos en TODO requieren input de Luciano. Los 6 cases de Dmeter fueron extraidos y verificados desde https://dmeter.com.ar/#cases el 2026-08-28.",
   "projects": [
     {
-      "id": "gridwright",
+      "id": "lost-in-translation",
       "order": 1,
+      "name": "Lost in Translation",
+      "kicker": {
+        "en": "Product · Language learning",
+        "es": "Producto · Aprender idiomas"
+      },
+      "org": "personal",
+      "role": "Creator",
+      "year": "2026",
+      "size": "large",
+      "color": "#7FA8BD",
+      "tagline": {
+        "en": "A personal English tutor that measures before it teaches: it maps 34 topics, drills the weakest ones every day, corrects what you say out loud and explains the rule in Spanish when the English doesn't land.",
+        "es": "Un tutor de inglés personal que mide antes de enseñar: mapea 34 temas, practica los más flojos todos los días, corrige lo que decís en voz alta y explica la regla en español cuando el inglés no alcanza."
+      },
+      "url": "https://github.com/BalbianoLuciano/lost-in-translation",
+      "stack": [
+        "Go",
+        "sqlc",
+        "PostgreSQL",
+        "SvelteKit",
+        "TypeScript",
+        "Python",
+        "Whisper",
+        "Firebase Auth",
+        "Playwright"
+      ],
+      "highlights": {
+        "en": [
+          "The drill declares which pronouns the answer needs before you speak, so a plain comparison catches the slip that Whisper silently corrects while transcribing",
+          "The exercise bank is YAML compiled into a bundle the Go binary embeds: shipping content is a push, with no seed script to forget",
+          "The validator rejects an option that gives itself away by length or position — it used to be the longest one in 94% of items and first in 82%",
+          "435 tests across the API, the web, the content and eight end-to-end flows, with the API tested against a real Postgres"
+        ],
+        "es": [
+          "El ejercicio declara qué pronombres necesita la respuesta antes de que hables, así una comparación simple atrapa el error que Whisper corrige solo al transcribir",
+          "El banco de ejercicios es YAML compilado en un bundle que el binario de Go embebe: publicar contenido es un push, sin script de seed que olvidar",
+          "El validador rechaza la opción que se delata por largo o por posición — antes era la más larga en el 94% de los ítems y la primera en el 82%",
+          "435 tests entre la API, la web, el contenido y ocho flujos end-to-end, con la API probada contra un Postgres real"
+        ]
+      },
+      "spec": {
+        "problem": {
+          "en": "A B2 speaker reads a PR and follows a call, but the grammar is intuition absorbed from films: the right tense often enough, and no way to say why. That plateau does not move by watching more series, and a generic course starts from the cat on the table.",
+          "es": "Un hablante B2 lee un PR y sigue una call, pero la gramática es intuición absorbida de las películas: el tiempo verbal correcto bastante seguido, y ninguna forma de decir por qué. Esa meseta no se mueve mirando más series, y un curso genérico arranca del gato sobre la mesa."
+        },
+        "constraints": {
+          "en": [
+            "Measure first: a placement test maps 34 topics before a single lesson",
+            "Never a verdict without the rule, and one tap gives the same explanation in Spanish",
+            "If an assert can check it, the model does not get a vote: grading, scheduling and mastery are code",
+            "The audio is transcribed and dropped, never stored"
+          ],
+          "es": [
+            "Medir primero: un test de nivel mapea 34 temas antes de la primera lección",
+            "Nunca un veredicto sin la regla, y un toque da la misma explicación en español",
+            "Si un assert lo puede chequear, el modelo no vota: corregir, agendar y mover el dominio es código",
+            "El audio se transcribe y se descarta, nunca se guarda"
+          ]
+        },
+        "outcome": {
+          "en": "A daily session — review, lesson, practice and a speaking drill against the clock — where progress is the drawing itself: one piece per topic, floating while you don't own it and settled when you do.",
+          "es": "Una sesión diaria — repaso, lección, práctica y un ejercicio de habla contra reloj — donde el progreso es el dibujo mismo: una pieza por tema, flotando mientras no lo tenés y calzada cuando sí."
+        }
+      },
+      "ai": {
+        "used": [
+          "Whisper",
+          "Groq",
+          "Claude Code"
+        ],
+        "impact": "The model only does what only it can do: transcribe what you said and answer what the glossary does not cover, with the prompt built from the exercise on screen and the glossary entries the question mentions. Grading, the spaced repetition and the next topic are code."
+      },
+      "image": "/images/projects/lost-in-translation.webp"
+    },
+    {
+      "id": "gridwright",
+      "order": 2,
       "name": "Gridwright",
       "kicker": {
         "en": "Tooling · Design to code",
@@ -80,7 +157,7 @@
     },
     {
       "id": "ibera",
-      "order": 2,
+      "order": 3,
       "name": "Instituto Universitario Iberá",
       "kicker": {
         "en": "Higher education",
@@ -150,7 +227,7 @@
     },
     {
       "id": "portal-de-pericias",
-      "order": 3,
+      "order": 4,
       "name": "Portal de Pericias",
       "kicker": {
         "en": "Legal · SaaS",
@@ -222,7 +299,7 @@
     },
     {
       "id": "hornero",
-      "order": 4,
+      "order": 5,
       "name": "Hornero",
       "kicker": {
         "en": "Retail · SMB",
@@ -296,7 +373,7 @@
     },
     {
       "id": "aureas",
-      "order": 5,
+      "order": 6,
       "name": "Aurea's",
       "kicker": {
         "en": "Subscriptions · Marketplace",
@@ -367,7 +444,7 @@
     },
     {
       "id": "blend-store",
-      "order": 6,
+      "order": 7,
       "name": "Blend Store",
       "kicker": {
         "en": "E-commerce · Retail",
@@ -437,7 +514,7 @@
     },
     {
       "id": "relay",
-      "order": 7,
+      "order": 8,
       "name": "Relay",
       "kicker": {
         "en": "Operations software",
@@ -499,7 +576,7 @@
     },
     {
       "id": "malmberg",
-      "order": 8,
+      "order": 9,
       "name": "Malmberg.nl",
       "kicker": {
         "en": "EdTech · HubSpot CMS",
@@ -565,7 +642,7 @@
     },
     {
       "id": "tgf",
-      "order": 9,
+      "order": 10,
       "name": "El Zorro Gris",
       "kicker": {
         "en": "Older adults · SaaS",
@@ -637,7 +714,7 @@
     },
     {
       "id": "prolicht",
-      "order": 10,
+      "order": 11,
       "name": "Prolicht",
       "kicker": {
         "en": "Manufacturing · CMS migration",
