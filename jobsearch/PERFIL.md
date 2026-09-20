@@ -41,10 +41,11 @@ el aviso, no por defecto.
 Cuando el aviso menciona: LLM, agentes, RAG, MCP, OpenAI/Anthropic, embeddings,
 automatización con IA, prompt engineering, AI product.
 
-> AI Engineer con 5+ años programando y 4+ shipeando proyectos reales. Construye
-> sistemas de IA que llegan a producción en vez de quedarse en la demo: servidores
-> MCP, pipelines RAG y agentes conectados a los sistemas que la gente ya usa.
-> Trabaja spec-first: la especificación antes que el código, y las reglas de
+> AI Engineer con 5+ años programando y 4+ shipeando proyectos reales. La IA que
+> construye se usa: sistemas de generación de contenido sobre las APIs de OpenAI
+> y Claude en producción, un chatbot con streaming, y Gridwright, una herramienta
+> open source que construye interfaces desde el diseño y mide el resultado contra
+> él. Trabaja spec-first: la especificación antes que el código, y las reglas de
 > negocio versionadas como dato en vez de enterradas en el programa.
 
 ### Ángulo B — Team Leader / Full Stack
@@ -66,13 +67,17 @@ confianza de que el sistema se sostiene.
 Co-fundó el estudio y lidera las decisiones técnicas y la arquitectura. Seis productos en
 producción: educación superior, legal, retail, e-commerce y marketplaces.
 
-- Servidor MCP interno en TypeScript sobre el SDK oficial del Model Context
-  Protocol. Expone tools, resources y prompts que todo el equipo consume desde su
-  propia instancia de Claude Code.
-- RAG sobre el portfolio y la documentación interna con embeddings locales
-  (Hugging Face Transformers) y SQLite. Sin servicio vectorial externo.
-- Sistema de generación de propuestas con RAG sobre ChromaDB y Llama 3.3 70B vía
-  Groq y OpenRouter, con scraping de avisos y seguimiento de aplicaciones.
+- **Gridwright**: plugin open source de Claude Code que convierte una página de
+  Figma en componentes y los mide contra el diseño. Máquina de estados en disco
+  y verificaciones escritas como código. 250 tests; 98,54% de fidelidad en una
+  landing de 12 secciones, contra 89% del mismo agente sin la herramienta.
+  Público: github.com/BalbianoLuciano/gridwright
+- **Agente RAG en Python** para generar propuestas (2.968 líneas): ChromaDB con
+  embeddings multilingües de sentence-transformers, recuperación con umbral y
+  re-ranking por coincidencia de stack, y capa de LLM con Groq (Llama 3.3 70B) y
+  failover automático a OpenRouter, con reintentos. Scraping de avisos con httpx
+  y Playwright, CLI con typer. **Es un prototipo interno: funciona de punta a
+  punta, con una corrida real.** No decir que está en producción.
 - Principio de diseño transversal: **el sistema genera, la persona decide**. Nada
   se envía ni se publica solo.
 
@@ -85,10 +90,30 @@ Madrid, España. Progresión Full Stack Developer → Project Lead → Team Lead
 - Motor de reglas de negocio versionadas: la tabla de esfuerzo por tipo de
   actividad y los límites por franja etaria son dato, y cambian sin tocar el
   algoritmo.
+- **Migración de una plataforma editorial multi-idioma (Python)**: 29 scripts que
+  parsean cuatro bases MySQL legacy (español, euskera, catalán, gallego), las
+  consolidan y emiten los CSV de importación al CMS nuevo. **26.634 registros,
+  29.194 correcciones de formato y más de 1.580 archivos** migrados y renombrados
+  por clave sintética. Claves de idempotencia `{sitio}_{slug}`: reimportar
+  actualiza en vez de duplicar, y las entidades no se cruzan entre idiomas.
+- **Herramientas de migración en Python para otros dos sitios**: crawler
+  recursivo con BeautifulSoup y Playwright (277 y 75 páginas inventariadas, con
+  componentes y links rotos) y un dump MySQL de producción parseado a SQLite de
+  97 tablas para analizarlo.
 - Detectó omisiones críticas que permitieron renegociar acuerdos con clientes y
   corregir el alcance antes de que fuera tarde.
 - HubSpot CMS: workflows complejos, funciones serverless, arquitectura de
   componentes. Legacy en PHP 5.x con Docker.
+
+### Henry — Instructor · oct. 2022 – nov. 2022
+Bootcamp full-stack de JavaScript. Acompañó a estudiantes en la etapa de
+repaso: sesiones sobre los módulos ya vistos meses antes (JavaScript, React y
+Node), volviendo sobre lo que no había quedado firme y revisando el código de
+cada uno con ellos.
+
+Sirve cuando el aviso pregunta por experiencia docente o de mentoría, que es
+cada vez más común en puestos senior y de lead. Conecta con lo que hace hoy:
+code reviews y acompañamiento del equipo en Invisible Geeks.
 
 ### Freelance — Full Stack · 2023 – 2025
 Proyectos de punta a punta, con foco en front-end.
@@ -99,7 +124,9 @@ Los números son lo que hace la diferencia. Usarlos siempre que vengan al caso.
 
 | Proyecto | El número | Qué es |
 |---|---|---|
-| **Dmeter MCP Server** | usado a diario por todo el equipo | Centraliza las operaciones del estudio y las expone a cualquier cliente MCP. RAG sobre proyectos y documentación, generación de propuestas y documentos, estimación de presupuestos, onboarding. Multi-usuario. |
+| **Gridwright** | **98,54% vs 89%** del mismo agente sin la herramienta; 250 tests | Plugin open source de Claude Code: de una página de Figma a componentes registrados en el design system del proyecto, medidos contra el diseño con un diff perceptual. Lo que se puede verificar con un assert es código; lo que necesita criterio queda para el modelo. |
+| **Migración editorial multi-idioma** (Invisible Geeks) | **26.634 registros** y 29.194 correcciones; 1.580+ archivos | ETL propio en Python: cuatro bases MySQL legacy, una por idioma, consolidadas en un CMS nuevo con objetos personalizados, con claves de idempotencia para poder reimportar sin duplicar. |
+| **Lost in Translation** | 240 ítems y 33 habilidades validados en CI | Producto propio: profesor de inglés que diagnostica, enseña y evalúa. El banco de contenido es YAML y una herramienta en Python (pydantic estricto, pytest) lo valida y lo compila al bundle que embebe la API en Go. |
 | **Prolicht** (prolicht.at) | **257 proyectos** migrados, dos décadas de contenido | Sitio y catálogo de un fabricante austríaco de iluminación LED arquitectónica. Comandos reproducibles con dry-run para revisar el diff antes de aplicar. Configurador de ambientes y editor de presentaciones con link compartible. |
 | **Malmberg.nl** | **800+ páginas** migradas | Migración completa a HubSpot CMS sobre un boilerplate propio de React Islands con hidratación selectiva: solo los componentes realmente interactivos mandan JavaScript. |
 | **Hornero** | **248 tests** contra Postgres real | Un motor que corre igual para una tienda de ropa, una ferretería o un gimnasio: lo que cambia entre rubros es dato, no código. Aislamiento entre negocios garantizado por Postgres (RLS), no por el ORM. |
@@ -156,6 +183,26 @@ si preguntan, es que Dmeter es un estudio con socios y equipo, no un proyecto
 que dependa de que él esté full time — y que lo que busca es exactamente el tipo
 de problema que ahí no puede resolver.
 
+## Lo que NO se dice
+
+Corrección del 2026-09-18, en sus palabras: *"no quiero mentir, no terminé el
+desarrollo de esto y no se utiliza"*.
+
+- **El servidor MCP interno de Dmeter**: quedó sin terminar y **no está en uso**.
+  Durante semanas se escribió en CVs, mensajes y en el portfolio que "todo el
+  equipo lo consume a diario desde su Claude Code". Eso es falso y no se vuelve
+  a escribir. Si el aviso pide MCP, lo que se puede decir es que conoce el
+  protocolo y trabajó sobre el SDK, no que tenga un servidor en uso.
+- **El agente RAG de propuestas** funciona de punta a punta pero es un
+  **prototipo interno con una corrida real**: no es "un sistema en producción".
+- **A confirmar con él**, porque se venían contando con el mismo tono que el MCP:
+  el **RAG sobre la documentación del estudio** con embeddings locales y SQLite,
+  y **Relay**, que figura como "producto propio, en producción" con demo abierta.
+  Hasta que confirme, el RAG no se menciona y de Relay no se dice "en producción".
+
+La regla: antes de escribir "en producción", "lo usa el equipo" o "a diario",
+se confirma con él. El daño de un dato inflado no es el CV, es la entrevista.
+
 ## Datos sensibles
 
 DNI, domicilio, expectativa salarial, salario actual y demográficos están en
@@ -181,6 +228,9 @@ Preguntar antes de afirmar cualquiera de estos:
 - [x] ~~Relación formal con Dmeter~~ — **CO-FUNDADOR**, confirmado el 2026-09-03.
       Es la respuesta a "¿cómo sostenés dos puestos a la vez?": no son dos
       empleos, es una empresa que fundó y un empleo. Ver la nota de abajo.
+- [x] ~~Franja para entrevistas~~ — **11:00 a 15:30 (GMT-3, Buenos Aires)**,
+      confirmado el 2026-09-18. Es la franja que ofrece para llamadas y
+      screenings; fuera de ahí, se consulta.
 - [ ] **Horario real en Invisible Geeks** — ¿cumple horario español completo (9 a
       18 CEST, que en Buenos Aires son las 4 AM a la 1 PM) o trabaja horario
       argentino con solapamiento? Aparece cada vez que un aviso europeo pide
