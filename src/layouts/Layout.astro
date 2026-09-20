@@ -10,8 +10,8 @@ interface Props {
 const SITIO = 'https://balbianoluciano.github.io';
 
 const {
-	title = 'Luciano Balbiano — AI Engineer',
-	description = 'AI Engineer especializado en spec-driven development. Construyo sistemas de IA que llegan a producción: servidores MCP, pipelines RAG y agentes integrados en los sistemas que ya usás.',
+	title = 'Luciano Balbiano — Software Engineer',
+	description = 'Software Engineer especializado en spec-driven development. Construyo sistemas de IA que llegan a producción: servidores MCP, pipelines RAG y agentes integrados en los sistemas que ya usás.',
 	image = '/images/og.jpg',
 } = Astro.props;
 
@@ -43,7 +43,7 @@ const imagenAbsoluta = new URL(image, Astro.site ?? SITIO).href;
 		<meta property="og:image" content={imagenAbsoluta} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Luciano Balbiano — AI Engineer" />
+		<meta property="og:image:alt" content="Luciano Balbiano — Software Engineer" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:locale:alternate" content="es_ES" />
 
@@ -75,7 +75,7 @@ const imagenAbsoluta = new URL(image, Astro.site ?? SITIO).href;
 				name: 'Luciano Balbiano',
 				url: SITIO,
 				image: `${SITIO}/images/og.jpg`,
-				jobTitle: 'AI Engineer',
+				jobTitle: 'Software Engineer',
 				email: 'mailto:balbiano06@gmail.com',
 				description,
 				sameAs: [
