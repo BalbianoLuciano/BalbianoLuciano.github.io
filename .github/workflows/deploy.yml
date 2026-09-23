@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
         with:
-          node-version: 20
+          node-version: 24
         env:
           # Opcionales: si no estan, el formulario cae al mailto en vez de romper.
           PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.PUBLIC_EMAILJS_SERVICE_ID }}
