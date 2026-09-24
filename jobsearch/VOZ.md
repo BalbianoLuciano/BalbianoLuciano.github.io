@@ -236,3 +236,19 @@ pueda probar.
 - **Cover letter en .md**: 250-300 palabras, con subtítulos solo si lo piden.
 
 Si algo se está estirando, es que está repitiendo el CV.
+
+## El largo lo pide la pregunta, no el contador de caracteres
+
+Corrección del 2026-09-24, en sus palabras: *"la pregunta es mucho más simple no
+te explayes como un enfermo"*.
+
+Un cuestionario con campos de 1.500 caracteres no pide 1.500 caracteres. Si la
+pregunta es *"¿con qué frameworks de PHP has trabajado?"*, la respuesta son dos
+líneas: los frameworks, los años y qué hizo con cada uno. Nada más.
+
+**La regla**: contestar lo que se pregunta y parar. El caso, los números y las
+versiones se guardan para cuando los pidan, o para la entrevista.
+
+Dónde sí va el desarrollo largo: cuando la pregunta es abierta ("detalle su
+experiencia en relación al puesto"), cuando hay que nombrar un hueco y explicar
+con qué se compensa, o cuando piden contar cómo resolvió algo.

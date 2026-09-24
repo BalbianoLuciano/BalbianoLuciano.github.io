@@ -8,6 +8,7 @@
 | | |
 |---|---|
 | Nombre | Luciano Balbiano |
+| Título | **AI native & Fullstack developer** (desde 2026-09-24: es el que usa en el portfolio, InfoJobs y LinkedIn) |
 | Mail | balbiano06@gmail.com |
 | GitHub | github.com/BalbianoLuciano |
 | LinkedIn | linkedin.com/in/luciano-balbiano |
@@ -18,9 +19,11 @@
 | Modalidad | Remoto · dispuesto a mudarse |
 | Idiomas | Español nativo · Inglés B2 (EF SET certificado) |
 
-**Sobre el inglés**: B2 real. No decir "fluent" ni "bilingual". Sí decir que
-trabaja a diario con documentación, equipos y clientes en inglés, que es cierto
-(Malmberg es holandés, Prolicht austríaco).
+**Sobre el inglés**: B2 real. No decir "fluent" ni "bilingual". Lo que sí es
+cierto (corrección suya del 2026-09-23): **lee y escribe en inglés todos los
+días** —documentación, specs, code review— y **puede sostener una conversación y
+explicar un problema técnico o una duda que surja**. Lo que NO: que hable a
+diario con los clientes de Austria u Holanda. Eso no es así.
 
 Cuando un formulario pregunta el nivel, él mismo contestó así y conviene sostenerlo:
 
@@ -83,6 +86,7 @@ producción: educación superior, legal, retail, e-commerce y marketplaces.
 
 ### Invisible Geeks — Team Leader · 2025 – presente
 Madrid, España. Progresión Full Stack Developer → Project Lead → Team Leader.
+**Lidera un equipo de 3 personas.** Preaviso: 1 semana.
 
 - Lidera proyectos full-stack con PHP, Laravel, Vue.js y Tailwind.
 - Sistemas de generación de contenido integrando OpenAI, Claude, Google Maps y
@@ -146,7 +150,7 @@ Son sus números, no estimaciones.
 | Node.js | 5 | HubSpot | 4 |
 | MySQL | 5 | Vue.js | 4 |
 | Firebase | 4 | React Native | 4 |
-| Claude Code | 2 | | |
+| Claude Code | desde su lanzamiento | | |
 
 **Total: 5 años.** Si preguntan por algo que no está en la tabla, se responde con
 lo que hay y se compensa en el texto libre. No se infla.
@@ -158,7 +162,7 @@ lo que hay y se compensa en el texto libre. No se infla.
 | LLMs y agentes | MCP, Claude Code, OpenAI API, Claude API, Groq, OpenRouter, Llama 3.3 |
 | RAG y datos | ChromaDB, Hugging Face Transformers, embeddings locales, SQLite, PostgreSQL, MySQL, Prisma, Drizzle |
 | Lenguajes | TypeScript, JavaScript, Python, PHP |
-| Web | Laravel, Vue, React, Next.js, Astro, Inertia.js, Tailwind, Hono |
+| Web | Laravel, **Symfony** (mantenimiento de legacy), Vue, React, Next.js, Astro, Inertia.js, Tailwind, Hono |
 | Infra | Cloudflare Workers, Docker, Vite |
 | Testing | Pest, Playwright, golden tests |
 | Método | Spec-driven development, reglas de negocio versionadas |
@@ -221,10 +225,8 @@ Preguntar antes de afirmar cualquiera de estos:
       impedimento.** Acepta híbrido en Buenos Aires y mudarse. Mandar todo lo que
       se pueda.
 - [x] ~~Inglés~~ — **B2 confirmado por él.** No inflar a C1 en ningún lado.
-- [ ] **Preaviso real en Invisible Geeks** — el perfil de autofill dice
-      "inmediata" pero sigue empleado ahí. Si es inmediata de verdad, bien; si
-      son 15 días o un mes, hay que corregirlo antes de que se lo prometa a
-      alguien.
+- [x] ~~Preaviso real en Invisible Geeks~~ — **1 semana**, confirmado el
+      2026-09-23. Es lo que se contesta en "disponibilidad para iniciar".
 - [x] ~~Relación formal con Dmeter~~ — **CO-FUNDADOR**, confirmado el 2026-09-03.
       Es la respuesta a "¿cómo sostenés dos puestos a la vez?": no son dos
       empleos, es una empresa que fundó y un empleo. Ver la nota de abajo.
@@ -235,5 +237,11 @@ Preguntar antes de afirmar cualquiera de estos:
       18 CEST, que en Buenos Aires son las 4 AM a la 1 PM) o trabaja horario
       argentino con solapamiento? Aparece cada vez que un aviso europeo pide
       horario de allá. Sin este dato no se puede afirmar nada en un mail.
-- [ ] Tamaño de los equipos que lidera (IG y Dmeter)
+- [x] ~~Equipo en Invisible Geeks~~ — **lidera a 3 personas**, confirmado el
+      2026-09-23.
+- [ ] Tamaño del equipo en Dmeter
+- [x] ~~Symfony~~ — **confirmado el 2026-09-24**: sí trabajó con Symfony, en
+      mantenimiento de software y sitios legacy. No hay proyecto nuevo hecho en
+      Symfony, y por ser viejos no los lista en el CV, pero "Symfony" en el CV
+      está respaldado. Falta la versión, si alguna vez hace falta precisarla.
 - [ ] Stack de Relay
