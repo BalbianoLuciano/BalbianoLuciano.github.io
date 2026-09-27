@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Gridwright — carrusel</title>
+<!-- Fuentes: las mismas del manual. Dharma del kit de Typekit, Aileron local
+     de respaldo, Outfit y Plex Mono de Google. -->
+<link rel="stylesheet" href="https://use.typekit.net/tyi0xxl.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=block">
+<style>
+  @font-face { font-family: 'Aileron'; src: url('fonts/aileron-black.woff2') format('woff2'); font-weight: 900; }
+
+  /* Especificacion 002 · la slide: 1080 x 1350, modulo 90, margen 90, caja 900 x 1170 */
+  @page { size: 1080px 1350px; margin: 0; }
+  :root {
+    --hormigon: #a8a49b; --luz: #c6c2b8; --sombra: #55524c; --vacio: #15130f; --baranda: #2f5568;
+    --m: 90px;
+    --linea: rgba(21, 19, 15, 0.34);
+    --linea-suave: rgba(21, 19, 15, 0.16);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--hormigon); }
+  /* Solo en pantalla: cada slide como una tarjeta, para verlo en el navegador.
+     El PDF sale de capturas de cada .slide, asi que esto no lo toca. */
+  @media screen {
+    html, body { background: #2a2824; }
+    body { padding: 48px 0; }
+    .slide { margin: 0 auto 48px; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+  }
+
+  .slide {
+    width: 1080px; height: 1350px;
+    position: relative; overflow: hidden;
+    background: var(--hormigon); color: var(--vacio);
+    padding: var(--m);
+    display: flex; flex-direction: column; gap: 28px;
+    break-after: page;
+  }
+  .slide:last-child { break-after: auto; }
+
+  /* Ley 04 · los agujeros de los tensores. Ocupan solo el vacio: cada bloque de
+     contenido lleva el fondo del hormigon y los tapa. */
+  .slide::before {
+    content: ''; position: absolute; inset: var(--m); z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle at center, rgba(21,19,15,0.22) 0 2.5px, transparent 2.7px);
+    background-size: var(--m) var(--m);
+  }
+  .slide > *:not(.pilar) {
+    position: relative; z-index: 1;
+    background: var(--hormigon);
+    padding: 10px 16px; margin-left: -16px; margin-right: -16px;
+  }
+  .slide > .img { background: transparent; padding: 0; margin: 0; }
+
+  /* Escala: 162 · 108 · 72 · 48 · 32 · 24. Ninguna fuera. */
+  .titular {
+    font-family: 'dharma-gothic-e', 'Aileron', 'Helvetica Neue', sans-serif;
+    font-weight: 700; font-style: normal; text-transform: none;
+    line-height: 0.86; letter-spacing: 0.004em; word-spacing: 0.04em;
+    font-size: 108px; margin: 0;
+  }
+  .t162 { font-size: 162px; }
+  .t72  { font-size: 72px; }
+  .d48  { font-family: 'Outfit', sans-serif; font-size: 48px; line-height: 1.18; font-weight: 500; margin: 0; }
+  .c32  { font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.42; font-weight: 400; margin: 0; }
+  .c24  { font-family: 'Outfit', sans-serif; font-size: 24px; line-height: 1.45; margin: 0; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 24px; line-height: 1.5; margin: 0; }
+  .etiqueta { text-transform: uppercase; letter-spacing: 0.14em; color: var(--sombra); }
+  .baranda { color: var(--baranda); }
+  .sombra { color: var(--sombra); }
+  code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.86em; }
+
+  .pie {
+    margin-top: auto !important;
+    display: flex; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sombra);
+    border-top: 1px solid var(--linea); padding-top: 18px !important;
+  }
+
+  /* El pilar. Las piezas se ensamblan como las secciones de una pagina en
+     gridwright: cada una tiene arriba una curva convexa y abajo una concava
+     que calza con la siguiente. Separadas se ve que encajan; juntas, son una
+     sola columna. Vectorial, en la linea fina del manual. */
+  .pilar {
+    position: absolute; right: var(--m); top: var(--m); bottom: calc(var(--m) + 110px);
+    width: 216px; z-index: 1;
+  }
+  .pilar svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pilar path { fill: var(--hormigon); stroke: var(--linea); stroke-width: 1.25; }
+  .con-pilar > *:not(.pilar):not(.pie) { max-width: 646px; }
+
+  /* Imagen: blanco y negro, contraste 1.35, horneado en el archivo (img/). */
+  .img img { display: block; width: 100%; border: 1px solid var(--vacio); }
+  .img figcaption { margin-top: 10px; }
+
+  /* Tablas en linea fina: la estructura a la vista, sin cajas */
+  table { width: 100%; border-collapse: collapse; }
+  th { font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 500; text-transform: uppercase;
+       letter-spacing: 0.1em; color: var(--sombra); text-align: left; padding: 0 18px 12px 0;
+       border-bottom: 1px solid var(--vacio); }
+  td { font-family: 'Outfit', sans-serif; font-size: 24px; line-height: 1.35; padding: 9px 18px 9px 0;
+       border-bottom: 1px solid var(--linea-suave); vertical-align: top; }
+  td.num, th.num { text-align: right; padding-right: 0; font-family: 'IBM Plex Mono', monospace; }
+  td.mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .flujo { border: 1px solid var(--vacio); padding: 18px 22px !important; margin: 0 !important; }
+  .cita { border-left: 3px solid var(--baranda); padding-left: 24px !important; margin-left: 0 !important; }
+
+  .baldes { display: grid; gap: 0; }
+  .balde { display: grid; grid-template-columns: 170px 1fr; align-items: baseline; gap: 24px;
+           padding: 14px 0; border-bottom: 1px solid var(--linea-suave); }
+  .balde .titular { font-size: 72px; line-height: 0.8; }
+  .balde { grid-template-columns: 120px 1fr; align-items: center; padding: 16px 0; }
+
+  .specs { display: grid; margin: 0; }
+  .specs > div { display: grid; grid-template-columns: 230px 1fr; gap: 20px; align-items: baseline;
+                 padding: 8px 0; border-bottom: 1px solid var(--linea-suave); }
+  .specs dt { font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sombra); }
+  .specs dd { margin: 0; font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.25; }
+</style>
+</head>
+<body>
+
+<!-- 01 · El hook. Se entiende sola (Ley 01). -->
+<section class="slide con-pilar">
+  <p class="mono etiqueta">Claude Code plugin</p>
+  <h1 style="margin-top:0;margin-bottom:0"><span class="titular t72" style="display:block">Introducing</span><span class="titular t162" style="display:block;margin-top:6px">Gridwright</span></h1>
+  <p class="d48">It devours a Figma page and returns it built: measured against the design, every piece filed where your codebase keeps it.</p>
+  <div style="margin-top:auto">
+    <p class="titular t162 baranda" style="line-height:0.8">98.54%</p>
+    <p class="mono sombra" style="margin-top:14px">Fidelity at 1440px, a whole landing page.<br>12 sections, one command.</p>
+  </div>
+  <p class="pie" style="margin-top:0 !important"><span>Luciano Balbiano</span><span>01 / 09</span></p>
+  <div class="pilar" data-gap="16"></div>
+</section>
+
+<!-- 02 · El problema. El error antes que el resultado. -->
+<section class="slide">
+  <p class="mono etiqueta">01 — The problem</p>
+  <h2 class="titular">A prompt is<br>a suggestion</h2>
+  <p class="c32" style="max-width:820px">The obvious move is a long prompt that tells an agent how to build a layout. I tried it. An earlier repo had a five-phase workflow written in prose, and the agent skipped the analysis every time the request looked simple.</p>
+  <p class="d48 baranda" style="max-width:820px">So the workflow stopped being text.</p>
+  <p class="pie"><span>Gridwright</span><span>02 / 09</span></p>
+</section>
+
+<!-- 03 · El metodo. Ley 02: la logica va en la manga. -->
+<section class="slide">
+  <p class="mono etiqueta">02 — The method</p>
+  <h2 class="titular">Claude doesn't pick the<br>next step. It asks.</h2>
+  <p class="mono flujo">gw next --json → do exactly that stage<br>→ gw done → gw next --json → …</p>
+  <p class="c32">The workflow is a state machine on disk, and a CLI enforces it.</p>
+  <table>
+    <thead><tr><th>Code does this</th><th>The model does this</th></tr></thead>
+    <tbody>
+      <tr><td>Pull the node, the assets and the reference</td><td>Write the component the way this repo writes them</td></tr>
+      <tr><td>Distill the tree into an IR</td><td>Name things, decide the prop API</td></tr>
+      <tr><td>Match and classify tokens</td><td>Name the new tokens</td></tr>
+      <tr><td>Index existing components</td><td>Decide what to reuse</td></tr>
+      <tr><td>Render, measure, diff</td><td>Read the diff and fix it</td></tr>
+    </tbody>
+  </table>
+  <p class="d48 baranda">If it can be checked with an assert, the model doesn't do it.</p>
+  <p class="pie"><span>Gridwright</span><span>03 / 09</span></p>
+</section>
+
+<!-- 04 · Diseño contra render. As found. -->
+<section class="slide">
+  <p class="mono etiqueta">03 — Design against render</p>
+  <h2 class="titular">The Figma, then<br>what it built</h2>
+  <figure class="img" style="margin:0"><img src="img/hero-figma.png" alt="Launch UI hero in Figma"><figcaption class="mono etiqueta">Figma</figcaption></figure>
+  <figure class="img" style="margin:0"><img src="img/hero-render.png" alt="The same hero built by Gridwright"><figcaption class="mono etiqueta">Gridwright · 1440px · <span class="baranda">91.73</span></figcaption></figure>
+  <p class="c32">Same band. The headline is in the wrong typeface: see 07.</p>
+  <p class="pie"><span>Gridwright</span><span>04 / 09</span></p>
+</section>
+
+<!-- 05 · Doce agentes. -->
+<section class="slide">
+  <p class="mono etiqueta">04 — A whole page</p>
+  <h2 class="titular">Twelve sections.<br>Twelve agents.</h2>
+  <p class="c32"><code>gw build --view</code> takes each child of the page as a section, runs one sub-agent per section in parallel, and composes the page.</p>
+  <div class="dos-tablas" style="display:grid;grid-template-columns:1fr 1fr;gap:48px"><table><thead><tr><th>Section</th><th class="num">Score</th></tr></thead><tbody><tr><td class="mono">NavbarDefault <span class="sombra">layout</span></td><td class="num">95.70</td></tr><tr><td class="mono">HeroDefault</td><td class="num">91.73</td></tr><tr><td class="mono">Logos</td><td class="num">85.81</td></tr><tr><td class="mono">BentoGrid2x2 *</td><td class="num">95.43</td></tr><tr><td class="mono">ItemsDefault</td><td class="num">98.23</td></tr><tr><td class="mono">FeatureRising</td><td class="num">88.87</td></tr></tbody></table><table><thead><tr><th>Section</th><th class="num">Score</th></tr></thead><tbody><tr><td class="mono">TabsDefault</td><td class="num">95.32</td></tr><tr><td class="mono">Testimonials</td><td class="num">97.28</td></tr><tr><td class="mono">PricingDefault</td><td class="num">97.78</td></tr><tr><td class="mono">FAQDefault</td><td class="num">100.00</td></tr><tr><td class="mono">CTA</td><td class="num">98.81</td></tr><tr><td class="mono">Footer <span class="sombra">layout</span></td><td class="num">97.23</td></tr></tbody></table></div>
+  <p class="mono">Composed page: <span class="baranda">98.54%</span> · structural 99.47 · chromatic 100 · perceptual 95.22</p>
+  <p class="mono sombra">* Rejected by distill first, built on its own later. See 07.</p>
+  <p class="pie"><span>Gridwright</span><span>05 / 09</span></p>
+</section>
+
+<!-- 06 · Los tokens antes que el componente. La organizacion. -->
+<section class="slide">
+  <p class="mono etiqueta">05 — Tokens first</p>
+  <h2 class="titular">80 values in the design.<br>65 were already there.</h2>
+  <p class="c32">Resolved before a line of the component is written. The new ones are asked once, for the whole page.</p>
+  <div class="baldes">
+    <div class="balde"><span class="titular baranda">65</span><p class="c32"><strong style="font-weight:600">exact</strong> — already in the system, used as is</p></div>
+    <div class="balde"><span class="titular">7</span><p class="c32"><strong style="font-weight:600">near</strong> — within ΔE 1 or a couple of pixels, the system's value wins</p></div>
+    <div class="balde"><span class="titular">8</span><p class="c32"><strong style="font-weight:600">new</strong> — needs a name and a decision</p></div>
+  </div>
+  <p class="mono sombra">Against 38 project tokens + 513 from Tailwind's theme</p>
+  <p class="d48">Otherwise the model writes <code>bg-[#1a1a1a]</code> and someone refactors.</p>
+  <p class="pie"><span>Gridwright</span><span>06 / 09</span></p>
+</section>
+
+<!-- 07 · Con y sin. El dato que perturba. -->
+<section class="slide">
+  <p class="mono etiqueta">06 — Same agent, without it</p>
+  <h2 class="titular">99.8% against 89%</h2>
+  <figure class="img" style="margin:0"><img src="img/untitled-paneles.png" alt="Figma design, the Gridwright build at 99.8%, and the control at 89% with grey placeholders"></figure>
+  <p class="c32">One section of Untitled UI, built twice from the same commit, in two clones that never saw each other. Same prompt, same ruler. One arm had Gridwright.</p>
+  <p class="d48">The control laid the mosaic out with <span class="baranda">position: absolute.</span></p>
+  <p class="c32">It got the layout right, 94% structural. It lost on placeholder photos and an approximate brand colour, a minute's fix each. <code>position: absolute</code> isn't: it breaks at the first width the design wasn't drawn for.</p>
+  <p class="pie"><span>Gridwright</span><span>07 / 09</span></p>
+</section>
+
+<!-- 08 · Lo que se rompio. -->
+<section class="slide">
+  <p class="mono etiqueta">07 — What broke</p>
+  <h2 class="titular">The score didn't<br>see the typeface</h2>
+  <p class="c32">The builds came out in the project's default font instead of Inter, and the score didn't notice: the perceptual diff masks text. Now <code>gw build</code> warns when the project doesn't load a typeface from the design. It doesn't substitute and it doesn't install.</p>
+  <p class="c32">Distill rejected one Launch UI section: layers in absolute position, no auto-layout, nothing to extract. The page went on with the other eleven, and that rejection surfaced a bug, the view's registration stopped at the skipped section. Fixed, then the section was built on its own.</p>
+  <p class="mono cita">This frame does not use auto-layout, so there is no layout to infer. A better prompt will not fix this: it gets fixed in Figma.</p>
+  <p class="pie"><span>Gridwright</span><span>08 / 09</span></p>
+</section>
+
+<!-- 09 · Donde esta. -->
+<section class="slide con-pilar">
+  <p class="mono etiqueta">08 — Where it stands</p>
+  <h2 class="titular">Responsive<br>is next</h2>
+  <p class="c32">Every score here is at the width the design was drawn at. At 375 and 768 the same page gives 63% and 65%: those widths have no frame to measure against. No fix yet.</p>
+  <dl class="specs">
+    <div><dt>Started</dt><dd>3 September 2026</dd></div>
+    <div><dt>Commits</dt><dd>64</dd></div>
+    <div><dt>Tests</dt><dd>250</dd></div>
+    <div><dt>Runtime deps</dt><dd>5</dd></div>
+    <div><dt>Spec</dt><dd>10 laws, written first</dd></div>
+    <div><dt>Install</dt><dd>Repo only, no npm yet</dd></div>
+  </dl>
+  <p class="d48 baranda">Open source, MIT.<br>Link in the first comment.</p>
+  <p class="pie"><span>Luciano Balbiano</span><span>09 / 09</span></p>
+  <div class="pilar" data-gap="0"></div>
+</section>
+
+
+<script>
+  // El pilar es la pagina de Launch UI cortada en sus 12 secciones, con el alto
+  // real de cada una (baselines de gridwright a 1440: suman 8599 px). As found.
+  // Las juntas son distintas entre cada par —recta, diagonal, espiga, escalon,
+  // arcos de distinta flecha— y cada una es la misma linea a los dos lados:
+  // por eso calzan. Separadas se ve que encajan; en la ultima, ensambladas.
+  const SECCIONES = [68, 1389, 252, 1328, 552, 1035, 874, 776, 901, 592, 452, 380];
+
+  // Perfiles de junta en coordenadas normalizadas: x de 0 a 1, y en unidades de
+  // amplitud (negativo = sube). 'Q' es curva cuadratica, 'L' recta.
+  const JUNTAS = [
+    [[0, 0], ['L', 1, 0]],                                                       // navbar | hero: recta
+    [[0, -0.7], ['L', 1, 0.7]],                                                  // diagonal
+    [[0, 0], ['Q', 0.5, 2, 1, 0]],                                               // arco hacia abajo
+    [[0, 0], ['L', 0.34, 0], ['L', 0.34, -1], ['L', 0.66, -1], ['L', 0.66, 0], ['L', 1, 0]], // espiga
+    [[0, 0], ['Q', 0.28, -2, 1, 0]],                                             // arco corrido
+    [[0, -0.6], ['L', 0.52, -0.6], ['L', 0.52, 0.6], ['L', 1, 0.6]],             // escalon
+    [[0, 0], ['Q', 0.5, -2, 1, 0]],                                              // arco
+    [[0, 0], ['L', 0.4, 0], ['L', 0.4, 1], ['L', 0.72, 1], ['L', 0.72, 0], ['L', 1, 0]], // espiga baja
+    [[0, 0], ['Q', 0.74, 2, 1, 0]],                                              // arco corrido al otro lado
+    [[0, 0.7], ['L', 1, -0.7]],                                                  // diagonal inversa
+    [[0, 0], ['Q', 0.5, -2, 1, 0]],                                              // arco chico
+  ];
+
+  // Recorre un perfil de izquierda a derecha, o al reves, sobre la linea base y.
+  function tramo(perfil, W, y, a, alReves) {
+    const pts = [perfil[0], ...perfil.slice(1)];
+    const P = (x, dy) => `${(x * (W - 1.2) + 0.6).toFixed(2)} ${(y + dy * a).toFixed(2)}`;
+    if (!alReves) {
+      return pts.slice(1).map((s) => s[0] === 'Q'
+        ? `Q${P(s[1], s[2])} ${P(s[3], s[4])}` : `L${P(s[1], s[2])}`).join(' ');
+    }
+    // al reves: cada segmento va hasta el punto anterior, con el mismo control
+    const fin = (k) => (k === 0 ? perfil[0] : (perfil[k][0] === 'Q' ? [perfil[k][3], perfil[k][4]] : [perfil[k][1], perfil[k][2]]));
+    let d = '';
+    for (let k = perfil.length - 1; k >= 1; k--) {
+      const s = perfil[k], to = fin(k - 1);
+      d += s[0] === 'Q' ? `Q${P(s[1], s[2])} ${P(to[0], to[1])} ` : `L${P(to[0], to[1])} `;
+    }
+    return d.trim();
+  }
+  const inicio = (perfil) => perfil[0];
+  const final = (perfil) => { const s = perfil[perfil.length - 1]; return s[0] === 'Q' ? [s[3], s[4]] : [s[1], s[2]]; };
+
+  document.querySelectorAll('.pilar').forEach((el) => {
+    const W = 216, H = el.clientHeight, gap = Number(el.dataset.gap), n = SECCIONES.length;
+    const escala = (H - (n - 1) * gap) / SECCIONES.reduce((a, b) => a + b, 0);
+    const alto = SECCIONES.map((h) => h * escala);
+    // amplitud de cada junta: acotada por la pieza mas chica de las dos
+    const amp = JUNTAS.map((_, k) => Math.min(0.38 * Math.min(alto[k], alto[k + 1]), 52));
+    let y = 0, d = '';
+    for (let k = 0; k < n; k++) {
+      const top = y, bot = y + alto[k];
+      const arriba = k > 0 ? JUNTAS[k - 1] : [[0, 0], ['L', 1, 0]];
+      const abajo = k < n - 1 ? JUNTAS[k] : [[0, 0], ['L', 1, 0]];
+      const aA = k > 0 ? amp[k - 1] : 0, aB = k < n - 1 ? amp[k] : 0;
+      const x = (v) => (v * (W - 1.2) + 0.6).toFixed(2);
+      const s0 = inicio(arriba), e1 = final(abajo);
+      d += `<path d="M${x(s0[0])} ${(top + s0[1] * aA).toFixed(2)} ${tramo(arriba, W, top, aA, false)} `
+        + `L${x(e1[0])} ${(bot + e1[1] * aB).toFixed(2)} ${tramo(abajo, W, bot, aB, true)} Z"/>`;
+      y = bot + gap;
+    }
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${d}</svg>`;
+  });
+</script>
+</body>
+</html>
