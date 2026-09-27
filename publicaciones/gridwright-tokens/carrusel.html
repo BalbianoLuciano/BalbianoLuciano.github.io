@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Gridwright · tokens — carrusel</title>
+<!-- Mismo molde que publicaciones/gridwright/carrusel.html: especificacion 002,
+     1080x1350, modulo 90, escala 162/108/72/48/32/24, hormigon y baranda.
+     Cuatro slides, no nueve: la pieza habla de UNA decision del codigo.
+
+     UNICA EXCEPCION DEL MANUAL, deliberada: en la slide 01 los dos violetas van
+     en su color real. La pieza trata sobre distinguir dos colores casi iguales;
+     en gris no se ve el problema. Por eso esa slide NO usa baranda: los violetas
+     ocupan el lugar del unico acento. Para volver al manual estricto, cambiar
+     --v1 y --v2 por var(--sombra) y var(--linea).
+
+     Los dos hex y sus dos ΔE estan medidos con la funcion deltaE del propio
+     gridwright (packages/core/src/score.ts:327, CIEDE2000):
+       #6D4AFF vs #6F4DFA = 0.79  → near, gana el valor del sistema
+       #6D4AFF vs #7B5CFF = 5.00  → new, es otro color -->
+<link rel="stylesheet" href="https://use.typekit.net/tyi0xxl.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=block">
+<style>
+  @font-face { font-family: 'Aileron'; src: url('fonts/aileron-black.woff2') format('woff2'); font-weight: 900; }
+
+  @page { size: 1080px 1350px; margin: 0; }
+  :root {
+    --hormigon: #a8a49b; --luz: #c6c2b8; --sombra: #55524c; --vacio: #15130f; --baranda: #2f5568;
+    --m: 90px;
+    --linea: rgba(21, 19, 15, 0.34);
+    --linea-suave: rgba(21, 19, 15, 0.16);
+    --v1: #6d4aff; --v2: #6f4dfa;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--hormigon); }
+  @media screen {
+    html, body { background: #2a2824; }
+    body { padding: 48px 0; }
+    .slide { margin: 0 auto 48px; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+  }
+
+  .slide {
+    width: 1080px; height: 1350px;
+    position: relative; overflow: hidden;
+    background: var(--hormigon); color: var(--vacio);
+    padding: var(--m);
+    display: flex; flex-direction: column; gap: 28px;
+    break-after: page;
+  }
+  .slide:last-child { break-after: auto; }
+
+  .slide::before {
+    content: ''; position: absolute; inset: var(--m); z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle at center, rgba(21,19,15,0.22) 0 2.5px, transparent 2.7px);
+    background-size: var(--m) var(--m);
+  }
+  .slide > *:not(.pilar) {
+    position: relative; z-index: 1;
+    background: var(--hormigon);
+    padding: 10px 16px; margin-left: -16px; margin-right: -16px;
+  }
+
+  .titular {
+    font-family: 'dharma-gothic-e', 'Aileron', 'Helvetica Neue', sans-serif;
+    font-weight: 700; font-style: normal; text-transform: none;
+    line-height: 0.86; letter-spacing: 0.004em; word-spacing: 0.04em;
+    font-size: 108px; margin: 0;
+  }
+  .t162 { font-size: 162px; }
+  .t72  { font-size: 72px; }
+  .d48  { font-family: 'Outfit', sans-serif; font-size: 48px; line-height: 1.18; font-weight: 500; margin: 0; }
+  .c32  { font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.42; font-weight: 400; margin: 0; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 24px; line-height: 1.5; margin: 0; }
+  .etiqueta { text-transform: uppercase; letter-spacing: 0.14em; color: var(--sombra); }
+  .baranda { color: var(--baranda); }
+  .sombra { color: var(--sombra); }
+  code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.86em; }
+
+  .pie {
+    margin-top: auto !important;
+    display: flex; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sombra);
+    border-top: 1px solid var(--linea); padding-top: 18px !important;
+  }
+
+  .pilar {
+    position: absolute; right: var(--m); top: var(--m); bottom: calc(var(--m) + 110px);
+    width: 216px; z-index: 1;
+  }
+  .pilar svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pilar path { fill: var(--hormigon); stroke: var(--linea); stroke-width: 1.25; }
+  .con-pilar > *:not(.pilar):not(.pie) { max-width: 646px; }
+
+  .flujo { border: 1px solid var(--vacio); padding: 18px 22px !important; margin: 0 !important; }
+  .cita { border-left: 3px solid var(--baranda); padding-left: 24px !important; margin-left: 0 !important; }
+
+  .baldes { display: grid; gap: 0; }
+  .balde { display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 24px;
+           padding: 18px 0; border-bottom: 1px solid var(--linea-suave); }
+  .balde .titular { font-size: 72px; line-height: 0.8; }
+  .balde .etiqueta { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 24px; margin-top: 6px; }
+
+  /* Slide 01 · los dos violetas. Muestras al ancho de la caja, con su hex debajo. */
+  .muestras { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+              border: 1px solid var(--vacio); margin: 0 !important; padding: 0 !important; }
+  .muestra { padding: 0; }
+  .muestra i { display: block; height: 260px; }
+  .muestra span { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 24px;
+                  letter-spacing: 0.1em; padding: 14px 18px; background: var(--hormigon); }
+  .muestra + .muestra { border-left: 1px solid var(--vacio); }
+
+  .partes { display: grid; margin: 0; }
+  .partes > div { display: grid; grid-template-columns: 300px 1fr; gap: 20px; align-items: baseline;
+                  padding: 10px 0; border-bottom: 1px solid var(--linea-suave); }
+  .partes dt { font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.06em; }
+  .partes dd { margin: 0; font-family: 'Outfit', sans-serif; font-size: 28px; line-height: 1.25; }
+</style>
+</head>
+<body>
+
+<!-- 01 · El gancho. Se entiende sola: los dos violetas y la pregunta. -->
+<section class="slide">
+  <p class="mono etiqueta">Gridwright · how it resolves tokens</p>
+  <h1 class="titular t162" style="margin-top:0">Two purples</h1>
+  <div class="muestras">
+    <div class="muestra"><i style="background:var(--v1)"></i><span>#6D4AFF · in your system</span></div>
+    <div class="muestra"><i style="background:var(--v2)"></i><span>#6F4DFA · in the new design</span></div>
+  </div>
+  <p class="d48">A new token, or the same purple picked by eye?</p>
+  <p class="c32 sombra">Get it wrong often enough and nobody knows which grey is the good one.</p>
+  <p class="pie" style="margin-top:auto !important"><span>Luciano Balbiano</span><span>01 / 04</span></p>
+</section>
+
+<!-- 02 · La decision. Los tres baldes, con el umbral. -->
+<section class="slide" style="gap:22px">
+  <p class="mono etiqueta">01 — The decision</p>
+  <h2 class="titular">The model never<br>answers that</h2>
+  <p class="c32">Every value is sorted before a line of the component is written.</p>
+  <p class="d48">String equality would create a second <code>neutral-900</code>.</p>
+  <div class="baldes">
+    <div class="balde"><span class="titular">exact</span><p class="c32">already in the system, used as is<span class="etiqueta">ΔE 0</span></p></div>
+    <div class="balde"><span class="titular baranda">near</span><p class="c32">the system's value wins, drift reported<span class="etiqueta">ΔE ≤ 1 · #6F4DFA → 0.79</span></p></div>
+    <div class="balde"><span class="titular">new</span><p class="c32">another colour: it needs a name, a person decides<span class="etiqueta">#7B5CFF → 5.00</span></p></div>
+  </div>
+  <p class="mono sombra">CIEDE2000 · 1.0 = just noticeable, trained eye</p>
+  <p class="pie"><span>Gridwright</span><span>02 / 04</span></p>
+</section>
+
+<!-- 03 · Lo que se rompio. El manual: el error antes que el resultado. -->
+<section class="slide">
+  <p class="mono etiqueta">02 — What I got wrong</p>
+  <h2 class="titular">It asked me to name<br>a token I already had</h2>
+  <p class="c32">I was comparing composites as text. A border is a width, a style and a colour, and a design system holds those apart — so comparing the whole string finds nothing.</p>
+  <p class="mono flujo">new token needed: <code>1px solid #9aa3ad</code></p>
+  <dl class="partes">
+    <div><dt>1px</dt><dd>already in the scale</dd></div>
+    <div><dt>solid</dt><dd>not a token at all</dd></div>
+    <div><dt>#9aa3ad</dt><dd>already a colour in the config</dd></div>
+  </dl>
+  <p class="c32">On one real run, three of the four tokens it proposed were compositions of values the project already had. The rot the feature exists to prevent, produced by the feature.</p>
+  <p class="d48 baranda">Now a composite is read as parts.</p>
+  <p class="pie"><span>Gridwright</span><span>03 / 04</span></p>
+</section>
+
+<!-- 04 · Donde queda. El numero de una pagina entera. -->
+<section class="slide con-pilar">
+  <p class="mono etiqueta">03 — Where it lands</p>
+  <h2 class="titular t162" style="line-height:0.8">80 values</h2>
+  <p class="c32">Last full page I measured, twelve sections:</p>
+  <div class="baldes">
+    <div class="balde"><span class="titular baranda">65</span><p class="c32">already in the system</p></div>
+    <div class="balde"><span class="titular">7</span><p class="c32">nudged into it, drift reported</p></div>
+    <div class="balde"><span class="titular">8</span><p class="c32">needed a name — asked once, for the whole page</p></div>
+  </div>
+  <p class="d48">Open source, MIT.<br>Link in the first comment.</p>
+  <p class="pie"><span>Luciano Balbiano</span><span>04 / 04</span></p>
+  <div class="pilar" data-gap="0"></div>
+</section>
+
+
+<script>
+  // El pilar, igual que en la pieza anterior: la pagina de Launch UI cortada en
+  // sus 12 secciones, con el alto real de cada una (baselines a 1440, suman 8599).
+  const SECCIONES = [68, 1389, 252, 1328, 552, 1035, 874, 776, 901, 592, 452, 380];
+
+  const JUNTAS = [
+    [[0, 0], ['L', 1, 0]],
+    [[0, -0.7], ['L', 1, 0.7]],
+    [[0, 0], ['Q', 0.5, 2, 1, 0]],
+    [[0, 0], ['L', 0.34, 0], ['L', 0.34, -1], ['L', 0.66, -1], ['L', 0.66, 0], ['L', 1, 0]],
+    [[0, 0], ['Q', 0.28, -2, 1, 0]],
+    [[0, -0.6], ['L', 0.52, -0.6], ['L', 0.52, 0.6], ['L', 1, 0.6]],
+    [[0, 0], ['Q', 0.5, -2, 1, 0]],
+    [[0, 0], ['L', 0.4, 0], ['L', 0.4, 1], ['L', 0.72, 1], ['L', 0.72, 0], ['L', 1, 0]],
+    [[0, 0], ['Q', 0.74, 2, 1, 0]],
+    [[0, 0.7], ['L', 1, -0.7]],
+    [[0, 0], ['Q', 0.5, -2, 1, 0]],
+  ];
+
+  function tramo(perfil, W, y, a, alReves) {
+    const pts = [perfil[0], ...perfil.slice(1)];
+    const P = (x, dy) => `${(x * (W - 1.2) + 0.6).toFixed(2)} ${(y + dy * a).toFixed(2)}`;
+    if (!alReves) {
+      return pts.slice(1).map((s) => s[0] === 'Q'
+        ? `Q${P(s[1], s[2])} ${P(s[3], s[4])}` : `L${P(s[1], s[2])}`).join(' ');
+    }
+    const fin = (k) => (k === 0 ? perfil[0] : (perfil[k][0] === 'Q' ? [perfil[k][3], perfil[k][4]] : [perfil[k][1], perfil[k][2]]));
+    let d = '';
+    for (let k = perfil.length - 1; k >= 1; k--) {
+      const s = perfil[k], to = fin(k - 1);
+      d += s[0] === 'Q' ? `Q${P(s[1], s[2])} ${P(to[0], to[1])} ` : `L${P(to[0], to[1])} `;
+    }
+    return d.trim();
+  }
+  const inicio = (perfil) => perfil[0];
+  const final = (perfil) => { const s = perfil[perfil.length - 1]; return s[0] === 'Q' ? [s[3], s[4]] : [s[1], s[2]]; };
+
+  document.querySelectorAll('.pilar').forEach((el) => {
+    const W = 216, H = el.clientHeight, gap = Number(el.dataset.gap), n = SECCIONES.length;
+    const escala = (H - (n - 1) * gap) / SECCIONES.reduce((a, b) => a + b, 0);
+    const alto = SECCIONES.map((h) => h * escala);
+    const amp = JUNTAS.map((_, k) => Math.min(0.38 * Math.min(alto[k], alto[k + 1]), 52));
+    let y = 0, d = '';
+    for (let k = 0; k < n; k++) {
+      const top = y, bot = y + alto[k];
+      const arriba = k > 0 ? JUNTAS[k - 1] : [[0, 0], ['L', 1, 0]];
+      const abajo = k < n - 1 ? JUNTAS[k] : [[0, 0], ['L', 1, 0]];
+      const aA = k > 0 ? amp[k - 1] : 0, aB = k < n - 1 ? amp[k] : 0;
+      const x = (v) => (v * (W - 1.2) + 0.6).toFixed(2);
+      const s0 = inicio(arriba), e1 = final(abajo);
+      d += `<path d="M${x(s0[0])} ${(top + s0[1] * aA).toFixed(2)} ${tramo(arriba, W, top, aA, false)} `
+        + `L${x(e1[0])} ${(bot + e1[1] * aB).toFixed(2)} ${tramo(abajo, W, bot, aB, true)} Z"/>`;
+      y = bot + gap;
+    }
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${d}</svg>`;
+  });
+</script>
+</body>
+</html>
