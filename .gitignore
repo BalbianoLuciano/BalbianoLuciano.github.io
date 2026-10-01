@@ -27,3 +27,8 @@ jobsearch/TRACKER.md
 
 # Datos que no pueden ser publicos.
 jobsearch/PRIVADO.md
+
+# Espontáneas: la cola nombra personas y empresas, y las salidas son mensajes.
+jobsearch/espontaneas/objetivos.csv
+jobsearch/espontaneas/salidas/*
+!jobsearch/espontaneas/salidas/.gitkeep
