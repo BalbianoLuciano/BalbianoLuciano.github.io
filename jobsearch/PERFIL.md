@@ -44,6 +44,11 @@ el aviso, no por defecto.
 Cuando el aviso menciona: LLM, agentes, RAG, MCP, OpenAI/Anthropic, embeddings,
 automatización con IA, prompt engineering, AI product.
 
+**Los dos puestos que persigue con este ángulo** (decisión del 2026-10-01):
+**AI Engineer / AI Developer** y **AI-Driven Fullstack**. El CV de IA se ordena
+para esos dos y no para todo lo que toca: arriba van LLMs, OpenAI y Claude API,
+RAG, MCP y agentes; el stack web va después y separado.
+
 > AI Engineer con 5+ años programando y 4+ shipeando proyectos reales. La IA que
 > construye se usa: sistemas de generación de contenido sobre las APIs de OpenAI
 > y Claude en producción, un chatbot con streaming, y Gridwright, una herramienta
@@ -238,8 +243,9 @@ Preguntar antes de afirmar cualquiera de estos:
       argentino con solapamiento? Aparece cada vez que un aviso europeo pide
       horario de allá. Sin este dato no se puede afirmar nada en un mail.
 - [x] ~~Equipo en Invisible Geeks~~ — **lidera a 3 personas**, confirmado el
-      2026-09-23.
-- [ ] Tamaño del equipo en Dmeter
+      2026-09-23. Ratificado el 2026-10-01: **2 o 3 desarrolladores a cargo**
+      entre IG y Dmeter. Va como dato concreto en el CV de Team Leader, que el
+      feedback de empleabilidad marcó como el hueco principal de ese CV.
 - [x] ~~Symfony~~ — **confirmado el 2026-09-24**: sí trabajó con Symfony, en
       mantenimiento de software y sitios legacy. No hay proyecto nuevo hecho en
       Symfony, y por ser viejos no los lista en el CV, pero "Symfony" en el CV
