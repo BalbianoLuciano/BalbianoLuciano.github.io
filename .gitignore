@@ -38,3 +38,6 @@ jobsearch/contador/Contador.app/
 
 # Exportaciones de LinkedIn: datos de terceros, no se versionan
 jobsearch/espontaneas/contactos/
+
+# Preparaciones de entrevista: nombran personas y empresas.
+jobsearch/entrevistas/
