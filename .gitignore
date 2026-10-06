@@ -32,3 +32,9 @@ jobsearch/PRIVADO.md
 jobsearch/espontaneas/objetivos.csv
 jobsearch/espontaneas/salidas/*
 !jobsearch/espontaneas/salidas/.gitkeep
+
+# Contador del plan 100: el .app se compila con jobsearch/contador/build.sh
+jobsearch/contador/Contador.app/
+
+# Exportaciones de LinkedIn: datos de terceros, no se versionan
+jobsearch/espontaneas/contactos/
