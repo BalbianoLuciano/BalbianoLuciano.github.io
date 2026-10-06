@@ -30,6 +30,8 @@ Cuando un formulario pregunta el nivel, él mismo contestó así y conviene sost
 > Intermedio — me siento con comodidad para leer y escribir pero no a nivel
 > conversacional.
 
+**La ciudad no se nombra en ningún mensaje** (regla suya del 2026-10-05): ni Buenos Aires ni "resido en". Se dice "trabajo en remoto" y, si hace falta, la franja horaria con GMT.
+
 **Sobre la ciudadanía**: es española/UE. Eso se dice sin vueltas en cualquier
 aplicación europea, es una ventaja. Pero vive en Buenos Aires: si un aviso es
 presencial en España, hay que nombrar la mudanza en vez de dejar que asuman que
@@ -164,7 +166,7 @@ lo que hay y se compensa en el texto libre. No se infla.
 
 | | |
 |---|---|
-| LLMs y agentes | MCP, Claude Code, OpenAI API, Claude API, Groq, OpenRouter, Llama 3.3 |
+| LLMs y agentes | Claude Code (y plugins propios), OpenAI API, Claude API, Groq, OpenRouter, Llama 3.3 |
 | RAG y datos | ChromaDB, Hugging Face Transformers, embeddings locales, SQLite, PostgreSQL, MySQL, Prisma, Drizzle |
 | Lenguajes | TypeScript, JavaScript, Python, PHP |
 | Web | Laravel, **Symfony** (mantenimiento de legacy), Vue, React, Next.js, Astro, Inertia.js, Tailwind, Hono |

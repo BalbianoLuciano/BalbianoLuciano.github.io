@@ -8,11 +8,11 @@ caro —el que convierte— está en las espontáneas.
 
 | # | Canal | Por día | Cuánto cuesta cada una | Herramienta |
 |---|---|---|---|---|
-| 1 | LinkedIn Easy Apply | 40 | ~1 min | `autofill` |
+| 1 | LinkedIn: Easy Apply + "Solicitar" externas | 40 | ~1 min / ~5 min | `autofill` · el formulario de la empresa |
 | 2 | InfoJobs (inscripción rápida, España) | 15 | ~1 min | `autofill` + carta guardada |
 | 3 | Otros portales: Get on Board, Bumeran, Computrabajo, Workana | 12 | ~1,5 min | `autofill` |
-| 4 | Avisos del feed con mail o formulario | 10 | ~5 min | `/aplicar` |
-| 5 | Espontáneas por mail | 18 | ~3 min | Apollo + `espontaneas/generar.mjs` |
+| 4 | Avisos del feed con mail o formulario | 18 | ~5 min | `/aplicar` |
+| 5 | Espontáneas por mail | 10 | ~3 min | Apollo + `espontaneas/generar.mjs` |
 | 6 | DM de LinkedIn a recruiters | 15 | ~2 min | `espontaneas/generar.mjs` |
 | | **Total** | **110** | **~4 horas** | |
 
@@ -34,7 +34,18 @@ que piden. De acá salieron los procesos que avanzaron.
 
 **Cierre — 10 minutos.** Marcar estados en `objetivos.csv` y en `TRACKER.md`.
 
-## Los dos techos reales
+## Los tres techos reales
+
+**Ajuste del 2026-10-05**: espontáneas por mail bajan de 18 a 10 y los avisos
+del feed suben de 10 a 18. Motivo suyo: 18 espontáneas por día con gancho real
+no salen; el cuello es la investigación, no el envío. Los avisos sobran.
+
+**LinkedIn: 32 Easy Apply por día.** Medido el 2026-10-05: a la 32 LinkedIn
+corta y no deja postular más hasta el día siguiente. Por eso la fila 1 suma las
+dos formas de postular desde LinkedIn: las 32 de "Solicitud sencilla" y, para
+llegar a 40, las de "Solicitar" que llevan al portal de la empresa. Esas no
+tienen techo porque no pasan por LinkedIn.
+
 
 **LinkedIn: ~100 invitaciones con nota por semana.** 15 por día son 105 si se
 hace los siete días: queda justo en el borde. Dos formas de no chocarlo:

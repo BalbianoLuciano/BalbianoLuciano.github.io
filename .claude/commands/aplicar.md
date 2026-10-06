@@ -81,6 +81,11 @@ quiere ver y copiar de una.
 
 ## Reglas que no se rompen
 
+- **Nunca se dice dónde vive.** Ni "Buenos Aires" ni la ciudad en ninguna
+  forma, en ningún mensaje, mail, formulario o DM (regla suya del 2026-10-05).
+  Va "trabajo en remoto" y la ciudadanía española cuando aplica. Si hay que
+  preguntar por remoto, se pregunta sin decir desde dónde. La franja horaria se
+  da con GMT, sin ciudad.
 - **No enviás nada.** Ni un mail, ni un formulario, ni un mensaje. Solo borrador.
   El sistema genera, la persona decide.
 - **El tracker no sabe qué mandó.** Un estado `borrador` significa que YO no lo

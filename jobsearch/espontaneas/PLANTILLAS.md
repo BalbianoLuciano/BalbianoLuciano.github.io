@@ -78,6 +78,18 @@ Luciano Balbiano
 
 ---
 
+## dm-postulado · DM a la recruiter de un aviso al que ya se postuló (máx. 500 caracteres)
+
+Hola {persona}, ¿cómo estás? Acabo de postularme a la búsqueda de {puesto}{frase_empresa} y quería presentarme por acá.
+
+Soy Luciano Balbiano, 5 años con {stack}, hoy Team Leader en Invisible Geeks. {prueba}
+
+Portfolio: https://balbianoluciano.github.io
+
+Si te sirve, te amplío lo que necesites. Saludos.
+
+---
+
 ## seguimiento · A los 7 días, en el mismo hilo
 
 Hola {persona}, te escribo para retomar esto por si quedó tapado. Sigo interesado en lo que hacen{frase_empresa}, y si hoy no hay nada abierto me sirve igual saberlo para escribirte más adelante.
@@ -94,7 +106,7 @@ Una sola, la que más se parezca a lo que hace la empresa:
 | `pericias` | Construí un SaaS multi-tenant donde un perito judicial lleva causas, honorarios y plazos, con los permisos garantizados en la base de datos y la evidencia firmada al subirse. |
 | `prolicht` | Migré el catálogo de un fabricante austríaco de iluminación: 257 proyectos con dos décadas de contenido, con comandos reproducibles y previsualización del cambio antes de aplicarlo. |
 | `malmberg` | Migré más de 800 páginas de una editorial holandesa sobre un boilerplate propio de React Islands: solo viaja el JavaScript de los componentes realmente interactivos. |
-| `ia` | Integro las APIs de OpenAI y Claude en sistemas que usan clientes reales, y construí un servidor MCP y un agente RAG que mi equipo usa todos los días. |
+| `ia` | Integro las APIs de OpenAI y Claude en sistemas que usan clientes reales, y construí Gridwright, un plugin open source de Claude Code que convierte diseños de Figma en componentes verificados contra el original. |
 | `gridwright` | Construí Gridwright, un plugin open source de Claude Code que convierte un diseño de Figma en componentes verificados contra el original, con los chequeos escritos como código. |
 | `lit` | Mi proyecto más reciente es un tutor de inglés con API en Go sobre Postgres, 663 tests, y un contrato ERC-721 en Solidity para las distinciones: github.com/BalbianoLuciano/lost-in-translation |
 | `ecommerce` | Construí la tienda online de una marca de ropa con un solo stock para la web y el mostrador. |

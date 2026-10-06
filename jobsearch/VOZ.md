@@ -150,6 +150,13 @@ Estas frases matan el texto y se notan a un kilómetro:
 - Listas con bullets dentro de un mail
 - Abrir el mail hablando de sí mismo
 - Repetir el CV en prosa (quien lee ya lo tiene adjunto)
+- **Decir dónde vive.** Regla de Luciano del 2026-10-05: "no utilizar que vivo
+  en Buenos Aires en ningún mensaje". La ciudad no aparece nunca, en ningún
+  canal ni idioma. Lo que sí va: "trabajo en remoto" y, para Europa, la
+  ciudadanía española. Si un aviso exige ubicación y hay que preguntar por el
+  remoto, se pregunta sin decir desde dónde ("¿la posición contempla trabajo
+  en remoto?"). La franja horaria se da como horas con su GMT, sin nombrar la
+  ciudad.
 
 ## En inglés
 
@@ -173,7 +180,7 @@ El voseo se queda.
 |---|---|
 | "Hola Jorge! ¿Cómo estás?" | "Hola Jorge, ¿cómo estás?" |
 | "hoy lidero" | "actualmente lidero" |
-| "estoy en Buenos Aires" | "resido en Buenos Aires" |
+| "estoy en Buenos Aires" / "resido en Buenos Aires" | (se saca: la ciudad no se nombra, ver Prohibido) |
 | "no los usé, lo aclaro de entrada" | "quiero aclarar que no los utilicé en producción" |
 | "¿Te paso el CV?" / "Te dejo el CV" | "¿Te puedo enviar mi CV?" / "Con gusto te envío mi CV" |
 | "si te sirve lo vemos en una reu" | "quedo disponible para coordinar una entrevista" |

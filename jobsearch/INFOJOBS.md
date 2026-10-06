@@ -105,6 +105,10 @@ Context Protocol, OpenAI API, Claude API.*
 
 - **2026 – 2027** · Tecnicatura Universitaria en Programación — Universidad
   Tecnológica Nacional (en curso, finaliza en diciembre de 2027).
+  **Nivel en InfoJobs: Ciclo Formativo Grado Superior**, especialidad Informática
+  (decidido el 2026-10-05). Es un título de pregrado de dos años y medio: no es
+  Grado (cuatro años) y la Diplomatura ya no existe. Inicio 03/2026, fin 12/2027,
+  "cursando actualmente" marcado, centro UTN (Argentina).
 - **2021** · Desarrollador Web Python/Django — Informatorio Chaco (mayo a agosto).
 - **2017 – 2020** · Arquitectura y Urbanismo — U.N.N.E. (estudios incompletos).
 - **2024** · Diseñador UX/UI + Figma (Udemy) · Desarrollador de Juegos 2D (Udemy).

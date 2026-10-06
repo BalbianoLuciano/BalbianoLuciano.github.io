@@ -84,6 +84,7 @@ for (const f of datos) {
     .replaceAll('{gancho}', v('gancho'))
     .replaceAll('{prueba}', prueba)
     .replaceAll('{stack}', v('stack'))
+    .replaceAll('{puesto}', v('puesto'))
     .replaceAll('{frase_empresa}', v('empresa') ? ` en ${v('empresa')}` : '');
   const largo = texto.length;
   const aviso = v('canal').startsWith('dm') && largo > 500 ? `  ⚠️ ${largo} caracteres, LinkedIn recomienda menos de 500` : `  (${largo} caracteres)`;

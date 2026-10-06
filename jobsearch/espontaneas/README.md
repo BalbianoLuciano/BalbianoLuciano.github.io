@@ -20,7 +20,7 @@ Opciones: `--canal dm-es` para un solo canal, `--limite 20` para cortar la tanda
 
 | Columna | Qué va |
 |---|---|
-| `canal` | `dm-es` · `dm-tecnico` · `mail-es` · `mail-en` · `seguimiento` |
+| `canal` | `dm-es` · `dm-tecnico` · `dm-postulado` (ya se postuló al aviso, le escribe a la recruiter) · `mail-es` · `mail-en` · `seguimiento` |
 | `idioma` | `es` o `en` (define de qué banco sale la prueba) |
 | `persona` | Nombre de pila. Vacío si es un mail genérico de empresa |
 | `empresa` | — |
@@ -28,6 +28,7 @@ Opciones: `--canal dm-es` para un solo canal, `--limite 20` para cortar la tanda
 | `gancho` | **Lo que más pesa.** Algo verificable del otro: un post suyo, qué hace el producto, con qué stack trabajan. Si no hay gancho real, no va la fila |
 | `prueba` | Una clave del banco de `PLANTILLAS.md`: `hornero`, `pericias`, `prolicht`, `malmberg`, `ia`, `gridwright`, `lit`, `ecommerce` |
 | `stack` | Las 3 o 4 tecnologías del lado de ellos que él tiene de verdad |
+| `puesto` | Solo para `dm-postulado`: el nombre del aviso al que se postuló |
 | `contacto` | Mail o URL del perfil |
 | `estado` | `pendiente` (default) · `enviado` · `respondio` · `no` |
 
