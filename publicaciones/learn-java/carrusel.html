@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Learn Java — carrusel</title>
+<!-- Fuentes: las mismas del manual. Dharma del kit de Typekit, Aileron local
+     de respaldo, Outfit y Plex Mono de Google. -->
+<link rel="stylesheet" href="https://use.typekit.net/tyi0xxl.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=block">
+<style>
+  @font-face { font-family: 'Aileron'; src: url('fonts/aileron-black.woff2') format('woff2'); font-weight: 900; }
+
+  /* Especificacion 002 · la slide: 1080 x 1350, modulo 90, margen 90, caja 900 x 1170 */
+  @page { size: 1080px 1350px; margin: 0; }
+  :root {
+    --hormigon: #a8a49b; --luz: #c6c2b8; --sombra: #55524c; --vacio: #15130f; --baranda: #2f5568;
+    --m: 90px;
+    --linea: rgba(21, 19, 15, 0.34);
+    --linea-suave: rgba(21, 19, 15, 0.16);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--hormigon); }
+  /* Solo en pantalla: cada slide como una tarjeta, para verlo en el navegador.
+     El PDF sale de capturas de cada .slide, asi que esto no lo toca. */
+  @media screen {
+    html, body { background: #2a2824; }
+    body { padding: 48px 0; }
+    .slide { margin: 0 auto 48px; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+  }
+
+  .slide {
+    width: 1080px; height: 1350px;
+    position: relative; overflow: hidden;
+    background: var(--hormigon); color: var(--vacio);
+    padding: var(--m);
+    display: flex; flex-direction: column; gap: 28px;
+    break-after: page;
+  }
+  .slide:last-child { break-after: auto; }
+
+  /* Ley 04 · los agujeros de los tensores. Ocupan solo el vacio: cada bloque de
+     contenido lleva el fondo del hormigon y los tapa. */
+  .slide::before {
+    content: ''; position: absolute; inset: var(--m); z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle at center, rgba(21,19,15,0.22) 0 2.5px, transparent 2.7px);
+    background-size: var(--m) var(--m);
+  }
+  .slide > *:not(.pilar) {
+    position: relative; z-index: 1;
+    background: var(--hormigon);
+    padding: 10px 16px; margin-left: -16px; margin-right: -16px;
+  }
+  .slide > .img { background: transparent; padding: 0; margin: 0; }
+
+  /* Escala: 162 · 108 · 72 · 48 · 32 · 24. Ninguna fuera. */
+  .titular {
+    font-family: 'dharma-gothic-e', 'Aileron', 'Helvetica Neue', sans-serif;
+    font-weight: 700; font-style: normal; text-transform: none;
+    line-height: 0.86; letter-spacing: 0.004em; word-spacing: 0.04em;
+    font-size: 108px; margin: 0;
+  }
+  .t162 { font-size: 162px; }
+  .t72  { font-size: 72px; }
+  .d48  { font-family: 'Outfit', sans-serif; font-size: 48px; line-height: 1.18; font-weight: 500; margin: 0; }
+  .c32  { font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.42; font-weight: 400; margin: 0; }
+  .c24  { font-family: 'Outfit', sans-serif; font-size: 24px; line-height: 1.45; margin: 0; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 24px; line-height: 1.5; margin: 0; }
+  .etiqueta { text-transform: uppercase; letter-spacing: 0.14em; color: var(--sombra); }
+  .baranda { color: var(--baranda); }
+  .sombra { color: var(--sombra); }
+  code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.86em; }
+
+  .pie {
+    margin-top: auto !important;
+    display: flex; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sombra);
+    border-top: 1px solid var(--linea); padding-top: 18px !important;
+  }
+
+  /* El pilar. Las piezas se ensamblan como las secciones de una pagina en
+     gridwright: cada una tiene arriba una curva convexa y abajo una concava
+     que calza con la siguiente. Separadas se ve que encajan; juntas, son una
+     sola columna. Vectorial, en la linea fina del manual. */
+  .pilar {
+    position: absolute; right: var(--m); top: var(--m); bottom: calc(var(--m) + 110px);
+    width: 216px; z-index: 1;
+  }
+  .pilar svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pilar path { fill: var(--hormigon); stroke: var(--linea); stroke-width: 1.25; }
+  .con-pilar > *:not(.pilar):not(.pie) { max-width: 646px; }
+
+  /* Imagen: blanco y negro, contraste 1.35, horneado en el archivo (img/). */
+  .img img { display: block; width: 100%; border: 1px solid var(--vacio); }
+  .img figcaption { margin-top: 10px; }
+
+  /* Tablas en linea fina: la estructura a la vista, sin cajas */
+  table { width: 100%; border-collapse: collapse; }
+  th { font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 500; text-transform: uppercase;
+       letter-spacing: 0.1em; color: var(--sombra); text-align: left; padding: 0 18px 12px 0;
+       border-bottom: 1px solid var(--vacio); }
+  td { font-family: 'Outfit', sans-serif; font-size: 24px; line-height: 1.35; padding: 9px 18px 9px 0;
+       border-bottom: 1px solid var(--linea-suave); vertical-align: top; }
+  td.num, th.num { text-align: right; padding-right: 0; font-family: 'IBM Plex Mono', monospace; }
+  td.mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .flujo { border: 1px solid var(--vacio); padding: 18px 22px !important; margin: 0 !important; }
+  .cita { border-left: 3px solid var(--baranda); padding-left: 24px !important; margin-left: 0 !important; }
+
+  .baldes { display: grid; gap: 0; }
+  .balde { display: grid; grid-template-columns: 170px 1fr; align-items: baseline; gap: 24px;
+           padding: 14px 0; border-bottom: 1px solid var(--linea-suave); }
+  .balde .titular { font-size: 72px; line-height: 0.8; }
+  .balde { grid-template-columns: 120px 1fr; align-items: center; padding: 16px 0; }
+
+  .specs { display: grid; margin: 0; }
+  .specs > div { display: grid; grid-template-columns: 230px 1fr; gap: 20px; align-items: baseline;
+                 padding: 8px 0; border-bottom: 1px solid var(--linea-suave); }
+  .specs dt { font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sombra); }
+  .specs dd { margin: 0; font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.25; }
+</style>
+</head>
+<body>
+
+<!-- 01 · El hook -->
+<section class="slide con-pilar">
+  <p class="mono etiqueta">Curso abierto · Java y POO</p>
+  <h1 style="margin-top:0;margin-bottom:0"><span class="titular t72" style="display:block">Aprendé Java</span><span class="titular t162" style="display:block;margin-top:6px">construyendo<br>una universidad</span></h1>
+  <p class="d48">Escribís Java de verdad, lo ejecutás, y ves en una maqueta 3D qué construyó tu código.</p>
+  <div style="margin-top:auto">
+    <p class="titular t162 baranda" style="line-height:0.8">20</p>
+    <p class="mono sombra" style="margin-top:14px">desafíos en cuatro módulos.<br>El modelo es la UTN real.</p>
+  </div>
+  <p class="pie" style="margin-top:0 !important"><span>Luciano Balbiano</span><span>01 / 07</span></p>
+  <div class="pilar" data-gap="16"></div>
+</section>
+
+<!-- 02 · El problema -->
+<section class="slide">
+  <p class="mono etiqueta">El problema</p>
+  <h2 class="titular">Un objeto<br>no se ve</h2>
+  <p class="c32">Al que arranca con objetos no le falta la sintaxis: le falta el modelo mental. <code>new</code> no muestra nada, una referencia tampoco, y dos variables que apuntan al mismo objeto se ven idénticas a dos objetos distintos.</p>
+  <p class="c32">Lo que devuelve la consola es texto sobre algo que nadie vio nunca.</p>
+  <p class="cita c32" style="margin-top:auto">Si el estado del programa no se puede ver, el error se aprende de memoria en vez de entenderse.</p>
+  <p class="pie"><span>Learn Java by Building a University</span><span>02 / 07</span></p>
+</section>
+
+<!-- 03 · La maqueta, en color: es el punto -->
+<section class="slide">
+  <p class="mono etiqueta">La maqueta</p>
+  <h2 class="titular t72">Cada pieza es<br>un concepto</h2>
+  <figure class="img" style="margin:0"><img src="img/maqueta.png" alt="Escena isométrica con facultades sobre islas flotantes" style="height:760px;object-fit:cover;object-position:50% 46%"></figure>
+  <p class="c24 sombra">Escena isométrica en Three.js: cámara ortográfica fija, piezas low-poly flotando sin suelo infinito.</p>
+  <p class="pie"><span>React Three Fiber</span><span>03 / 07</span></p>
+</section>
+
+<!-- 04 · El diccionario -->
+<section class="slide">
+  <p class="mono etiqueta">El diccionario</p>
+  <h2 class="titular t72">Qué es cada<br>forma</h2>
+  <table>
+    <tr><th>Java</th><th>En la maqueta</th></tr>
+    <tr><td class="mono">class</td><td>Un plano, en línea fina</td></tr>
+    <tr><td class="mono">new</td><td>Un edificio que crece desde su isla</td></tr>
+    <tr><td>objeto</td><td>Chapa de serie: <span class="mono">FacultadRegional #1</span></td></tr>
+    <tr><td>referencia</td><td>Etiqueta colgando del edificio</td></tr>
+    <tr><td>composición</td><td>Isla adosada, unida por un puentecito</td></tr>
+    <tr><td>constructor</td><td>Una grúa sobre la isla mientras corre</td></tr>
+    <tr><td class="mono">==</td><td>Mismo número de serie, mismo edificio</td></tr>
+  </table>
+  <p class="c24 sombra" style="margin-top:auto">Una lista es una hilera de edificios chicos con baranda.</p>
+  <p class="pie"><span>Learn Java by Building a University</span><span>04 / 07</span></p>
+</section>
+
+<!-- 05 · La pantalla entera -->
+<section class="slide">
+  <p class="mono etiqueta">La pantalla</p>
+  <h2 class="titular t72">Código, obra<br>y bitácora</h2>
+  <figure class="img" style="margin:0"><img src="img/pantalla.png" alt="Editor de Java a la izquierda, maqueta 3D y bitácora a la derecha"></figure>
+  <p class="c24 sombra">Cada observación de la bitácora apunta a una línea: <span class="mono">FacultadRegional.java:1</span>.</p>
+  <p class="pie"><span>Monaco · Three.js</span><span>05 / 07</span></p>
+</section>
+
+<!-- 06 · Como esta hecho -->
+<section class="slide">
+  <p class="mono etiqueta">Cómo está hecho</p>
+  <h2 class="titular t72">El estado<br>es real</h2>
+  <p class="c32">La maqueta no interpreta el código: lo mira correr. El backend ejecuta el programa del alumno en un entorno aislado y lee el estado con <strong>JDI</strong>, la interfaz de depuración de la propia JVM. Lo que aparece en la escena son los objetos que existieron de verdad.</p>
+  <dl class="specs">
+    <div><dt>Backend</dt><dd>Java 25 · Spring Boot 4 · JDI</dd></div>
+    <div><dt>Front</dt><dd>React · TypeScript · Vite · Monaco</dd></div>
+    <div><dt>Escena</dt><dd>Three.js con React Three Fiber</dd></div>
+    <div><dt>Deploy</dt><dd>Railway · Cloudflare</dd></div>
+  </dl>
+  <p class="pie"><span>Learn Java by Building a University</span><span>06 / 07</span></p>
+</section>
+
+<!-- 07 · Cierre -->
+<section class="slide con-pilar">
+  <p class="mono etiqueta">Abierto</p>
+  <h2 class="titular t162" style="margin-bottom:0">Está<br>online</h2>
+  <p class="d48">Los 20 desafíos se resuelven de punta a punta. Sin registro, sin instalar nada.</p>
+  <p class="mono baranda" style="font-size:32px">ljbu.balbiano06.workers.dev</p>
+  <div style="margin-top:auto">
+    <p class="c32">Código abierto y contenido en español. Falta la beta con estudiantes: si das clases de POO y querés probarlo con tu curso, escribime.</p>
+  </div>
+  <p class="pie"><span>github.com/BalbianoLuciano</span><span>07 / 07</span></p>
+  <div class="pilar" data-gap="16"></div>
+</section>
+
+</body>
+</html>
