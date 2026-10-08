@@ -1,0 +1,41 @@
+{
+  "canales" : [
+    {
+      "hecho" : 10,
+      "id" : "easy",
+      "meta" : 40,
+      "nombre" : "LinkedIn (sencilla + solicitar)"
+    },
+    {
+      "hecho" : 0,
+      "id" : "info",
+      "meta" : 15,
+      "nombre" : "InfoJobs"
+    },
+    {
+      "hecho" : 0,
+      "id" : "portal",
+      "meta" : 12,
+      "nombre" : "Otros portales"
+    },
+    {
+      "hecho" : 0,
+      "id" : "feed",
+      "meta" : 18,
+      "nombre" : "Avisos con \/aplicar"
+    },
+    {
+      "hecho" : 0,
+      "id" : "mail",
+      "meta" : 10,
+      "nombre" : "Espontáneas por mail"
+    },
+    {
+      "hecho" : 0,
+      "id" : "dm",
+      "meta" : 15,
+      "nombre" : "DMs a recruiters"
+    }
+  ],
+  "fecha" : "2026-10-07"
+}
