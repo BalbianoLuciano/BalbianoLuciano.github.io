@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=1080">
-<title>Learn Java — carrusel</title>
+<title>Learn Java — carousel</title>
 <!-- Fuentes: las mismas del manual. Dharma del kit de Typekit, Aileron local
      de respaldo, Outfit y Plex Mono de Google. -->
 <link rel="stylesheet" href="https://use.typekit.net/tyi0xxl.css">
@@ -93,6 +93,7 @@
 
   /* Imagen: blanco y negro, contraste 1.35, horneado en el archivo (img/). */
   .img img { display: block; width: 100%; border: 1px solid var(--vacio); }
+  .slide > div > img { background: transparent; }
   .img figcaption { margin-top: 10px; }
 
   /* Tablas en linea fina: la estructura a la vista, sin cajas */
@@ -125,12 +126,12 @@
 
 <!-- 01 · El hook -->
 <section class="slide con-pilar">
-  <p class="mono etiqueta">Curso abierto · Java y POO</p>
-  <h1 style="margin-top:0;margin-bottom:0"><span class="titular t72" style="display:block">Aprendé Java</span><span class="titular t162" style="display:block;margin-top:6px">construyendo<br>una universidad</span></h1>
-  <p class="d48">Escribís Java de verdad, lo ejecutás, y ves en una maqueta 3D qué construyó tu código.</p>
+  <p class="mono etiqueta">Open course · Java and OOP</p>
+  <h1 style="margin-top:0;margin-bottom:0"><span class="titular t72" style="display:block">Learn Java</span><span class="titular" style="display:block;margin-top:6px">by building<br>a university</span></h1>
+  <p class="c32">You write real Java, you run it, and a 3D model shows you what your code built.</p>
   <div style="margin-top:auto">
-    <p class="titular t162 baranda" style="line-height:0.8">20</p>
-    <p class="mono sombra" style="margin-top:14px">desafíos en cuatro módulos.<br>El modelo es la UTN real.</p>
+    <img src="img/pieza-plano-objeto.png" alt="El plano de la clase y el edificio del objeto sobre su isla" style="display:block;width:560px;margin:0 0 2px -16px">
+    <p class="mono sombra">The class is the blueprint; the object, the building.<br>20 challenges, four modules.</p>
   </div>
   <p class="pie" style="margin-top:0 !important"><span>Luciano Balbiano</span><span>01 / 07</span></p>
   <div class="pilar" data-gap="16"></div>
@@ -138,59 +139,59 @@
 
 <!-- 02 · El problema -->
 <section class="slide">
-  <p class="mono etiqueta">El problema</p>
-  <h2 class="titular">Un objeto<br>no se ve</h2>
-  <p class="c32">Al que arranca con objetos no le falta la sintaxis: le falta el modelo mental. <code>new</code> no muestra nada, una referencia tampoco, y dos variables que apuntan al mismo objeto se ven idénticas a dos objetos distintos.</p>
-  <p class="c32">Lo que devuelve la consola es texto sobre algo que nadie vio nunca.</p>
-  <p class="cita c32" style="margin-top:auto">Si el estado del programa no se puede ver, el error se aprende de memoria en vez de entenderse.</p>
+  <p class="mono etiqueta">The problem</p>
+  <h2 class="titular">An object<br>can't be seen</h2>
+  <p class="c32">What a beginner lacks isn't the syntax: it's the mental model. <code>new</code> shows nothing, a reference shows nothing, and two variables pointing at the same object look exactly like two different objects.</p>
+  <p class="c32">All the console gives back is text about something nobody ever saw.</p>
+  <p class="cita c32" style="margin-top:auto">When the state of a program can't be seen, mistakes get memorised instead of understood.</p>
   <p class="pie"><span>Learn Java by Building a University</span><span>02 / 07</span></p>
 </section>
 
 <!-- 03 · La maqueta, en color: es el punto -->
 <section class="slide">
-  <p class="mono etiqueta">La maqueta</p>
-  <h2 class="titular t72">Cada pieza es<br>un concepto</h2>
-  <figure class="img" style="margin:0"><img src="img/maqueta.png" alt="Escena isométrica con facultades sobre islas flotantes" style="height:760px;object-fit:cover;object-position:50% 46%"></figure>
-  <p class="c24 sombra">Escena isométrica en Three.js: cámara ortográfica fija, piezas low-poly flotando sin suelo infinito.</p>
+  <p class="mono etiqueta">The model</p>
+  <h2 class="titular t72">Every piece is<br>a concept</h2>
+  <figure class="img" style="margin:0"><img src="img/maqueta.png" alt="Isometric scene with faculties on floating islands" style="height:760px;object-fit:cover;object-position:50% 46%"></figure>
+  <p class="c24 sombra">Isometric scene in Three.js: fixed orthographic camera, low-poly pieces floating with no infinite ground.</p>
   <p class="pie"><span>React Three Fiber</span><span>03 / 07</span></p>
 </section>
 
 <!-- 04 · El diccionario -->
 <section class="slide">
-  <p class="mono etiqueta">El diccionario</p>
-  <h2 class="titular t72">Qué es cada<br>forma</h2>
+  <p class="mono etiqueta">The dictionary</p>
+  <h2 class="titular t72">What each<br>shape means</h2>
   <table>
-    <tr><th>Java</th><th>En la maqueta</th></tr>
-    <tr><td class="mono">class</td><td>Un plano, en línea fina</td></tr>
-    <tr><td class="mono">new</td><td>Un edificio que crece desde su isla</td></tr>
-    <tr><td>objeto</td><td>Chapa de serie: <span class="mono">FacultadRegional #1</span></td></tr>
-    <tr><td>referencia</td><td>Etiqueta colgando del edificio</td></tr>
-    <tr><td>composición</td><td>Isla adosada, unida por un puentecito</td></tr>
-    <tr><td>constructor</td><td>Una grúa sobre la isla mientras corre</td></tr>
-    <tr><td class="mono">==</td><td>Mismo número de serie, mismo edificio</td></tr>
+    <tr><th>Java</th><th>In the model</th></tr>
+    <tr><td class="mono">class</td><td>A blueprint, in thin line</td></tr>
+    <tr><td class="mono">new</td><td>A building that grows out of its island</td></tr>
+    <tr><td>object</td><td>Serial plate: <span class="mono">FacultadRegional #1</span></td></tr>
+    <tr><td>reference</td><td>A label hanging from the building</td></tr>
+    <tr><td>composition</td><td>An attached island, joined by a small bridge</td></tr>
+    <tr><td>constructor</td><td>A crane over the island while it runs</td></tr>
+    <tr><td class="mono">==</td><td>Same serial number, same building</td></tr>
   </table>
-  <p class="c24 sombra" style="margin-top:auto">Una lista es una hilera de edificios chicos con baranda.</p>
+  <p class="c24 sombra" style="margin-top:auto">A list is a row of small buildings with a railing.</p>
   <p class="pie"><span>Learn Java by Building a University</span><span>04 / 07</span></p>
 </section>
 
 <!-- 05 · La pantalla entera -->
 <section class="slide">
-  <p class="mono etiqueta">La pantalla</p>
-  <h2 class="titular t72">Código, obra<br>y bitácora</h2>
-  <figure class="img" style="margin:0"><img src="img/pantalla.png" alt="Editor de Java a la izquierda, maqueta 3D y bitácora a la derecha"></figure>
-  <p class="c24 sombra">Cada observación de la bitácora apunta a una línea: <span class="mono">FacultadRegional.java:1</span>.</p>
+  <p class="mono etiqueta">The screen</p>
+  <h2 class="titular t72">Code, site<br>and log</h2>
+  <figure class="img" style="margin:0"><img src="img/pantalla.png" alt="Java editor on the left, 3D model and log on the right"></figure>
+  <p class="c24 sombra">Every line of feedback points at a line of yours: <span class="mono">FacultadRegional.java:1</span>.</p>
   <p class="pie"><span>Monaco · Three.js</span><span>05 / 07</span></p>
 </section>
 
 <!-- 06 · Como esta hecho -->
 <section class="slide">
-  <p class="mono etiqueta">Cómo está hecho</p>
-  <h2 class="titular t72">El estado<br>es real</h2>
-  <p class="c32">La maqueta no interpreta el código: lo mira correr. El backend ejecuta el programa del alumno en un entorno aislado y lee el estado con <strong>JDI</strong>, la interfaz de depuración de la propia JVM. Lo que aparece en la escena son los objetos que existieron de verdad.</p>
+  <p class="mono etiqueta">How it is built</p>
+  <h2 class="titular t72">The state<br>is real</h2>
+  <p class="c32">The model doesn't interpret the code: it watches it run. The backend executes the program in an isolated environment and reads the state through <strong>JDI</strong>, the JVM's own debugging interface. What appears in the scene are the objects that actually existed.</p>
   <dl class="specs">
     <div><dt>Backend</dt><dd>Java 25 · Spring Boot 4 · JDI</dd></div>
     <div><dt>Front</dt><dd>React · TypeScript · Vite · Monaco</dd></div>
-    <div><dt>Escena</dt><dd>Three.js con React Three Fiber</dd></div>
+    <div><dt>Scene</dt><dd>Three.js with React Three Fiber</dd></div>
     <div><dt>Deploy</dt><dd>Railway · Cloudflare</dd></div>
   </dl>
   <p class="pie"><span>Learn Java by Building a University</span><span>06 / 07</span></p>
@@ -198,12 +199,12 @@
 
 <!-- 07 · Cierre -->
 <section class="slide con-pilar">
-  <p class="mono etiqueta">Abierto</p>
-  <h2 class="titular t162" style="margin-bottom:0">Está<br>online</h2>
-  <p class="d48">Los 20 desafíos se resuelven de punta a punta. Sin registro, sin instalar nada.</p>
+  <p class="mono etiqueta">Open</p>
+  <h2 class="titular t162" style="margin-bottom:0">It is<br>live</h2>
+  <p class="d48">The 20 challenges play end to end. No signup, nothing to install.</p>
   <p class="mono baranda" style="font-size:32px">ljbu.balbiano06.workers.dev</p>
   <div style="margin-top:auto">
-    <p class="c32">Código abierto y contenido en español. Falta la beta con estudiantes: si das clases de POO y querés probarlo con tu curso, escribime.</p>
+    <p class="c32">Open source; the course content is in Spanish. What is missing is the beta with students: if you teach OOP and want to run it with your course, get in touch.</p>
   </div>
   <p class="pie"><span>github.com/BalbianoLuciano</span><span>07 / 07</span></p>
   <div class="pilar" data-gap="16"></div>

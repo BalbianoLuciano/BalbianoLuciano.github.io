@@ -5,36 +5,80 @@ status: draft
 media: learn-java-carrusel.pdf (7 slides, 1080x1350)
 ---
 
-# Post — Learn Java by Building a University
+# Post — Learn Java by Building a University (EN)
 
-Un objeto no se ve. Esa es, para mí, la razón por la que la programación orientada a objetos se termina aprendiendo de memoria: `new` no muestra nada, una referencia tampoco, y dos variables que apuntan al mismo objeto se ven igual que dos objetos distintos. Lo único que devuelve la consola es texto sobre algo que nadie vio nunca.
+Java and Three.js in the same project sounds like a mistake. It isn't: the JVM runs your code and a 3D scene shows what it built, and the bridge between them is the debugger.
 
-Armé un curso abierto donde eso se ve: escribís Java de verdad, lo ejecutás, y una maqueta 3D isométrica te muestra qué construyó tu código.
+Here's the problem I was trying to solve. You can't see an object. `new` shows nothing, a reference shows nothing, and two variables pointing at the same object look exactly like two different objects. All a beginner gets back is text about something nobody ever saw.
 
-Cada concepto tiene una forma, siempre la misma:
-— una clase es un plano en línea fina
-— un objeto es un edificio que crece desde su isla, con su chapa de serie: FacultadRegional #1
-— una referencia es una etiqueta que cuelga del edificio
-— la composición es una isla adosada, unida por un puentecito
-— un constructor es una grúa sobre la isla mientras corre
+So I built an open course where you do see it: you write real Java, you run it, and an isometric 3D model shows you what your code built.
 
-Y dos edificios con el mismo número de serie son el mismo objeto. Ahí `==` deja de necesitar explicación.
+Every concept has one shape, always the same:
+— a class is a blueprint in thin line
+— an object is a building that grows out of its island, with its serial plate: FacultadRegional #1
+— a reference is a label hanging from the building
+— composition is an attached island joined by a small bridge
+— a constructor is a crane working while it runs
 
-Lo que más me importó: la maqueta no interpreta el código, lo mira correr. El backend ejecuta el programa en un entorno aislado y lee el estado con JDI, la interfaz de depuración de la propia JVM. Lo que aparece en la escena son los objetos que existieron de verdad, y cada observación de la bitácora apunta a una línea tuya.
+Two buildings with the same serial plate are the same object. That's `==` shown instead of explained.
 
-El modelo es la UTN real: sus 30 facultades regionales, un único rectorado, los requisitos para ser decano, los órganos de gobierno. Todo sale del Estatuto, así que el dominio no es inventado y se puede discutir.
+The part I care about most: the scene doesn't interpret your code, it watches it run. The backend executes the program in an isolated environment and reads the state through JDI, the JVM's own debugging interface. What appears in the model are the objects that actually existed, and every line of feedback points back at a line you wrote.
 
-Java 25, Spring Boot 4 y JDI atrás. React, TypeScript y Three.js adelante.
+The domain is real too: it models the Universidad Tecnológica Nacional as it is — 30 regional faculties, one rectorate, the requirements to be a dean — straight from its charter.
 
-Son 20 desafíos en cuatro módulos y están online, sin registro: ljbu.balbiano06.workers.dev
+20 challenges, four modules, online and no signup: ljbu.balbiano06.workers.dev
 
-Lo que falta es la beta con estudiantes. Si das clases de POO y querés probarlo con tu curso, escribime.
+What's missing is the beta with students. If you teach OOP and want to run it with your course, get in touch.
 
-#java #poo #opensource #threejs #educacion
+#java #threejs #opensource #oop #education
+
+---
+
+## First comment
+
+The links, and the parts worth explaining:
+
+App: https://ljbu.balbiano06.workers.dev
+Repo: https://github.com/BalbianoLuciano/learn-java-by-building-a-university
+
+**How the model is built.** The scene isn't an animation of what the code should
+do: it's a reading of what it did. The backend compiles and runs the student's
+program and inspects it through JDI, the JVM's own debugging interface, so every
+piece on screen maps to an object that actually existed, with its real field
+values and identity. That's also why `==` can be shown instead of explained: two
+buildings with the same serial plate are the same object.
+
+**Running a stranger's Java safely.** There is no SecurityManager any more — it
+was deprecated in 17 and disabled for good in 24 — so isolation is layered:
+input validation, controlled compilation, a bytecode allowlist, an isolated
+process with time, memory, output and object-count limits, and a runner that
+holds no secrets and no privileges. No accounts, no student code stored.
+
+**The visual language.** A class is a blueprint, an object is a building that
+grows out of its island, a reference is a label hanging from it, composition is
+an attached island joined by a small bridge, and a constructor is a crane
+working while it runs. Fixed isometric camera, no free rotation: the same
+concept always has the same shape in the same place.
+
+**The domain is real.** Everything models the Universidad Tecnológica Nacional
+as it actually is — 30 regional faculties, one rectorate, the requirements to be
+a dean, the governing bodies — sourced from its Estatuto. It's an independent
+project, not an official UTN site.
+
+**Stack.** Java 25, Spring Boot 4 and JDI on the back. React, TypeScript, Vite,
+Monaco and Three.js (React Three Fiber) on the front. Railway and Cloudflare for
+deploys. Code is MIT, educational content CC BY-SA 4.0.
+
+**Status.** The 20 challenges across four modules are playable end to end. What's
+missing is the beta with real students: if you teach OOP and want to run it with
+your course, I'd like to hear from you.
+
+---
 
 ---
 
 ## Notas de armado
+
 
 - **Carrusel**: `learn-java-carrusel.pdf`, 7 slides en el contrato visual del
   manual (`/marca`), generado con `node render.mjs` igual que el de Gridwright.
