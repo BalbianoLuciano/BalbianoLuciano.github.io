@@ -26,7 +26,7 @@ busca) y "LLM Integration" (redundante con OpenAI y Claude). Y corrige "Ai" por
 ```
 Co-founder of a software studio with six products running in production across higher education, legal, retail, e-commerce and marketplaces.
 
-• Built the internal MCP server (TypeScript, Model Context Protocol SDK) that centralises the studio's operations and is used daily by the whole team
+• Built internal tooling on the Model Context Protocol SDK (TypeScript) for the studio's operations
 • Built a RAG agent in Python: ChromaDB, multilingual embeddings, over-fetch with similarity threshold and re-ranking, LLM layer over Groq with automatic failover to OpenRouter
 • Lead the technical decisions and architecture: multi-tenant isolation guaranteed at the database level, versioned business rules, and what has to be tested before anything ships
 • One design rule across all of it: the system generates, the person decides
@@ -34,17 +34,60 @@ Co-founder of a software studio with six products running in production across h
 Tech: TypeScript · Python · Next.js · React · PostgreSQL · Drizzle · Cloudflare Workers · MCP · RAG · OpenAI API · Claude API
 ```
 
-## 4. "Acerca de" — la línea de Tech Stack, al final
+## 4. "Acerca de" — el texto completo, unificado con el CV (2026-10-13)
 
-Agregar lo que falta: `Python`, `REST APIs`, `Git`, `CI/CD`, `Symfony`,
-`Express`, `Scrum`. Hoy Python no aparece, y el CV de IA entero se apoya en eso.
+Se reemplaza entero. Unifica con el CV de IA: los mismos años ("5+ years
+programming and 4+ years shipping"), la misma frase de punta a punta, los mismos
+números y el mismo stack. Son 2.124 de los 2.600 caracteres que permite LinkedIn.
 
-## 5. "Acerca de" — primera línea
+```
+AI Engineer & Full Stack Developer with 5+ years programming and 4+ years shipping real projects, from the definition with the client through to deployment and production maintenance.
 
-Cambiar "Ai native & Full Stack Developer" por **"AI Engineer & Full Stack
-Developer"**, para que diga lo mismo que el headline. Y nombrar la empresa:
-"Currently leading development at Invisible Geeks (Madrid)" en vez de "at a tech
-company in Madrid" — el nombre es buscable.
+Currently Team Leader at Invisible Geeks, leading a team of 2-3 developers and building AI into products that are already in production.
+
+What I bring to the table:
+
+→ AI Engineering: production integrations with the OpenAI and Claude APIs, RAG pipelines with ChromaDB and multilingual embeddings, automatic failover between model providers, and spend ceilings so AI features degrade instead of breaking
+
+→ AI-assisted development, measured: I built Gridwright, an open source Claude Code plugin that turns designs into components and views verified against the original — 98.54% fidelity against 89% for the same agent without the tool, 262 tests
+
+→ Full Stack Foundation: PHP, Laravel, Vue, React, TypeScript, Node and Python, backend and frontend, so the AI has a product around it
+
+→ Technical Leadership: team of 2-3 developers, technical decisions, architecture, code review and mentoring. I spot scope gaps early, which several times allowed agreements to be renegotiated before it was too late
+
+→ Delivery at scale: 26,634 records and 29,194 format corrections consolidated from four legacy MySQL databases, 800+ pages migrated to a new CMS, and multi-tenant architecture with isolation guaranteed at the database level
+
+Spanish/EU Citizen — no visa sponsorship needed for EU positions
+Open to remote opportunities worldwide — startups, AI-first companies, product teams
+Spanish (Native) | English B2, EF SET certified
+
+Tech Stack: OpenAI API · Claude API · Claude Code · Groq · OpenRouter · Agentic RAG · ChromaDB · MCP (Model Context Protocol) · Prompt Engineering · PHP · Laravel · Symfony · Python · Vue.js · React · Next.js · TypeScript · JavaScript · Node.js · Express · Tailwind CSS · REST APIs · MySQL · PostgreSQL · SQLite · Docker · Git · CI/CD · Scrum · React Native · Firebase · Playwright · Pest · Astro.js · Prisma · Drizzle · Figma
+
+Portfolio: https://balbianoluciano.github.io/ | GitHub: github.com/BalbianoLuciano
+```
+
+### Qué cambió respecto del texto que tenía
+
+- **"a tech company in Madrid" → "Invisible Geeks"**, sin la ciudad. El nombre es
+  buscable; la ciudad lo hizo pasar por candidato europeo y una recruiter le dijo
+  que no tenía búsquedas para Europa (Staffy, 2026-10-13).
+- **MongoDB afuera.** No lo tiene. Estaba declarado en el stack y es de los
+  ausentes correctos del informe de ATS.
+- **"MCP Agents" → "MCP (Model Context Protocol)"**, como en el CV. El servidor
+  interno quedó sin terminar y no está en uso: se nombra el protocolo y el SDK,
+  no un agente en producción.
+- **"Startup Mindset — wearing multiple hats" afuera.** Es adjetivo sin hecho
+  detrás, y la regla 4 de VOZ lo prohíbe. En su lugar entra "Delivery at scale",
+  con los números de las migraciones.
+- **"OS simulators" afuera**, y en su lugar Gridwright con el número medido. Es
+  público y se puede abrir.
+- **Entran los números**: 98,54% contra 89%, 262 tests, 26.634 registros, 29.194
+  correcciones, 800+ páginas. El texto anterior no tenía ninguno.
+- **Entra el EF SET certificado** junto al B2, y los guardrails de gasto, que son
+  la parte de ingeniería de IA que casi nadie declara.
+- **Al stack se le suman** (punto 4 original): Python, REST APIs, Git, CI/CD,
+  Symfony, Express y Scrum, más Claude Code, Groq, OpenRouter, ChromaDB, Next.js,
+  SQLite y Drizzle.
 
 ## 6. La palabra "Senior"
 
