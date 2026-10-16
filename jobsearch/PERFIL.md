@@ -81,7 +81,8 @@ producción: educación superior, legal, retail, e-commerce y marketplaces.
   Figma en componentes y los mide contra el diseño. Máquina de estados en disco
   y verificaciones escritas como código. 250 tests; 98,54% de fidelidad en una
   landing de 12 secciones, contra 89% del mismo agente sin la herramienta.
-  Público: github.com/BalbianoLuciano/gridwright
+  En su equipo bajó un 70% el tiempo de maquetación (dato suyo, confirmado el
+  2026-10-16). Público: github.com/BalbianoLuciano/gridwright
 - **Agente RAG en Python** para generar propuestas (2.968 líneas): ChromaDB con
   embeddings multilingües de sentence-transformers, recuperación con umbral y
   re-ranking por coincidencia de stack, y capa de LLM con Groq (Llama 3.3 70B) y
@@ -128,6 +129,16 @@ code reviews y acompañamiento del equipo en Invisible Geeks.
 
 ### Freelance — Full Stack · 2023 – 2025
 Proyectos de punta a punta, con foco en front-end.
+
+**Travel tech — TGF, un año y medio**: plataforma de viajes y contenido en
+España, construida en **Laravel y Vue**. Fichas de rutas, viajes guardados por
+usuario (favoritos) y panel de gestión para el equipo. La plataforma tenía
+integraciones con proveedores de vuelos y hoteles, **pero esas no son suyas**.
+
+Es el dato que vale para los avisos del rubro travel, donde el conocimiento del
+sector suele ser excluyente (caso Mindata, 2026-10-13). **Falta confirmar las
+fechas exactas** y si tocó reservas o inventario, que es lo que esos avisos
+preguntan después.
 
 ## Proyectos y los números que convencen
 
