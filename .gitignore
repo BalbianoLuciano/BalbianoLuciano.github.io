@@ -39,5 +39,8 @@ jobsearch/contador/Contador.app/
 # Exportaciones de LinkedIn: datos de terceros, no se versionan
 jobsearch/espontaneas/contactos/
 
+# Caché de bytecode de Python de los scripts de espontáneas
+jobsearch/espontaneas/__pycache__/
+
 # Preparaciones de entrevista: nombran personas y empresas.
 jobsearch/entrevistas/
