@@ -59,7 +59,9 @@ situaciones" — no dice "somos expertos". Nunca escribir "apasionado",
 quien lee.
 
 **5. Frases largas encadenadas con comas. Párrafos de 2 a 4 líneas.**
-Cero bullets en un mail. Cero negritas. El texto fluye.
+Cero negritas. El texto fluye. Sobre los bullets: en los mails que responden a un
+aviso publicado ahora van dos ítems con `→`, ver "La estructura del mail de
+aplicación". En todo lo demás —DMs, mensajes a personas, notas— siguen fuera.
 
 **6. Cierra con una puerta abierta, no con un pedido.**
 "me avisas y lo vemos en una reu" · "Estamos en contacto!". Nada de "quedo a la
@@ -147,7 +149,7 @@ Estas frases matan el texto y se notan a un kilómetro:
 - "Estoy emocionado de aplicar" / "I'm excited to apply"
 - "Creo que sería un gran fit" / "encajo perfecto en el rol"
 - "Sinergia", "disruptivo", "impacto transformador", "pasión por el código"
-- Listas con bullets dentro de un mail
+- Listas con bullets dentro de un mail que no sea de aplicación a un aviso
 - Abrir el mail hablando de sí mismo
 - Repetir el CV en prosa (quien lee ya lo tiene adjunto)
 - **Decir dónde vive.** Regla de Luciano del 2026-10-05: "no utilizar que vivo
@@ -234,6 +236,125 @@ es un DM, no una carta. Plural ("hicimos", "te armamos"), nunca "co-fundé".
 Y mirar quién publica: si no es técnico, afuera la jerga (multi-tenant, roles y
 permisos, definición funcional); queda el proyecto parecido con un link que
 pueda probar.
+
+## La plantilla del mail de aplicación
+
+Decisión del 2026-10-13. Braian pasó la plantilla que a él le está trayendo
+respuestas y Luciano la adoptó como **plantilla general**. Reemplaza la prosa
+corrida en todo mail que responde a un aviso publicado. Los DMs, los mensajes a
+personas y las notas siguen como estaban.
+
+> **REGLA IRREVOCABLE (2026-10-13).** Esta plantilla se usa **siempre**, sin
+> excepciones y sin rediseñarla por aviso. No se "mejora", no se reordena, no se
+> adapta el tono. Lo único que se toca son los tres corchetes y —solo si el
+> aviso pide algo que los dos logros no tocan— el segundo logro, tomado de la
+> lista de reemplazos de abajo. El logro
+> de Gridwright no se reemplaza nunca. Si una carta de motivación o un campo de
+> formulario pide texto largo, se usa esta misma estructura, no otra.
+
+**Los dos logros son fijos y se usan siempre.** No se eligen por aviso. Son
+generales a propósito: muestran de qué es capaz, no qué tecnología tocó. Uno es
+Gridwright, porque es el talento diferencial; el otro es el liderazgo con la
+escala de lo que entregó.
+
+**Cada logro abre con un verbo de logro en primera persona del pasado**: diseñé,
+construí, lideré, migré, definí, medí. Nunca con un sustantivo, nunca con "mi
+experiencia en". El verbo primero, el resultado con número después.
+
+### La plantilla
+
+> **Asunto**: Luciano Balbiano — [puesto]
+>
+> Hola [nombre], ¿cómo estás?
+>
+> Te escribo por la posición de [puesto, como lo nombra el aviso] que vi en [LinkedIn / InfoJobs / donde sea]: encaja directo con mi perfil.
+>
+> Soy desarrollador full stack con 5 años de experiencia, actualmente Team Leader en Invisible Geeks, liderando un equipo de tres personas en remoto. Lo que me diferencia es cómo integro la IA en el flujo de desarrollo real.
+>
+> Dos cosas que dan contexto rápido de cómo trabajo:
+>
+> → Diseñé y construí Gridwright, un plugin open source de Claude Code que convierte diseños en componentes y vistas verificadas contra el diseño original. Llevé la fidelidad del 89% al 98,54% midiendo al mismo agente con y sin la herramienta, y el tiempo de maquetado bajó cerca del 70%. Son 262 tests y el protocolo escrito como código: lo que se puede verificar con un assert lo resuelve el programa, y lo que necesita criterio queda para el modelo.
+>
+> → Lideré proyectos de punta a punta, desde la definición con el cliente hasta el mantenimiento en producción, y diseñé las migraciones que movieron plataformas enteras sin perder nada: 26.634 registros con 29.194 correcciones de formato en una editorial multi-idioma, dos décadas de catálogo en un cliente internacional y más de 800 páginas en otro, con claves de idempotencia para poder reimportar sin duplicar.
+>
+> Te dejo mi trabajo:
+>
+> → GitHub: github.com/BalbianoLuciano
+>
+> → Portfolio: balbianoluciano.github.io
+>
+> → LinkedIn: linkedin.com/in/luciano-balbiano
+>
+> Adjunto el CV con más detalle. Quedo disponible para coordinar una entrevista.
+>
+> Saludos cordiales,
+> Luciano Balbiano
+
+**Los corchetes son los únicos tres lugares que cambian**: el nombre, el puesto y
+dónde vio el aviso.
+
+**La introducción es FIJA y no se edita. MUST.** Las dos oraciones de arriba van
+textuales en todos los mails: la primera habla de él como el CV —rol, años,
+puesto actual, equipo, remoto— y la segunda es el diferencial. Corta, como la de
+Braian. No se le agrega nada del aviso, no se le mueve una palabra.
+
+**Sin aclaraciones. MUST (2026-10-13).** El mail no lleva ninguna oración que
+aclare lo que no tiene: ni el stack que falta, ni la nube que no tocó, ni el
+nivel de inglés, ni los años. **Nada de "te aclaro que".** El mail es para que
+lo lean, no para entregarles el filtro antes de que lleguen a los logros. El
+hueco se contesta cuando lo preguntan, y ahí sí de frente —en el screening, en
+el formulario o en la entrevista, donde la regla 3-bis sigue valiendo entera.
+
+El veredicto sobre el encaje y lo que falta va en el **archivo de la
+aplicación** y en el chat, para que Luciano lo sepa antes de mandar. En el mail,
+no.
+
+### Si el aviso pide algo que los dos logros no tocan
+
+Solo entonces se reemplaza el segundo (nunca el de Gridwright), y el reemplazo
+se escribe con la misma forma: verbo de logro y número.
+
+- **Testing y calidad**: *"Definí la estrategia de testing del equipo —pruebas
+  unitarias, de integración y golden tests sobre Pest y Playwright, integradas
+  al CI—, de manera que lo que rompe se ve antes del deploy y no en producción:
+  248 tests corriendo contra una base Postgres real en uno de los productos."*
+- **Arquitectura y multi-tenant**: *"Construí un motor que corre igual para
+  rubros distintos, donde lo que cambia es dato y no código, con el aislamiento
+  entre negocios garantizado por Postgres y no por el ORM, probado con 248 tests
+  contra una base real."*
+- **IA a nivel producto**: *"Construí los sistemas de generación de contenido
+  que hoy están en producción sobre las APIs de OpenAI y Claude, más un chatbot
+  propio con streaming, y les puse techo de gasto: cada llamada se cuenta contra
+  un tope por usuario y uno global antes de gastarse, y al llegar al límite la
+  función se apaga sola y la aplicación sigue andando sin IA."*
+- **Automatización**: *"Construí una extensión que completa formularios de
+  postulación con un diccionario de 38 campos y 385 formas de pedirlos en cinco
+  idiomas, con 90 tests, y decidí no usar un LLM: las heurísticas cubren el caso
+  y el modelo quedó documentado como último escalón."*
+- **Frontend y performance**: *"Migré más de 800 páginas a un CMS nuevo sobre un
+  boilerplate propio de React Islands con hidratación selectiva, para que solo
+  los componentes realmente interactivos manden JavaScript al navegador."*
+
+### Lo que no cambia
+
+- Nada de la lista de **Prohibido**. Braian escribe "Me encantaría conversar" y
+  "quedo a disposición"; acá va "quedo disponible para coordinar una entrevista".
+- **La ciudad no se nombra**, ni la suya ni la de la empresa donde trabaja.
+  Braian pone "Invisible Geeks (Madrid)"; acá va "Invisible Geeks" y, si hace
+  falta, "en remoto". Nombrar Madrid hizo que una recruiter lo clasificara como
+  candidato europeo y le dijera que no tenía búsquedas (Staffy, 2026-10-13).
+- **Los números son los suyos**, salvo el 70% de tiempo, que Luciano decidió
+  incluir el 2026-10-13. Aviso para que quede escrito: **no está medido en
+  ningún lado** —ni en los CVs, ni en el portfolio, ni en los tres runs de
+  `bench-protocol`, donde lo medido es la fidelidad— y viene de la plantilla de
+  Braian, donde era ahorro de tokens. Va como consecuencia de su propia práctica
+  ("el tiempo de maquetado bajó cerca del 70%"), no como resultado del A/B
+  controlado. Si en una entrevista preguntan cómo se midió, hay que tener la
+  respuesta lista; cronometrar los dos brazos en la próxima corrida lo convierte
+  en un número con respaldo.
+- **El MCP no se menciona** (sin terminar, no está en uso). En su lugar va
+  Gridwright, que es público y se puede abrir.
+- **El agente RAG no se llama "en producción"**: es un prototipo interno.
 
 ## El largo
 
