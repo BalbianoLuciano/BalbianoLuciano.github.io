@@ -27,7 +27,8 @@ EMPRESAS_SIN_EMPRESA = re.compile(r"independiente|freelanc|self.?employed|^$", r
 NOMBRE_NO_HISPANO = re.compile(r"[žšćčđłřőűșț]|^[A-Z][a-z]+ [A-Z][a-z]+(sson|sen|ski|vić|ović)$", re.I)
 
 # Técnicos elegidos a mano (founders y CTOs de producto o desarrollo). El resto
-# de los 61 "técnicos" son founders de RRHH, marketing o coaching.
+# de los 61 "técnicos" son founders de RRHH, marketing o coaching. Los que se
+# describen como developers los descarta es_dev_simple, aunque sigan en la lista.
 TECNICOS = [
     "Gabriel Martinez Corti", "tomas gonzalez", "Juan Manuel Ortiz",
     "Ezequiel Petruzzi", "Leandro Tula", "Marcos Alejandro Valle", "Nicolás Quiroga",
@@ -35,23 +36,24 @@ TECNICOS = [
     "Martin Cano", "Ana Fontana", "Danilo Maccari", "Ramiro Lacci",
     "Rafael G. Figueredo", "Juan P. Barrirero",
 ]
-# Gancho propio cuando lo hay; si no, va el genérico.
+# Gancho propio cuando lo hay; va entre el saludo y la presentación.
 GANCHO_TECNICO = {
-    "Leandro Tula": "Vi que liderás backend en Mercado Libre: ¿están sumando gente al equipo, o te escribo más adelante?",
-    "Marcos Alejandro Valle": "Vi que sos tech lead en Naranja X: ¿están sumando gente al equipo, o te escribo más adelante?",
+    "Leandro Tula": "Vi que liderás backend en Mercado Libre.",
+    "Marcos Alejandro Valle": "Vi que sos tech lead en Naranja X.",
 }
+GRIDWRIGHT = "https://github.com/BalbianoLuciano/gridwright"
 
-REC_ES = """Hola {nombre}, ¿cómo estás? Una pregunta rápida: ¿en {empresa} están buscando perfiles senior full stack este trimestre, o te escribo más adelante?
+# El mensaje abre con un regalo (Gridwright) y recién al final pregunta por vacantes.
+# El 70% es el tiempo de maquetación que ahorró en su equipo (dato suyo, 2026-10-16).
+REC_ES = """Hola {nombre}, ¿cómo estás? {gancho}Soy Luciano Balbiano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en {gridwright}
 
-Te cuento por qué: soy Luciano Balbiano, desarrollador full stack con 5 años en PHP, Laravel, Vue, React y TypeScript, e IA integrada en producción. Actualmente soy Team Leader en Invisible Geeks, lidero un equipo de tres y trabajo en remoto. Si encaja, te envío el CV. Portfolio: {portfolio}"""
+Este tipo de herramientas son las que más disfruto construir. Si en {empresa} buscan un perfil así para sumarse a proyectos interesantes, ¿te puedo enviar mi CV? Te dejo mi portfolio por acá, {portfolio}"""
 
-REC_EN = """Hi {nombre}, quick question: is {empresa} hiring senior full stack developers this quarter, or should I reach out later?
+REC_EN = """Hi {nombre}, I hope you're doing well. {gancho}I'm Luciano Balbiano, I lead the development team at Invisible Geeks, and I wanted to share an open-source tool I built to streamline a team's workflow, it's called Gridwright. It's a Claude Code plugin that turns Figma designs into components ready for the project. In our team it cut layout time by 70% and brought order to how design and development work together. It's open for your team to use at {gridwright}
 
-Here's why I'm asking: I'm Luciano Balbiano, a full stack developer with 5 years in PHP, Laravel, Vue, React and TypeScript, with AI integrated in production. I'm Team Leader at Invisible Geeks, leading a team of three, and I work remotely. Happy to send my CV if it fits. Portfolio: {portfolio}"""
+This kind of tool is what I enjoy building most. If {empresa} is looking for a profile like mine to join interesting projects, could I send you my CV? Here's my portfolio, {portfolio}"""
 
-TEC_ES = """Hola {nombre}, ¿cómo estás? {gancho}
-
-Soy Luciano Balbiano, desarrollador full stack con 5 años en PHP, Laravel, TypeScript, React y Vue. Lidero el equipo de desarrollo en Invisible Geeks y construí Gridwright, un plugin open source de Claude Code que convierte diseños de Figma en componentes verificados. Portfolio: {portfolio}"""
+TEC_ES = REC_ES
 
 
 def leer_conexiones():
@@ -91,6 +93,19 @@ def prioridad(c):
 
 ES_RECRUITER = re.compile(r"recruit|talent|reclut|selecci|human resources|recursos humanos|\bhr\b|people|rrhh|headhunt|sourc|hiring|adquisic", re.I)
 
+# Quien se define a sí mismo como developer no contrata: es un par, no una puerta.
+# Aplica también a los "Fundador & Full Stack Developer", que son estudios de una
+# persona. Se exceptúa a los recruiters, porque varios nombran "developer" en su
+# cargo ("Tech Recruiter & Developer Growth") y sí contratan.
+ES_DEV_SIMPLE = re.compile(
+    r"develop|desarroll|program(ador|mer)|engineer|ingenier|full.?stack|front.?end|"
+    r"back.?end|devops|\bsre\b|\bqa\b|tester", re.I)
+
+
+def es_dev_simple(cargo):
+    cargo = cargo or ""
+    return bool(ES_DEV_SIMPLE.search(cargo)) and not ES_RECRUITER.search(cargo)
+
 
 def armar_dia(fecha, conexiones, hablaron, usados, n_rec, n_tec):
     """Elige los contactos de un día, escribe su .md y devuelve los elegidos."""
@@ -98,6 +113,7 @@ def armar_dia(fecha, conexiones, hablaron, usados, n_rec, n_tec):
         nombre = f"{c['First Name']} {c['Last Name']}".strip()
         return (nombre.lower() not in EXCLUIR_NOMBRES
                 and nombre.lower() not in hablaron
+                and not es_dev_simple(c["Position"])
                 and c["URL"] not in usados)
 
     # Recruiters: uno por empresa por día, solo los que tienen empresa nombrable.
@@ -132,16 +148,16 @@ def armar_dia(fecha, conexiones, hablaron, usados, n_rec, n_tec):
         n += 1
         nombre, empresa = c["First Name"].strip(), c["Company"].strip()
         plantilla = REC_EN if NOMBRE_NO_HISPANO.search(f"{c['First Name']} {c['Last Name']}") else REC_ES
-        texto = plantilla.format(nombre=nombre, empresa=empresa, portfolio=PORTFOLIO)
+        texto = plantilla.format(nombre=nombre, empresa=empresa, gancho="", gridwright=GRIDWRIGHT, portfolio=PORTFOLIO)
         salida += [f"## {n}. {c['First Name']} {c['Last Name']} · {empresa} · {c['Position']}",
                    c["URL"], "", texto, "", "---", ""]
     for c in tecs:
         n += 1
         completo = f"{c['First Name']} {c['Last Name']}".strip()
         empresa = c["Company"].strip()
-        gancho = next((g for k, g in GANCHO_TECNICO.items() if completo.startswith(k)),
-                      f"Una pregunta rápida: ¿en {empresa} están sumando gente al equipo técnico este trimestre, o te escribo más adelante?")
-        texto = TEC_ES.format(nombre=c["First Name"].strip().capitalize(), gancho=gancho, portfolio=PORTFOLIO)
+        gancho = next((g + " " for k, g in GANCHO_TECNICO.items() if completo.startswith(k)), "")
+        texto = TEC_ES.format(nombre=c["First Name"].strip().capitalize(), empresa=empresa, gancho=gancho,
+                              gridwright=GRIDWRIGHT, portfolio=PORTFOLIO)
         salida += [f"## {n}. {completo} · {empresa} · {c['Position']}", c["URL"], "", texto, "", "---", ""]
 
     (CONTACTOS / "dias").mkdir(exist_ok=True)

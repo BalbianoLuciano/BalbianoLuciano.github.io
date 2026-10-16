@@ -81,7 +81,8 @@ for (const f of datos) {
   const texto = plantilla
     .replaceAll('{persona}', persona || 'equipo')
     .replaceAll('{coma_persona}', persona ? ` ${persona}` : '')
-    .replaceAll('{gancho}', v('gancho'))
+    .replaceAll('{gancho}', v('canal').startsWith('dm-') && v('canal') !== 'dm-postulado' && v('gancho') ? v('gancho') + ' ' : v('gancho'))
+    .replaceAll('{empresa}', v('empresa'))
     .replaceAll('{prueba}', prueba)
     .replaceAll('{stack}', v('stack'))
     .replaceAll('{puesto}', v('puesto'))
