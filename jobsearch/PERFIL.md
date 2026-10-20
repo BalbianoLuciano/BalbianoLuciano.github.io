@@ -14,7 +14,7 @@
 | LinkedIn | linkedin.com/in/luciano-balbiano |
 | Portfolio | balbianoluciano.github.io |
 | Teléfono | +54 373 541 1941 |
-| Ubicación | Buenos Aires, Argentina (CP C1425) |
+| Ubicación | **Resistencia, Chaco, Argentina** (corrección suya del 2026-10-19). Puede viajar a Buenos Aires 1-2 veces por mes y está abierto a mudarse |
 | Ciudadanía | **Española / UE** — no necesita sponsorship |
 | Modalidad | Remoto · dispuesto a mudarse |
 | Idiomas | Español nativo · Inglés B2 (EF SET certificado) |
@@ -33,7 +33,7 @@ Cuando un formulario pregunta el nivel, él mismo contestó así y conviene sost
 **La ciudad no se nombra en ningún mensaje** (regla suya del 2026-10-05): ni Buenos Aires ni "resido en". Se dice "trabajo en remoto" y, si hace falta, la franja horaria con GMT.
 
 **Sobre la ciudadanía**: es española/UE. Eso se dice sin vueltas en cualquier
-aplicación europea, es una ventaja. Pero vive en Buenos Aires: si un aviso es
+aplicación europea, es una ventaja. Pero vive en Argentina (Resistencia, Chaco): si un aviso es
 presencial en España, hay que nombrar la mudanza en vez de dejar que asuman que
 ya está allá.
 
@@ -235,12 +235,12 @@ los pide, y el salario se consulta con él antes de escribirlo.
 
 Preguntar antes de afirmar cualquiera de estos:
 
-- [x] ~~Ciudad y mudanza~~ — Buenos Aires, dispuesto a mudarse
+- [x] ~~Ciudad y mudanza~~ — Resistencia, Chaco (corregido 2026-10-19; antes figuraba Buenos Aires). Viaja a Buenos Aires 1-2 veces por mes sin problema y está abierto a mudarse
 - [x] ~~Autorización UE~~ — ciudadanía española, sin sponsorship
 - [x] ~~Expectativa salarial~~ — en PRIVADO.md
 - [x] ~~Tecnicatura en Programación~~ — UTN, mar. 2026 – dic. 2027, en curso. Ya está en los cuatro `.tex`.
 - [x] ~~Modalidad y ubicación~~ — **confirmado 2026-09-02: la ubicación no es un
-      impedimento.** Acepta híbrido en Buenos Aires y mudarse. Mandar todo lo que
+      impedimento.** Acepta mudarse; para un híbrido en Buenos Aires hay que nombrar la mudanza o los viajes, no decir que reside ahí. Mandar todo lo que
       se pueda.
 - [x] ~~Inglés~~ — **B2 confirmado por él.** No inflar a C1 en ningún lado.
 - [x] ~~Preaviso real en Invisible Geeks~~ — **1 semana**, confirmado el
