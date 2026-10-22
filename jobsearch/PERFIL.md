@@ -114,6 +114,7 @@ Madrid, España. Progresión Full Stack Developer → Project Lead → Team Lead
   97 tablas para analizarlo.
 - Detectó omisiones críticas que permitieron renegociar acuerdos con clientes y
   corregir el alcance antes de que fuera tarde.
+- **Suscripción de telemedicina** (plataforma para mayores de 45, vertical Salud; sep. 2025 – ene. 2026, trabajo de equipo): planes individual, pareja y familiares, mensual o anual; alta del usuario en un proveedor médico externo (MeetingDoctors) por API y widget embebido con SSO; checkout con descuentos, pagos con Redsys y después Stripe (Google Pay, Apple Pay, webhooks); invitaciones a familiares con recordatorios; upgrades prorrateados y downgrades programados; 4 crons; ~68 tests en Pest y Dusk. **Su parte: el frontend del checkout y las suscripciones** (drawers de checkout, descuentos, cancelación, tarjetas y medios de pago; sep. 2025) y la migración de las páginas de Salud y Telemedicina al design system (may.–jun. 2026). El backend y la integración los hizo otro desarrollador. Confirmado desde el repo el 2026-10-22.
 - HubSpot CMS: workflows complejos, funciones serverless, arquitectura de
   componentes. Legacy en PHP 5.x con Docker.
 
