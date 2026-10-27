@@ -79,8 +79,7 @@ producción: educación superior, legal, retail, e-commerce y marketplaces.
 
 - **Gridwright**: plugin open source de Claude Code que convierte una página de
   Figma en componentes y los mide contra el diseño. Máquina de estados en disco
-  y verificaciones escritas como código. 250 tests; 98,54% de fidelidad en una
-  landing de 12 secciones, contra 89% del mismo agente sin la herramienta.
+  y verificaciones escritas como código. 262 tests. **Son dos mediciones, no una** (verificado en el README el 2026-10-26): en un componente (Untitled UI), el mismo agente sacó 89% sin la herramienta y 99,8% con ella (A/B, mismo commit, mismo prompt, n=1); en una landing de 12 secciones (Launch UI), 98,54%, sin control porque el agente solo no pudo abrir el Figma. No decir "98,54% vs 89%" como una sola comparación.
   En su equipo bajó un 70% el tiempo de maquetación (dato suyo, confirmado el
   2026-10-16). Público: github.com/BalbianoLuciano/gridwright
 - **Agente RAG en Python** para generar propuestas (2.968 líneas): ChromaDB con
@@ -115,8 +114,17 @@ Madrid, España. Progresión Full Stack Developer → Project Lead → Team Lead
 - Detectó omisiones críticas que permitieron renegociar acuerdos con clientes y
   corregir el alcance antes de que fuera tarde.
 - **Suscripción de telemedicina** (plataforma para mayores de 45, vertical Salud; sep. 2025 – ene. 2026, trabajo de equipo): planes individual, pareja y familiares, mensual o anual; alta del usuario en un proveedor médico externo (MeetingDoctors) por API y widget embebido con SSO; checkout con descuentos, pagos con Redsys y después Stripe (Google Pay, Apple Pay, webhooks); invitaciones a familiares con recordatorios; upgrades prorrateados y downgrades programados; 4 crons; ~68 tests en Pest y Dusk. **Su parte: el frontend del checkout y las suscripciones** (drawers de checkout, descuentos, cancelación, tarjetas y medios de pago; sep. 2025) y la migración de las páginas de Salud y Telemedicina al design system (may.–jun. 2026). El backend y la integración los hizo otro desarrollador. Confirmado desde el repo el 2026-10-22.
+- **IA verificada en los repos (2026-10-26)**:
+  - **Generador de descripciones de producto** (fabricante de iluminación; todo suyo): Prism con Anthropic (claude-opus-4-6). El prompt recibe una ficha técnica sin campos vacíos, y la regla 1 es no inventar especificaciones: 30-55 palabras para arquitectos, sin superlativos. CLI con `--dry-run`, `--preview` y `--limit`, solo completa lo que falta, backup antes de pisar y confirmación al sobrescribir. 29 tests. Sincroniza la descripción a los otros idiomas con el sistema de traducción.
+  - **Traducción con IA a 6 idiomas** (mismo cliente): **es del equipo**. Él aportó 4 commits de mapeos y topes. Valida las claves del JSON, descarta bloques incompletos y parte las respuestas truncadas.
+  - **Plataforma de viajes y contenido**: generadores de artículos con Claude 3.7 Sonnet (los de viajes y literatura son suyos) y la carga de noticias con un filtro de relevancia en **Claude Haiku como juez** (JSON con relevant y reason, 300 tokens). Si falla el parseo, la noticia se toma como relevante. La API externa tiene retry(3) y timeout de 60 s. Newsletter por temática con consentimiento. Golden tests visuales con pixelmatch: 14 pantallas, umbral 85.
+  - **Formulario de contacto** (iluminación): guarda la consulta y la deriva por país vía la API del cliente, con el país precargado por IP. Hizo 5 de 18 commits.
+  - **Editorial**: funciones serverless de sincronización con HubSpot (40 de 95 commits en app.functions).
+  - La comparación visual con Claude Vision (VariantRefiner) es de un compañero, no suya.
+- **LeadScout (Dmeter)**: lo construyó Braian (73 de 74 commits), y el outbound también: SMTP, tracking y Smartlead. **Su parte es el nicho retail**: 76 categorías de Overture con el criterio "vende bienes con stock" y franjas de latitud. Corrida AR+UY+CL+PY en 6m40s: 413.256 vistos, 263.953 nuevos y 149.303 fusionados por dedup. AR: 84% con teléfono válido, 52% con email válido y 82.972 con score ≥ 70. En LeadScout no interviene ningún LLM (regla de diseño). Outbound de Dmeter: 120 envíos con 26,7% de clicks y 1,7% de respuesta; una campaña anterior de 100 mails tuvo 10% de respuesta y 0 cierres. **Falta confirmar qué hizo él en las campañas.** Braian está en el mismo proceso de Somnio: no adjudicarse su trabajo.
 - HubSpot CMS: workflows complejos, funciones serverless, arquitectura de
   componentes. Legacy en PHP 5.x con Docker.
+- **HubSpot CRM y captación de leads** (lo contó él en el screening de Somnio, 2026-10-23): en migraciones de varios sistemas a HubSpot armó la captación de leads y los organizó y estructuró en el CRM. Para una universidad, el mismo sistema: formulario integrado al CRM, captura de leads y **lead scoring**. Su alcance, en sus palabras: "no mucho más allá de eso", trabajar el formulario, recibir la información y organizarla según lo que quería el cliente. No nombrar la universidad ni su ciudad. **A confirmar**: si el scoring fueron reglas de HubSpot o algo propio, y si fue en Invisible Geeks o en Dmeter.
 
 ### Henry — Instructor · oct. 2022 – nov. 2022
 Bootcamp full-stack de JavaScript. Acompañó a estudiantes en la etapa de
@@ -147,7 +155,7 @@ Los números son lo que hace la diferencia. Usarlos siempre que vengan al caso.
 
 | Proyecto | El número | Qué es |
 |---|---|---|
-| **Gridwright** | **98,54% vs 89%** del mismo agente sin la herramienta; 250 tests | Plugin open source de Claude Code: de una página de Figma a componentes registrados en el design system del proyecto, medidos contra el diseño con un diff perceptual. Lo que se puede verificar con un assert es código; lo que necesita criterio queda para el modelo. |
+| **Gridwright** | **89% → 99,8%** en un componente (A/B) y **98,54%** en una landing de 12 secciones; 262 tests | Plugin open source de Claude Code: de una página de Figma a componentes registrados en el design system del proyecto, medidos contra el diseño con un diff perceptual. Lo que se puede verificar con un assert es código; lo que necesita criterio queda para el modelo. |
 | **Migración editorial multi-idioma** (Invisible Geeks) | **26.634 registros** y 29.194 correcciones; 1.580+ archivos | ETL propio en Python: cuatro bases MySQL legacy, una por idioma, consolidadas en un CMS nuevo con objetos personalizados, con claves de idempotencia para poder reimportar sin duplicar. |
 | **Lost in Translation** | 240 ítems y 33 habilidades validados en CI | Producto propio: profesor de inglés que diagnostica, enseña y evalúa. El banco de contenido es YAML y una herramienta en Python (pydantic estricto, pytest) lo valida y lo compila al bundle que embebe la API en Go. |
 | **Prolicht** (prolicht.at) | **257 proyectos** migrados, dos décadas de contenido | Sitio y catálogo de un fabricante austríaco de iluminación LED arquitectónica. Comandos reproducibles con dry-run para revisar el diff antes de aplicar. Configurador de ambientes y editor de presentaciones con link compartible. |
