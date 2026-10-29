@@ -45,11 +45,11 @@ GRIDWRIGHT = "https://github.com/BalbianoLuciano/gridwright"
 
 # El mensaje abre con un regalo (Gridwright) y recién al final pregunta por vacantes.
 # El 70% es el tiempo de maquetación que ahorró en su equipo (dato suyo, 2026-10-16).
-REC_ES = """Hola {nombre}, ¿cómo estás? {gancho}Soy Luciano Balbiano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en {gridwright}
+REC_ES = """Hola {nombre}, ¿cómo estás? {gancho}Soy Luciano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en {gridwright}
 
 Este tipo de herramientas son las que más disfruto construir. Si en {empresa} buscan un perfil así para sumarse a proyectos interesantes, ¿te puedo enviar mi CV? Te dejo mi portfolio por acá, {portfolio}"""
 
-REC_EN = """Hi {nombre}, I hope you're doing well. {gancho}I'm Luciano Balbiano, I lead the development team at Invisible Geeks, and I wanted to share an open-source tool I built to streamline a team's workflow, it's called Gridwright. It's a Claude Code plugin that turns Figma designs into components ready for the project. In our team it cut layout time by 70% and brought order to how design and development work together. It's open for your team to use at {gridwright}
+REC_EN = """Hi {nombre}, I hope you're doing well. {gancho}I'm Luciano, I lead the development team at Invisible Geeks, and I wanted to share an open-source tool I built to streamline a team's workflow, it's called Gridwright. It's a Claude Code plugin that turns Figma designs into components ready for the project. In our team it cut layout time by 70% and brought order to how design and development work together. It's open for your team to use at {gridwright}
 
 This kind of tool is what I enjoy building most. If {empresa} is looking for a profile like mine to join interesting projects, could I send you my CV? Here's my portfolio, {portfolio}"""
 

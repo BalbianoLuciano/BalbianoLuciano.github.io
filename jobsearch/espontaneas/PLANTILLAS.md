@@ -25,7 +25,7 @@ caracteres a propósito.
 
 ## dm-es · DM de LinkedIn a recruiter
 
-Hola {persona}, ¿cómo estás? {gancho}Soy Luciano Balbiano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en https://github.com/BalbianoLuciano/gridwright
+Hola {persona}, ¿cómo estás? {gancho}Soy Luciano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en https://github.com/BalbianoLuciano/gridwright
 
 Este tipo de herramientas son las que más disfruto construir. Si en {empresa} buscan un perfil así para sumarse a proyectos interesantes, ¿te puedo enviar mi CV? Te dejo mi portfolio por acá, https://balbianoluciano.github.io
 
@@ -33,7 +33,7 @@ Este tipo de herramientas son las que más disfruto construir. Si en {empresa} b
 
 ## dm-tecnico · DM a CTO, líder técnico o fundador
 
-Hola {persona}, ¿cómo estás? {gancho}Soy Luciano Balbiano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en https://github.com/BalbianoLuciano/gridwright
+Hola {persona}, ¿cómo estás? {gancho}Soy Luciano, lidero el equipo de desarrollo en Invisible Geeks y quería compartirte una herramienta open source que armé para optimizar el flujo de trabajo de un equipo, se llama Gridwright. Es un plugin de Claude Code que convierte diseños de Figma en componentes listos para el proyecto. En nuestro equipo bajó un 70% el tiempo de maquetación y ordenó cómo trabajamos entre diseño y desarrollo. Queda a disposición de tu equipo en https://github.com/BalbianoLuciano/gridwright
 
 Este tipo de herramientas son las que más disfruto construir. Si en {empresa} buscan un perfil así para sumarse a proyectos interesantes, ¿te puedo enviar mi CV? Te dejo mi portfolio por acá, https://balbianoluciano.github.io
 
@@ -81,7 +81,7 @@ Luciano Balbiano
 
 Hola {persona}, ¿cómo estás? Acabo de postularme a la búsqueda de {puesto}{frase_empresa} y quería presentarme por acá.
 
-Soy Luciano Balbiano, 5 años con {stack}, hoy Team Leader en Invisible Geeks. {prueba}
+Soy Luciano, 5 años con {stack}, hoy Team Leader en Invisible Geeks. {prueba}
 
 Portfolio: https://balbianoluciano.github.io
 
