@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Orca · uncommitted changes — carousel</title>
+<!-- Mismo molde que publicaciones/gridwright-tokens/carrusel.html: especificacion
+     002, 1080x1350, modulo 90, escala 162/108/72/48/32/24, hormigon y baranda.
+
+     Imagenes: capturas reales del dev build de Orca (2026-10-27), recortadas a
+     la card que cambia y horneadas en img/ con el filtro del manual (grayscale,
+     contrast 1.35, brightness 0.94).
+
+     UNICA EXCEPCION, deliberada, como los violetas de gridwright-tokens: la
+     franja queda en su color real (--git-decoration-modified). La pieza trata
+     de esa linea de 2 px; en gris no se ve el cambio. Por eso las slides que la
+     muestran NO usan baranda: la franja ocupa el lugar del unico acento.
+
+     Datos: issue #34521, PR #34557 (ready for review, sin mergear). -->
+<link rel="stylesheet" href="https://use.typekit.net/tyi0xxl.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=block">
+<style>
+  @font-face { font-family: 'Aileron'; src: url('fonts/aileron-black.woff2') format('woff2'); font-weight: 900; }
+
+  @page { size: 1080px 1350px; margin: 0; }
+  :root {
+    --hormigon: #a8a49b; --luz: #c6c2b8; --sombra: #55524c; --vacio: #15130f; --baranda: #2f5568;
+    --m: 90px;
+    --linea: rgba(21, 19, 15, 0.34);
+    --linea-suave: rgba(21, 19, 15, 0.16);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--hormigon); }
+  @media screen {
+    html, body { background: #2a2824; }
+    body { padding: 48px 0; }
+    .slide { margin: 0 auto 48px; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+  }
+
+  .slide {
+    width: 1080px; height: 1350px;
+    position: relative; overflow: hidden;
+    background: var(--hormigon); color: var(--vacio);
+    padding: var(--m);
+    display: flex; flex-direction: column; gap: 28px;
+    break-after: page;
+  }
+  .slide:last-child { break-after: auto; }
+
+  /* Ley 04 · los agujeros de los tensores, solo en el vacio */
+  .slide::before {
+    content: ''; position: absolute; inset: var(--m); z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle at center, rgba(21,19,15,0.22) 0 2.5px, transparent 2.7px);
+    background-size: var(--m) var(--m);
+  }
+  .slide > * {
+    position: relative; z-index: 1;
+    background: var(--hormigon);
+    padding: 10px 16px; margin-left: -16px; margin-right: -16px;
+  }
+  .slide > .img { background: transparent; padding: 0; margin: 0; }
+
+  .titular {
+    font-family: 'dharma-gothic-e', 'Aileron', 'Helvetica Neue', sans-serif;
+    font-weight: 700; font-style: normal; text-transform: none;
+    line-height: 0.86; letter-spacing: 0.004em; word-spacing: 0.04em;
+    font-size: 108px; margin: 0;
+  }
+  .t162 { font-size: 162px; }
+  .t72  { font-size: 72px; }
+  .d48  { font-family: 'Outfit', sans-serif; font-size: 48px; line-height: 1.18; font-weight: 500; margin: 0; }
+  .c32  { font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.42; font-weight: 400; margin: 0; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 24px; line-height: 1.5; margin: 0; }
+  .etiqueta { text-transform: uppercase; letter-spacing: 0.14em; color: var(--sombra); }
+  .baranda { color: var(--baranda); }
+  .sombra { color: var(--sombra); }
+  code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.86em; }
+
+  .pie {
+    margin-top: auto !important;
+    display: flex; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sombra);
+    border-top: 1px solid var(--linea); padding-top: 18px !important;
+  }
+
+  .img img { display: block; width: 100%; border: 1px solid var(--vacio); }
+  .img figcaption { white-space: nowrap; margin-top: 10px; background: var(--hormigon); display: inline-block; padding: 0 16px 0 0; }
+
+  .flujo { border: 1px solid var(--vacio); padding: 18px 22px !important; margin: 0 !important; }
+  .cita { border-left: 3px solid var(--baranda); padding-left: 24px !important; margin-left: 0 !important; }
+
+  .specs { display: grid; margin: 0; }
+  .specs > div { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: baseline;
+                 padding: 16px 0; border-bottom: 1px solid var(--linea-suave); }
+  .specs dt { font-family: 'IBM Plex Mono', monospace; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sombra); }
+  .specs dd { margin: 0; font-family: 'Outfit', sans-serif; font-size: 32px; line-height: 1.3; }
+
+  .pasos { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 !important; padding: 0 !important; border: 1px solid var(--vacio); }
+  .pasos > div { padding: 18px 20px; background: var(--hormigon); }
+  .pasos > div + div { border-left: 1px solid var(--vacio); }
+  .pasos .titular { font-size: 72px; line-height: 0.9; display: block; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- 01 · El hook. Se entiende sola: la linea, y en la captura, la franja. -->
+<section class="slide">
+  <p class="mono etiqueta">Orca · an open source contribution</p>
+  <h1 class="titular t162" style="margin-top:0">A 2-pixel line</h1>
+  <p class="d48">Sometimes the bigger contribution isn't a tool of your own. It's one detail in someone else's.</p>
+  <figure class="img" style="margin-top:auto">
+    <img src="img/despues.png" alt="A workspace card in Orca's sidebar with a thin stripe on its left edge">
+  </figure>
+  <p class="pie" style="margin-top:0 !important"><span>Luciano Balbiano</span><span>01 / 06</span></p>
+</section>
+
+<!-- 02 · El problema -->
+<section class="slide">
+  <p class="mono etiqueta">01 — The problem</p>
+  <h2 class="titular">Which one did<br>I leave dirty?</h2>
+  <p class="c32">Orca runs coding agents side by side, each one in its own git worktree, and each worktree is a card in the sidebar.</p>
+  <p class="c32">With many of them open, every card looked the same whether its checkout was clean or not. The only way to know was to open them one by one.</p>
+  <figure class="img" style="margin-top:auto">
+    <img src="img/antes.png" alt="The same card with no indication">
+    <figcaption class="mono sombra">Before · a card with one uncommitted change</figcaption>
+  </figure>
+  <p class="pie" style="margin-top:0 !important"><span>Orca · stablyai</span><span>02 / 06</span></p>
+</section>
+
+<!-- 03 · El cambio, antes y despues -->
+<section class="slide">
+  <p class="mono etiqueta">02 — The change</p>
+  <h2 class="titular">Same card,<br>one stripe</h2>
+  <figure class="img" style="margin-top:4px;width:720px">
+    <img src="img/antes.png" alt="Before">
+    <figcaption class="mono sombra">Before</figcaption>
+  </figure>
+  <figure class="img" style="width:720px">
+    <img src="img/despues.png" alt="After: a 2 px stripe on the left edge">
+    <figcaption class="mono sombra">After · a 2 px stripe, in the colour for modified files</figcaption>
+  </figure>
+  <p class="pie"><span>Orca · stablyai</span><span>03 / 06</span></p>
+</section>
+
+<!-- 04 · El detalle -->
+<section class="slide">
+  <p class="mono etiqueta">03 — On hover</p>
+  <h2 class="titular">The count,<br>not just a mark</h2>
+  <p class="c32">Hover the stripe and it tells you how many files changed. Past git's listing limit it says "N+" instead of guessing. Clean cards show nothing, and so do the ones not read yet.</p>
+  <figure class="img" style="margin-top:auto">
+    <img src="img/tooltip.png" alt="Tooltip reading 1 uncommitted or untracked change">
+  </figure>
+  <p class="pie" style="margin-top:0 !important"><span>Orca · stablyai</span><span>04 / 06</span></p>
+</section>
+
+<!-- 05 · Lo que no se ve. Ley 02: la logica va en la manga. -->
+<section class="slide">
+  <p class="mono etiqueta">04 — What you don't see</p>
+  <h2 class="titular">The work was<br>in the reading</h2>
+  <p class="c32">Showing a line is easy. Knowing when to draw it, without putting git to work on every checkout, is the change.</p>
+  <dl class="specs">
+    <div><dt>On screen only</dt><dd>It reads the visible cards, one at a time, at background priority.</dd></div>
+    <div><dt>Active card</dt><dd><span class="baranda">Zero extra work:</span> Orca already tracks it, so the stripe reuses that.</dd></div>
+    <div><dt>Remote SSH</dt><dd>Same behaviour on remote hosts. Disconnected ones are skipped.</dd></div>
+    <div><dt>Off switch</dt><dd>A setting under Appearance, on by default.</dd></div>
+  </dl>
+  <p class="mono sombra">Live test · new file: stripe in 17 s · deleted: gone in 74 s</p>
+  <p class="pie"><span>Orca · stablyai</span><span>05 / 06</span></p>
+</section>
+
+<!-- 06 · Cierre. La frase del post, y los datos del issue y el PR. -->
+<section class="slide">
+  <p class="mono etiqueta">05 — Where it stands</p>
+  <h2 class="titular t162" style="margin-bottom:0">Now all that's left<br>is to wait</h2>
+  <div class="pasos">
+    <div><span class="mono etiqueta">Issue</span><span class="titular">#34521</span></div>
+    <div><span class="mono etiqueta">Pull request</span><span class="titular">#34557</span></div>
+    <div><span class="mono etiqueta">Status</span><span class="titular baranda">Ready</span></div>
+  </div>
+  <p class="c32">First the issue, with the before and a mockup. Then the pull request, with tests, before and after captures, and the project's own checks.</p>
+  <p class="c32" style="margin-top:auto">Orca is open source, with close to 108,000 stars on GitHub. The pull request, the issue and the project are in the first comment.</p>
+  <p class="pie" style="margin-top:28px !important"><span>github.com/BalbianoLuciano</span><span>06 / 06</span></p>
+</section>
+
+</body>
+</html>
